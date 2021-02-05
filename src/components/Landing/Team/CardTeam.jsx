@@ -10,6 +10,11 @@ const CardContainer = styled.div`
   justify-content: space-around;
   align-items: stretch;
   align-content: stretch;
+  border: 1px solid #f2f2f2;
+  border-radius: 5px;
+  margin: 20px 40px 0px 40px;
+  padding: 20px 30px;
+  box-shadow: -1px 4px 19px -3px rgba(0,0,0,0.75);
 `;
 
 const InfoContainer = styled.div`
@@ -26,6 +31,10 @@ const SocialMediaContainer = styled.div`
   
 `;
 
+const PContent = styled.p`
+  color: black;
+`;
+
 const CardTeam = ({
   name,
   charge,
@@ -40,8 +49,8 @@ const CardTeam = ({
       </div>
       <InfoContainer>
         <h2>{name}</h2>
-        <p>{charge}</p>
-        <p>{description}</p>
+        <PContent>{charge}</PContent>
+        <PContent>{description}</PContent>
       </InfoContainer>
       <SocialMediaContainer>
         {socialMediaList && socialMediaList.map((social) => (

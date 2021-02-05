@@ -14,6 +14,7 @@ const TeamContainer = styled.div`
   grid-template-areas:
     ". ."
     ". .";
+  margin-top: 30px;
 `;
 
 const Team = () => {
@@ -22,6 +23,7 @@ const Team = () => {
       <Title
         title="EQUIPO DE TRABAJO"
         description="Cargame es una experiencia única para nuestros clientes"
+        isSecond
       />
       <TeamContainer>
         <CardTeam

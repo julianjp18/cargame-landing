@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import ROUTES from '../../../routing/routes';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { Button } from 'antd';
 
 const Ul = styled.ul`
   list-style: none;
@@ -28,16 +29,10 @@ const Ul = styled.ul`
 `;
 
 const RightNav = ({ open }) => {
+  const history = useHistory();
   return (
     <Ul open={open}>
-      {displayRouteMenu(ROUTES)}
-      <li>Inicio</li>
-      <li>Acerca de</li>
-      <li>Planes</li>
-      <li>Equipo</li>
-      <li>Contáctanos</li>
-      <li>Registrarse</li>
-      <li>Iniciar sesión</li>
+      {displayRouteMenu(ROUTES, history)}
     </Ul>
   )
 }
@@ -45,16 +40,14 @@ const RightNav = ({ open }) => {
 /**
  * Render a nested hierarchy of route configs with unknown depth/breadth
  */
-const displayRouteMenu = (routes) => {
-  const history = useHistory();
-
+const displayRouteMenu = (routes, history) => {
   /**
    * Render a single route as a list item link to the config's pathname
    */
-  const singleRoute = (route) => {
+  const singleRoute = (route, history) => {
 
     const redirect = (path) => {
-      history.push(path);
+
     };
 
     return route.show && !route.auth && (
@@ -68,7 +61,7 @@ const displayRouteMenu = (routes) => {
   return (routes.map(route => {
     // if this route has sub-routes, then show the ROOT as a list item and recursively render a nested list of route links
     if (route.routes) {
-      return (singleRoute(route));
+      return (singleRoute(route, history));
     }
 
     // no nested routes, so just render a single route

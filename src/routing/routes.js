@@ -10,7 +10,6 @@ const ROUTES = [
   { path: "/contact-us", key: "Contáctanos", exact: true, component: App, show: true, auth: false },
   { path: "/log-in", key: "Iniciar sesión", exact: true, component: App, show: true, auth: false },
   { path: "/sign-up", key: "Registrarse", exact: true, component: App, show: true, auth: false },
-  { path: "/dashborad", key: "Dashboard", exact: true, component: Dashboard, show: false, auth: false },
 ];
 
 export default ROUTES;
