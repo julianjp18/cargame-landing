@@ -9,7 +9,11 @@ const Ul = styled.ul`
   display: flex;
   flex-flow: row nowrap;
   li {
-    padding: 18px 10px;
+    padding: 10px;
+    
+    button {
+      border: 0;
+    }
   }
   @media (max-width: 768px) {
     flex-flow: column nowrap;
@@ -22,6 +26,8 @@ const Ul = styled.ul`
     width: 300px;
     padding-top: 3.5rem;
     transition: transform 0.3s ease-in-out;
+    z-index: 100;
+
     li {
       color: #fff;
     }
@@ -46,13 +52,28 @@ const displayRouteMenu = (routes, history) => {
    */
   const singleRoute = (route, history) => {
 
-    const redirect = (path) => {
-
+    const landingNavigation = (ele) => {
+      console.log(ele)
+      let offsetTop = document.getElementById(ele).offsetTop;
+      window.scrollTo({
+        top: offsetTop - 100,
+        behavior: "smooth"
+      });
     };
+
+    if (route.landing) return (
+      <li key={route.path} className="menu-item">
+        <Button onClick={() => landingNavigation(route.path.split('/')[1])}>
+          {route.key}
+        </Button>
+      </li>
+    );
 
     return route.show && !route.auth && (
       <li key={route.path} className="menu-item">
-        <Button onClick={redirect(route.path)}>{route.key}</Button>
+        <Button type="button">
+          <Link to={route.path}>{route.key}</Link>
+        </Button>
       </li>
     );
   }

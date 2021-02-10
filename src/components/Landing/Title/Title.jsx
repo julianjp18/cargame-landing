@@ -29,6 +29,7 @@ const TitleSecondStyle = styled.h2`
 
 const SecondDescription = styled.p`
   font-family: "Open Sans", sans-serif;
+  font-size: 17px;
   color: ${WHITE_COLOR};
   margin: 0 60px;
 `;
@@ -40,6 +41,7 @@ const HrSecondContent = styled.hr`
 
 const Description = styled.p`
   font-family: "Open Sans", sans-serif;
+  font-size: 17px;
   color: ${THIRD_TEXT_COLOR};
   margin: 0 60px;
 `;

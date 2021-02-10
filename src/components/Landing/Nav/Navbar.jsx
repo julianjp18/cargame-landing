@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { WHITE_COLOR } from '../../utils/colors';
 import Burger from './Burger';
 
 const Nav = styled.nav`
@@ -12,7 +13,16 @@ const Nav = styled.nav`
   .logo {
     padding: 15px 0;
   }
-`
+
+  @media (max-width: 768px) {
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column nowrap;
+    background-color: ${WHITE_COLOR};
+    z-index: 99;
+  }
+`;
 
 const Navbar = () => {
   return (

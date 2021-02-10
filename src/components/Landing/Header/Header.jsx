@@ -59,6 +59,7 @@ const TitleContainer = styled.div`
 `;
 
 const Image = styled.img`
+  max-width: 100%;
   margin-top: 60px;
 `;
 

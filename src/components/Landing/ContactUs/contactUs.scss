@@ -1,0 +1,38 @@
+.info-col {
+  padding-left: 30px;
+
+  .i-content-col {
+    text-align: end;
+    padding-right: 10px;
+    font-size: 40px;
+    color: #37517e;
+  }
+  
+  .descrip-content-col {
+    h3 {
+      font-size: 24px;
+      margin-bottom: 0;
+    }
+  
+    p {
+      font-size: 18px;
+    }
+  }
+  
+}
+
+.form-container {
+  padding: 0 42px;
+
+  .form-content {
+    padding-right: 50px;
+
+    .ant-form-item-control-input-content {
+      text-align: end;
+    }
+
+    @media (max-width: 768px) {
+      padding: 0 10px;
+    }
+  }
+}
