@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/cargame-landing/static/css/main.a00d2300.chunk.css",
+    "main.js": "/cargame-landing/static/js/main.0393dae9.chunk.js",
+    "main.js.map": "/cargame-landing/static/js/main.0393dae9.chunk.js.map",
+    "runtime-main.js": "/cargame-landing/static/js/runtime-main.3543aa66.js",
+    "runtime-main.js.map": "/cargame-landing/static/js/runtime-main.3543aa66.js.map",
+    "static/css/2.f3f01324.chunk.css": "/cargame-landing/static/css/2.f3f01324.chunk.css",
+    "static/js/2.5c015608.chunk.js": "/cargame-landing/static/js/2.5c015608.chunk.js",
+    "static/js/2.5c015608.chunk.js.map": "/cargame-landing/static/js/2.5c015608.chunk.js.map",
+    "static/js/3.0d24d603.chunk.js": "/cargame-landing/static/js/3.0d24d603.chunk.js",
+    "static/js/3.0d24d603.chunk.js.map": "/cargame-landing/static/js/3.0d24d603.chunk.js.map",
+    "index.html": "/cargame-landing/index.html",
+    "static/css/2.f3f01324.chunk.css.map": "/cargame-landing/static/css/2.f3f01324.chunk.css.map",
+    "static/css/main.a00d2300.chunk.css.map": "/cargame-landing/static/css/main.a00d2300.chunk.css.map",
+    "static/js/2.5c015608.chunk.js.LICENSE.txt": "/cargame-landing/static/js/2.5c015608.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3543aa66.js",
+    "static/css/2.f3f01324.chunk.css",
+    "static/js/2.5c015608.chunk.js",
+    "static/css/main.a00d2300.chunk.css",
+    "static/js/main.0393dae9.chunk.js"
+  ]
+}
