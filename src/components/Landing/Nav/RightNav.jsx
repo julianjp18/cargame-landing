@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import ROUTES from '../../../routing/routes';
 import { Link, useHistory } from 'react-router-dom';
 import { Button } from 'antd';
+import { landingNavigation } from '../../utils/extras';
+import { PRIMARY_COLOR, WHITE_COLOR, PRIMARY_BUTTON_BG_COLOR } from '../../utils/colors';
 
 const Ul = styled.ul`
   list-style: none;
@@ -17,7 +19,7 @@ const Ul = styled.ul`
   }
   @media (max-width: 768px) {
     flex-flow: column nowrap;
-    background-color: #0D2538;
+    background: ${PRIMARY_COLOR};
     position: fixed;
     transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
     top: 0;
@@ -29,7 +31,16 @@ const Ul = styled.ul`
     z-index: 100;
 
     li {
-      color: #fff;
+
+      .ant-btn {
+        color: ${WHITE_COLOR};
+        background: transparent;
+        border: 0;
+
+        &:hover {
+          color: ${PRIMARY_BUTTON_BG_COLOR};
+        }
+      }
     }
   }
 `;
@@ -51,15 +62,6 @@ const displayRouteMenu = (routes, history) => {
    * Render a single route as a list item link to the config's pathname
    */
   const singleRoute = (route, history) => {
-
-    const landingNavigation = (ele) => {
-      console.log(ele)
-      let offsetTop = document.getElementById(ele).offsetTop;
-      window.scrollTo({
-        top: offsetTop - 100,
-        behavior: "smooth"
-      });
-    };
 
     if (route.landing) return (
       <li key={route.path} className="menu-item">

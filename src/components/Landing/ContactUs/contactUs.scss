@@ -17,8 +17,15 @@
     p {
       font-size: 18px;
     }
+
+    .social-title {
+      text-align: center;
+    }
   }
   
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 }
 
 .form-container {
@@ -34,5 +41,9 @@
     @media (max-width: 768px) {
       padding: 0 10px;
     }
+  }
+
+  @media (max-width: 768px) {
+    padding: 0;
   }
 }

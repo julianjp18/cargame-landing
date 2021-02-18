@@ -10,8 +10,8 @@ const ROUTES = [
   { path: "/business-plan", key: "Planes", exact: true, component: Landing, show: true, auth: false, landing: true },
   { path: "/team", key: "Equipo", exact: true, component: Landing, show: true, auth: false, landing: true },
   { path: "/contact-us", key: "Contáctanos", exact: true, component: Landing, show: true, auth: false, landing: true },
-  { path: "/log-in", key: "Iniciar sesión", exact: true, component: LogIn, show: true, auth: false, landing: false },
   { path: "/sign-up", key: "Registrarse", exact: true, component: SignUp, show: true, auth: false, landing: false },
+  { path: "/log-in", key: "Iniciar sesión", exact: true, component: LogIn, show: true, auth: false, landing: false },
 ];
 
 export default ROUTES;

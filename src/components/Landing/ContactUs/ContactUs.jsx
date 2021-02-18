@@ -1,6 +1,7 @@
 import { Col, Row } from 'antd';
 import React from 'react';
 import styled from 'styled-components';
+import { PRIMARY_COLOR, WHITE_COLOR } from '../../utils/colors';
 import Title from '../Title/Title';
 import ContactForm from './ContactForm';
 import './contactUs.scss';
@@ -24,6 +25,16 @@ const IContent = styled.i`
   text-align: end;
 `;
 
+const SocialMediaContainer = styled.div`
+
+`;
+
+const AContent = styled.a`
+  margin: 0 4px;
+  font-size: 25px;
+  color: ${PRIMARY_COLOR};
+`;
+
 const ContactUs = () => {
   return (
     <ContactUsContainer id="contact-us">
@@ -39,7 +50,7 @@ const ContactUs = () => {
                 <IContent className="fas fa-map-marker-alt" />
               </Col>
               <Col className="descrip-content-col" xs={18}>
-                <h3>Sede principal:</h3>
+                <h3>Sede principal</h3>
                 <p>Villavicencio, Colombia</p>
               </Col>
             </Row>
@@ -48,7 +59,7 @@ const ContactUs = () => {
                 <IContent className="far fa-envelope-open" />
               </Col>
               <Col className="descrip-content-col" xs={18}>
-                <h3>Correo electrónico:</h3>
+                <h3>Correo electrónico</h3>
                 <p>contacto@cargame.com</p>
               </Col>
             </Row>
@@ -57,8 +68,21 @@ const ContactUs = () => {
                 <IContent className="fas fa-phone" />
               </Col>
               <Col className="descrip-content-col" xs={18}>
-                <h3>Télefono:</h3>
+                <h3>Télefono</h3>
                 <p>+ 57 3202342345</p>
+              </Col>
+            </Row>
+            <Row>
+              <Col className="i-content-col" xs={6}>
+                <IContent className="fas fa-share-alt" />
+              </Col>
+              <Col className="descrip-content-col" xs={18}>
+                <h3>Redes sociales</h3>
+                <SocialMediaContainer>
+                  <AContent href=""><i className={`fab fa-facebook`}></i></AContent>
+                  <AContent href=""><i className={`fab fa-linkedin`}></i></AContent>
+                  <AContent href=""><i className={`fab fa-instagram`}></i></AContent>
+                </SocialMediaContainer>
               </Col>
             </Row>
           </ContactUsContent>

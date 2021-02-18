@@ -38,7 +38,7 @@ const ContactForm = () => {
   return (
     <Form className="form-content" {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
       <Form.Item
-        name={['user', 'name']}
+        name={'name'}
         label="Nombre completo"
         rules={[
           {
@@ -49,7 +49,7 @@ const ContactForm = () => {
         <Input />
       </Form.Item>
       <Form.Item
-        name={['user', 'email']}
+        name={'email'}
         label="Correo electrónico"
         rules={[
           {
@@ -60,7 +60,7 @@ const ContactForm = () => {
         <Input />
       </Form.Item>
       <Form.Item
-        name={['user', 'title']}
+        name={'subject'}
         label="Asunto"
         rules={[
           {
@@ -70,7 +70,7 @@ const ContactForm = () => {
       >
         <Input />
       </Form.Item>
-      <Form.Item name={['user', 'message']} label="Mensaje">
+      <Form.Item name={'message'} label="Mensaje">
         <Input.TextArea rows={6} />
       </Form.Item>
       <Form.Item wrapperCol={{ ...layout.wrapperCol }}>

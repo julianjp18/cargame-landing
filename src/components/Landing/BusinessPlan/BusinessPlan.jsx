@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Title from '../Title/Title';
 import './businessPlan.scss';
+import BusinessImage from '../../assets/images/why-us.png';
 
 const { TabPane } = Tabs;
 
@@ -14,7 +15,7 @@ const BusinessPlan = () => {
     <BusinessPlanContainer id="business-plan">
       <Title
         title="PLAN DE NEGOCIO"
-        description="Cárgame dentro de sus políticas de responsabilidad social, creó dos métodos que potencializan la generación de ingresos a usuarios que deseen vincularse y ser parte de la estrategia de mercadeo de la compañía, dichos usuarios serán denominados «Embajadores de Cárgame», ya que serán voceros e influenciadores de la marca."
+        description="Cárgame dentro de sus políticas de responsabilidad social, creó dos métodos que potencializan la generación de ingresos a usuarios y transportadores que deseen vincularse y ser parte de nuestra compañía, quienes serán «Embajadores de Cárgame», ya que serán voceros e influenciadores de la marca."
         isSecond
       />
       <Row className="business-plan-tabs-container">
@@ -61,7 +62,7 @@ const BusinessPlan = () => {
           </Tabs>
         </Col>
         <Col xs={24} md={12}>
-          <img src="images/why-us.png" alt="why us" />
+          <img src={BusinessImage} alt="why us" />
         </Col>
       </Row>
     </BusinessPlanContainer>

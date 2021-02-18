@@ -12,7 +12,7 @@ const Services = () => {
     <ServicesContainer id="services">
       <Title
         title="SERVICIOS"
-        description="Aprovechamos los espacios vacios de los transportadores para que las personas se puedan transportar y/o envíar su carga o encomiendas."
+        description="Llegamos a todas las regiones del país más rápido y más económico."
         isSecond
       />
       <Row>

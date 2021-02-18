@@ -1,30 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
 import { PRIMARY_COLOR, SECOND_TEXT_COLOR } from '../../utils/colors';
+import SubMenu from './SubMenu/SubMenu';
 
 const FooterContainer = styled.div`
-  height: 20vh;
+  min-height: 40vh;
+  padding-top: 20px;
+  padding-bottom: 10px;
   background-color: ${PRIMARY_COLOR};
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  align-items: stretch;
-  align-content: stretch;
 `;
 
-const PContainer = styled.p`
+const PContent = styled.p`
+color: ${SECOND_TEXT_COLOR};
+`;
+
+const PContainer = styled.div`
+  margin-top: 10px;
   color: ${SECOND_TEXT_COLOR};
+  background-color: ${PRIMARY_COLOR};
 `;
 
 const Footer = () => {
   return (
     <FooterContainer>
-      <div>
-        <PContainer>
+      <SubMenu />
+      <PContainer>
+        <PContent>
           © Copyright <b>Cargame</b> Todos los derechos reservados.
-        </PContainer>
-      </div>
+        </PContent>
+      </PContainer>
     </FooterContainer>
   );
 };

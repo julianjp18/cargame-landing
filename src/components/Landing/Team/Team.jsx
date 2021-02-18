@@ -5,6 +5,10 @@ import { WHITE_COLOR } from '../../utils/colors';
 import { SOCIAL_MEDIA_LIST } from '../../utils/extras';
 import Title from '../Title/Title';
 import CardTeam from './CardTeam';
+import JUAN_PHOTO from '../../assets/images/Juan.png';
+import DIEGO_PHOTO from '../../assets/images/Diego.png';
+import LINA_PHOTO from '../../assets/images/Lina.png';
+import JULIAN_PHOTO from '../../assets/images/Julian.png';
 
 const TeamContainer = styled.div`
   background-color: ${WHITE_COLOR};
@@ -28,6 +32,7 @@ const Team = () => {
               image='Diego'
               description='CÁRGAME LLEGA LEJOS POR TI'
               socialMediaList={SOCIAL_MEDIA_LIST}
+              photo={DIEGO_PHOTO}
             />
           </Col>
           <Col xs={24} md={12}>
@@ -37,6 +42,7 @@ const Team = () => {
               charge='JEFE ADMINISTRATIVA'
               description='CÁRGAME TECNIFICADA PARA BRINDARTE LA MEJOR EXPERIENCIA'
               socialMediaList={SOCIAL_MEDIA_LIST}
+              photo={LINA_PHOTO}
             />
           </Col>
           <Col xs={24} md={12}>
@@ -46,6 +52,7 @@ const Team = () => {
               charge='JEFE DE MERCADEO'
               description='EN CÁRGAME LA GENTE TRABAJA PARA LA GENTE Y NOSOTROS PARA ELLOS'
               socialMediaList={SOCIAL_MEDIA_LIST}
+              photo={JUAN_PHOTO}
             />
           </Col>
           <Col xs={24} md={12}>
@@ -55,6 +62,7 @@ const Team = () => {
               charge='JEFE DE SOPORTE'
               description='CÁRGAME, PARA QUE TU NECESIDAD SEA NUESTRA PREOCUPACIÓN'
               socialMediaList={SOCIAL_MEDIA_LIST}
+              photo={JULIAN_PHOTO}
             />
           </Col>
         </Row>

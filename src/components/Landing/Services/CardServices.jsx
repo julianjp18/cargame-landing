@@ -9,7 +9,7 @@ const CardContainer = styled.div`
   margin: 20px 40px 50px 40px;
   padding: 20px 30px;
   box-shadow: -1px 4px 19px -3px rgb(0 0 0 / 75%);
-  min-height: 349px;
+  min-height: 371px;
 `;
 
 const InfoContainer = styled.div`
@@ -47,7 +47,7 @@ const CardServices = ({
   return (
     <CardContainer>
       <IconContainer>
-        <i class={`fas ${iconName}`} />
+        <i className={`fas ${iconName}`} />
       </IconContainer>
       <InfoContainer>
         <Title>{title}</Title>
