@@ -1,8 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
-import ROUTES from '../../../routing/routes';
-import { Link, useHistory } from 'react-router-dom';
 import { Button } from 'antd';
+import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+
+import ROUTES from '../../../routing/routes';
 import { landingNavigation } from '../../utils/extras';
 import { PRIMARY_COLOR, WHITE_COLOR, PRIMARY_BUTTON_BG_COLOR } from '../../utils/colors';
 
@@ -47,83 +48,48 @@ const Ul = styled.ul`
 
 const RightNav = ({ open }) => {
   const history = useHistory();
-  return (
-    <Ul open={open}>
-      {displayRouteMenu(ROUTES, history)}
-    </Ul>
-  )
-}
 
-/**
- * Render a nested hierarchy of route configs with unknown depth/breadth
- */
-const displayRouteMenu = (routes, history) => {
-  /**
-   * Render a single route as a list item link to the config's pathname
-   */
+  const redirectLanding = (path) => {
+    const landing = landingNavigation(path.split('/')[1]);
+    if (!landing) history.push("/");
+  }
+
   const singleRoute = (route, history) => {
 
     if (route.landing) return (
       <li key={route.path} className="menu-item">
-        <Button onClick={() => landingNavigation(route.path.split('/')[1])}>
+        <Button onClick={() => redirectLanding(route.path)}>
           {route.key}
         </Button>
       </li>
     );
 
-    return route.show && !route.auth && (
+    const redirect = (path) => {
+      history.push(path);
+    };
+
+    return route.show && route.redirect && (
       <li key={route.path} className="menu-item">
-        <Button type="button">
-          <Link to={route.path}>{route.key}</Link>
+        <Button type="button" onClick={() => redirect(route.path)}>
+          {route.key}
         </Button>
       </li>
     );
-  }
-
-  // loop through the array of routes and generate an unordered list
-  return (routes.map(route => {
-    // if this route has sub-routes, then show the ROOT as a list item and recursively render a nested list of route links
-    if (route.routes) {
-      return (singleRoute(route, history));
-    }
-
-    // no nested routes, so just render a single route
-    return singleRoute(route);
-  })
-  );
-};
-
-const displayAuthRouteMenu = (routes) => {
-  /**
-   * Render a single route as a list item link to the config's pathname
-   */
-  const singleRoute = (route) => {
-    return route.auth && (
-      <li key={route.path} className="menu-item">
-        <Link to={route.path} className="menu-link">{route.key}</Link>
-      </li>
-    );
-  }
-
-  const dropDownRoute = (route) => {
-    return (
-      <li key={route.path} className="menu-item">
-        <Link to={route.path} className="menu-link">{route.key}</Link>
-      </li>
-    )
   };
 
-  // loop through the array of routes and generate an unordered list
-  return (routes.map(route => {
-    // if this route has sub-routes, then show the ROOT as a list item and recursively render a nested list of route links
-    if (route.routes) {
-      return (dropDownRoute(route));
-    }
+  return (
+    <Ul open={open}>
+      {ROUTES.map(route => {
+        // if this route has sub-routes, then show the ROOT as a list item and recursively render a nested list of route links
+        if (route.routes) {
+          return (singleRoute(route, history));
+        }
 
-    // no nested routes, so just render a single route
-    return singleRoute(route);
-  })
-  );
-};
+        // no nested routes, so just render a single route
+        return singleRoute(route);
+      })}
+    </Ul>
+  )
+}
 
 export default RightNav;

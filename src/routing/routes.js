@@ -1,17 +1,17 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import LogIn from "../components/Auth/LogIn/LogIn";
-import SignUp from "../components/Auth/SignUp/SignUp";
+import HomeApp from "../components/App";
 import Landing from "../components/Landing";
 
 const ROUTES = [
-  { path: "/", key: "Inicio", exact: true, component: Landing, show: true, auth: false, landing: true },
-  { path: "/us", key: "Nosotros", exact: true, component: Landing, show: true, auth: false, landing: true },
-  { path: "/business-plan", key: "Planes", exact: true, component: Landing, show: true, auth: false, landing: true },
-  { path: "/team", key: "Equipo", exact: true, component: Landing, show: true, auth: false, landing: true },
-  { path: "/contact-us", key: "Contáctanos", exact: true, component: Landing, show: true, auth: false, landing: true },
-  { path: "/sign-up", key: "Registrarse", exact: true, component: SignUp, show: true, auth: false, landing: false },
-  { path: "/log-in", key: "Iniciar sesión", exact: true, component: LogIn, show: true, auth: false, landing: false },
+  { path: "/", key: "Inicio", exact: true, component: Landing, show: true, landing: true },
+  { path: "/cargame-landing", key: "Inicio", exact: true, component: Landing, show: false, landing: false },
+  { path: "/us", key: "Nosotros", exact: true, component: Landing, show: true, landing: true },
+  { path: "/business-plan", key: "Planes", exact: true, component: Landing, show: true, landing: true },
+  { path: "/team", key: "Equipo", exact: true, component: Landing, show: true, landing: true },
+  { path: "/contact-us", key: "Contáctanos", exact: true, component: Landing, show: true, landing: true },
+  { path: "/sign-up", key: "Registrarse", exact: true, component: HomeApp, show: false, landing: false },
+  { path: "/log-in", key: "Iniciar sesión", exact: true, component: HomeApp, show: false, landing: false },
 ];
 
 export default ROUTES;

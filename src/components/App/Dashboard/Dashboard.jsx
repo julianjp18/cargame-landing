@@ -10,7 +10,7 @@ const Dashboard = () => {
     <DashboardContainer>
       <Title
         title="ACERCA DE NOSOTROS"
-        description="Somos una plataforma digital que búsca acercar las regiones más apartadas con las ciudades principales. Conectamos a transportadores con usuarios generadores de carga."
+        description="Somos una plataforma digital que búsca acercar las regiones más apartadas con las ciudades principales."
       />
     </DashboardContainer>
   );

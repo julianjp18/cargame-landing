@@ -26,7 +26,7 @@ const BusinessPlan = () => {
       <Row className="business-plan-tabs-container">
         <Col xs={24} md={12}>
           <Tabs className="tabs-container" defaultActiveKey="1">
-            <TabPane tab="Plan Referidos" key="1">
+            <TabPane tab="Plan Embajadores" key="1">
               <p>
                 <strong>Cárgame</strong> dentro de sus objetivos, llegará
                 inicialmente a los 3 Departamentos:
@@ -68,7 +68,7 @@ const BusinessPlan = () => {
         </Col>
         <Col xs={24} md={12}>
           <VideoContainer>
-            <h2>¿Qué es el plan referidos?</h2>
+            <h2>¿Qué es el plan embajadores?</h2>
             <video style={{ maxWidth: '100%' }} controls src={firstPlanVideo} type="video/mp4" />
           </VideoContainer>
         </Col>

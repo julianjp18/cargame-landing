@@ -47,7 +47,7 @@ const Services = () => {
         <Col xs={24} md={6}>
           <CardServices
             title="Pide tu grua"
-            iconName="fa-briefcase"
+            iconName="fa-car-crash"
             description="CÁRGAME te acompaña si te quedaste barado, pide tu grua para carro o moto, nosotros te llevamos."
           />
         </Col>

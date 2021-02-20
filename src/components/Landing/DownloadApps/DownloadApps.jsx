@@ -7,6 +7,10 @@ const DownloadContainer = styled.div`
 margin: 15px 0;
 font-size: 25px;
 color: ${props => props.color};
+
+@media (max-width: 768px) {
+  margin-top: 30px;
+} 
 `;
 
 const Button = styled.button`
