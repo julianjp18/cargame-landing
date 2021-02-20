@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/cargame-landing/static/css/main.71c730c6.chunk.css",
-    "main.js": "/cargame-landing/static/js/main.22a0a258.chunk.js",
-    "main.js.map": "/cargame-landing/static/js/main.22a0a258.chunk.js.map",
+    "main.js": "/cargame-landing/static/js/main.f3c9c3b4.chunk.js",
+    "main.js.map": "/cargame-landing/static/js/main.f3c9c3b4.chunk.js.map",
     "runtime-main.js": "/cargame-landing/static/js/runtime-main.bff71b12.js",
     "runtime-main.js.map": "/cargame-landing/static/js/runtime-main.bff71b12.js.map",
     "static/css/2.f3f01324.chunk.css": "/cargame-landing/static/css/2.f3f01324.chunk.css",
@@ -23,6 +23,7 @@
     "static/media/Referido.faa41917.mp4": "/cargame-landing/static/media/Referido.faa41917.mp4",
     "static/media/cargame-transportador.0fce15f6.mp4": "/cargame-landing/static/media/cargame-transportador.0fce15f6.mp4",
     "static/media/cargame-usuarios.7963fab3.mp4": "/cargame-landing/static/media/cargame-usuarios.7963fab3.mp4",
+    "static/media/icono.943a6df4.jpg": "/cargame-landing/static/media/icono.943a6df4.jpg",
     "static/media/logo_transportador.35614de6.png": "/cargame-landing/static/media/logo_transportador.35614de6.png",
     "static/media/logocargame.75cf5bf4.png": "/cargame-landing/static/media/logocargame.75cf5bf4.png",
     "static/media/why-us.0b38b56d.png": "/cargame-landing/static/media/why-us.0b38b56d.png"
@@ -32,6 +33,6 @@
     "static/css/2.f3f01324.chunk.css",
     "static/js/2.de84e111.chunk.js",
     "static/css/main.71c730c6.chunk.css",
-    "static/js/main.22a0a258.chunk.js"
+    "static/js/main.f3c9c3b4.chunk.js"
   ]
 }
