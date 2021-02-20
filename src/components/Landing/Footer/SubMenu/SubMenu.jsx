@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { PRIMARY_BUTTON_BG_COLOR, PRIMARY_COLOR, SECOND_TEXT_COLOR, WHITE_COLOR } from '../../../utils/colors';
 import { landingNavigation } from '../../../utils/extras';
+import DownloadsApps from '../../DownloadApps/DownloadApps';
 
 const SubMenuContainer = styled.div`
   min-height: 20vh;
@@ -24,6 +25,7 @@ const PSubtitle = styled.p`
 const Button = styled.button`
   background: transparent;
   border: 0;
+  cursor: pointer;
 `;
 
 const ULContent = styled.ul`
@@ -60,6 +62,7 @@ const SubMenu = () => {
             En Cargame estamos innovando todo el tiempo en beneficio de nuestros transportadores y usuarios,
             te invitamos a ser parte de nuestro equipo.
           </p>
+          <DownloadsApps color='white' />
         </Col>
         <Col xs={12} md={6}>
           <PSubtitle>Opciones</PSubtitle>
@@ -76,7 +79,9 @@ const SubMenu = () => {
               Políticas de privacidad
             </LIContent>
             <LIContent>
-              Premios
+              <Button onClick={() => landingNavigation('business-plan')}>
+                Plan de negocios
+              </Button>
             </LIContent>
           </ULContent>
         </Col>
@@ -92,7 +97,7 @@ const SubMenu = () => {
               Iniciar sesión
             </LIContent>
             <LIContent>
-              Blog
+              Noticias
             </LIContent>
             <LIContent>
               <Button onClick={() => landingNavigation('services')}>
@@ -106,9 +111,9 @@ const SubMenu = () => {
           <PSocial>Siguenos en nuestras redes sociales</PSocial>
           <PSocial>Ustedes son nuestro día a día.</PSocial>
           <SocialMediaContainer>
-            <AContent href=""><i className={`fab fa-facebook`}></i></AContent>
-            <AContent href=""><i className={`fab fa-linkedin`}></i></AContent>
-            <AContent href=""><i className={`fab fa-instagram`}></i></AContent>
+            <AContent href="https://www.facebook.com/Cargameapp"><i className={`fab fa-facebook`}></i></AContent>
+            <AContent href="https://www.youtube.com/channel/UCAEtD9ycbtx-PLudy2QvgoQ"><i className={`fab fa-youtube`}></i></AContent>
+            <AContent href="https://instagram.com/cargameapp"><i className={`fab fa-instagram`}></i></AContent>
           </SocialMediaContainer>
         </Col>
       </Row>

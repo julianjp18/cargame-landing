@@ -4,10 +4,15 @@ import styled from 'styled-components';
 import Title from '../Title/Title';
 import './businessPlan.scss';
 import BusinessImage from '../../assets/images/why-us.png';
+import firstPlanVideo from '../../assets/videos/Referido.mp4';
 
 const { TabPane } = Tabs;
 
 const BusinessPlanContainer = styled.div`
+`;
+
+const VideoContainer = styled.div`
+  padding: 0 10px;
 `;
 
 const BusinessPlan = () => {
@@ -62,7 +67,10 @@ const BusinessPlan = () => {
           </Tabs>
         </Col>
         <Col xs={24} md={12}>
-          <img src={BusinessImage} alt="why us" />
+          <VideoContainer>
+            <h2>¿Qué es el plan referidos?</h2>
+            <video style={{ maxWidth: '100%' }} controls src={firstPlanVideo} type="video/mp4" />
+          </VideoContainer>
         </Col>
       </Row>
     </BusinessPlanContainer>

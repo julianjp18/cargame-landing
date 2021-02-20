@@ -3,3 +3,32 @@
   width: 15%;
   margin-bottom: 40px;
 }
+
+.tabs-container {
+  text-align: start;
+  margin-top: 40px;
+  margin-bottom: 30px;
+
+  .ant-tabs-nav-wrap {
+    .ant-tabs-tab {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+
+  .ant-tabs-content-holder {
+    font-size: 17px;
+    
+    .number-list {
+      font-size: 24px;
+      font-weight: bold;
+      color: #37517e;
+    }
+    
+    ul {
+      li {
+        font-size: 17px;
+      }
+    }
+  }
+}

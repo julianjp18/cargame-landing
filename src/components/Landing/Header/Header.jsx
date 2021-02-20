@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { PRIMARY_COLOR, WHITE_COLOR, PRIMARY_BUTTON_BG_COLOR } from '../../utils/colors';
 import imageHeader from '../../assets/images/Asset_6.png';
 import mainVideo from '../../assets/videos/Inicio.mp4';
+import DownloadsApps from '../DownloadApps/DownloadApps';
 
 
 const HeaderContainer = styled.div`
@@ -127,6 +128,7 @@ const Header = () => {
             </VideoContent>
           </Modal>
         </ButttonsContainer>
+        <DownloadsApps color='white' />
       </TitleContainer>
       <ImageContainer>
         <Image src={imageHeader} alt="phone" />

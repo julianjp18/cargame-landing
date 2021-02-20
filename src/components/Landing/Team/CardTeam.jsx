@@ -19,9 +19,10 @@ const InfoContainer = styled.div`
 `;
 
 const Image = styled.img`
-  width: 130px;
-  height: 130px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
+  margin-top: 10px;
 `;
 
 const SocialMediaContainer = styled.div`
@@ -47,18 +48,19 @@ const Description = styled.i`
 const CardTeam = ({
   name,
   charge,
-  image,
   description,
-  socialMediaList,
   photo,
+  facebookLink,
+  instagramLink,
+  linkedInLink,
 }) => {
   return (
     <CardContainer>
       <Row>
-        <Col xs={6}>
+        <Col xs={12} md={6}>
           <Image src={photo} alt='image' />
         </Col>
-        <Col xs={18}>
+        <Col xs={12} md={18}>
           <InfoContainer>
             <h2>{name}</h2>
             <PContent>{charge}</PContent>
@@ -69,9 +71,15 @@ const CardTeam = ({
             </PContent>
           </InfoContainer>
           <SocialMediaContainer>
-            {socialMediaList.map((social) => (
-              <AContent key={social.icon} href={social.url}><i className={`fab fa-${social.icon}`}></i></AContent>
-            ))}
+            {facebookLink && (
+              <AContent href={facebookLink}><i className={`fab fa-facebook`}></i></AContent>
+            )}
+            {instagramLink && (
+              <AContent href={instagramLink}><i className={`fab fa-instagram`}></i></AContent>
+            )}
+            {linkedInLink && (
+              <AContent href={linkedInLink}><i className={`fab fa-linkedin`}></i></AContent>
+            )}
           </SocialMediaContainer>
         </Col>
       </Row>

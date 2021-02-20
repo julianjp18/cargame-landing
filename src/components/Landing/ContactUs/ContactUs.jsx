@@ -1,7 +1,7 @@
 import { Col, Row } from 'antd';
 import React from 'react';
 import styled from 'styled-components';
-import { PRIMARY_COLOR, WHITE_COLOR } from '../../utils/colors';
+import { PRIMARY_COLOR } from '../../utils/colors';
 import Title from '../Title/Title';
 import ContactForm from './ContactForm';
 import './contactUs.scss';
@@ -60,7 +60,7 @@ const ContactUs = () => {
               </Col>
               <Col className="descrip-content-col" xs={18}>
                 <h3>Correo electrónico</h3>
-                <p>contacto@cargame.com</p>
+                <p>info@cargame.com.co</p>
               </Col>
             </Row>
             <Row>
@@ -69,7 +69,7 @@ const ContactUs = () => {
               </Col>
               <Col className="descrip-content-col" xs={18}>
                 <h3>Télefono</h3>
-                <p>+ 57 3202342345</p>
+                <p>+57 317 528-4083</p>
               </Col>
             </Row>
             <Row>
@@ -79,9 +79,9 @@ const ContactUs = () => {
               <Col className="descrip-content-col" xs={18}>
                 <h3>Redes sociales</h3>
                 <SocialMediaContainer>
-                  <AContent href=""><i className={`fab fa-facebook`}></i></AContent>
-                  <AContent href=""><i className={`fab fa-linkedin`}></i></AContent>
-                  <AContent href=""><i className={`fab fa-instagram`}></i></AContent>
+                  <AContent href="https://www.facebook.com/Cargameapp"><i className={`fab fa-facebook`}></i></AContent>
+                  <AContent href="https://www.youtube.com/channel/UCAEtD9ycbtx-PLudy2QvgoQ"><i className={`fab fa-youtube`}></i></AContent>
+                  <AContent href="https://instagram.com/cargameapp"><i className={`fab fa-instagram`}></i></AContent>
                 </SocialMediaContainer>
               </Col>
             </Row>

@@ -18,48 +18,37 @@ const Services = () => {
       <Row>
         <Col xs={24} md={6}>
           <CardServices
-            title="Viajes compartidos"
-            iconName="fa-paper-plane"
-            description="Cuando viajes en tu vehículo, aprovecha
-            al 100% tu carro, a la vez que optimizas
-            los costos de transporte. Un viajero
-            podría tener un espacio libre en baúl de
-            tu vehículo, así como una o dos sillas
-            disponibles para compartir su viaje."
-          />
-        </Col>
-        <Col xs={24} md={6}>
-          <CardServices
-            title="Documentos y paquetes"
-            iconName="fa-file-alt"
-            description="Puedes ganar dinero extra mientras
-            viajas en bus, avión o barco, lleva
-            documentos o una encomienda
-            pequeña.
-            Para viajeros en avión únicamente
-            documentos (inicialmente)."
-          />
-        </Col>
-        <Col xs={24} md={6}>
-          <CardServices
-            title="Carga y trasteos"
-            iconName="fa-truck-loading"
-            description="Aprovecha ese espacio vacío que queda
-              en tu camión a la hora de llevar un flete.
-              Este servicio también te ayuda a
-              encontrar carga con más facilidad y
-              rapidez cuando tu camión quede
-              totalmente vacío."
-          />
-        </Col>
-        <Col xs={24} md={6}>
-          <CardServices
-            title="Servicio de grúa para carro o moto"
+            title="Camiones"
             iconName="fa-truck"
-            description="Si lo llegas a necesitar, ¡relajate!
-            CÁRGAME te ayuda a solicitar servicio de
-            grua, de una manera fácil, rápida y
-            eficiente."
+            description="Puedes enviar toda tu carga y encomiendas a través de nuestros camiones aliados, la cual, llegará más rapido y a un menor costo."
+          />
+        </Col>
+        <Col xs={24} md={6}>
+          <CardServices
+            title="Vehículos particulares"
+            iconName="fa-car"
+            description="Viaja de forma segura, comoda y económica en nuestros vehículos aliados (automóviles y camiones)."
+          />
+        </Col>
+        <Col xs={24} md={6}>
+          <CardServices
+            title="Envía tus documentos"
+            iconName="fa-plane"
+            description="Todos hemos tenido que enviar un documento urgente, ”de YA para YA”, CÁRGAME te lo lleva a través de nuestros viajeros en avión."
+          />
+        </Col>
+        <Col xs={24} md={6}>
+          <CardServices
+            title="Comparte tu maleta"
+            iconName="fa-briefcase"
+            description="Puedes enviar tus encomiendas con nuestros viajeros que van en moto, bus o barco, quienes la entregarán en el punto acordado."
+          />
+        </Col>
+        <Col xs={24} md={6}>
+          <CardServices
+            title="Pide tu grua"
+            iconName="fa-briefcase"
+            description="CÁRGAME te acompaña si te quedaste barado, pide tu grua para carro o moto, nosotros te llevamos."
           />
         </Col>
       </Row>
