@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/cargame-landing/static/css/main.71c730c6.chunk.css",
-    "main.js": "/cargame-landing/static/js/main.f3c9c3b4.chunk.js",
-    "main.js.map": "/cargame-landing/static/js/main.f3c9c3b4.chunk.js.map",
+    "main.js": "/cargame-landing/static/js/main.c64f3e4c.chunk.js",
+    "main.js.map": "/cargame-landing/static/js/main.c64f3e4c.chunk.js.map",
     "runtime-main.js": "/cargame-landing/static/js/runtime-main.bff71b12.js",
     "runtime-main.js.map": "/cargame-landing/static/js/runtime-main.bff71b12.js.map",
     "static/css/2.f3f01324.chunk.css": "/cargame-landing/static/css/2.f3f01324.chunk.css",
@@ -33,6 +33,6 @@
     "static/css/2.f3f01324.chunk.css",
     "static/js/2.de84e111.chunk.js",
     "static/css/main.71c730c6.chunk.css",
-    "static/js/main.f3c9c3b4.chunk.js"
+    "static/js/main.c64f3e4c.chunk.js"
   ]
 }
