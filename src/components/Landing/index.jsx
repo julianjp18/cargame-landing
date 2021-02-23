@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import '../../App.scss';
 import 'antd/dist/antd.css';
 import Header from './Header/Header';
@@ -10,9 +11,15 @@ import AboutUs from './AboutUs/AboutUs';
 
 
 const Landing = () => {
+  const history = useHistory();
+
+  const redirect = (path) => {
+    if (path) history.push({ pathname: `/${path}`, state: { component: path } });
+  };
+
   return (
     <div className="main-landing">
-      <Header />
+      <Header redirect={redirect} />
       <AboutUs id="us" />
       <BusinessPlan id="business-plan" />
       <Services id="services" />

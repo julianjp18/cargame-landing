@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Title from '../Title/Title';
 import './businessPlan.scss';
-import BusinessImage from '../../assets/images/why-us.png';
 import firstPlanVideo from '../../assets/videos/Referido.mp4';
 
 const { TabPane } = Tabs;
@@ -28,31 +27,10 @@ const BusinessPlan = () => {
           <Tabs className="tabs-container" defaultActiveKey="1">
             <TabPane tab="Plan Embajadores" key="1">
               <p>
-                <strong>Cárgame</strong> dentro de sus objetivos, llegará
-                inicialmente a los 3 Departamentos:
-                <b> Meta, Casanare y Boyacá</b>, hasta
-                extenderse y llegar a la Capital Bogotá y
-                el resto del País.
-              </p>
-              <p>
-                En cada ciudad se conformará un
-                núcleo de Embajadores (15) de
-                diferentes sectores de la economía.
-                Cada embajador tendrá como
-                objetivo referir la aplicación, para que
-                mayor número de personas la
-                descarguen y hagan uso de sus
-                servicios.
-              </p>
-              <p>
-                <b>Cárgame</b> como reconocimiento,
-                otorgará el <b>1%</b> de cada servicio
-                facturado por cada uno de los
-                referidos que haya inscrito bajo su
-                código de referencia. El pago de este
-                porcentaje será vitalicio y se realizará
-                mensualmente en una cuenta
-                bancaria suministrada previamente.
+                Todo el que quiera ganar dinero extra lo puede lograr con
+                 <strong> CÁRGAME</strong>, es muy fácil y real, solo debes hablarle
+                 a tus conocidos sobre la plataforma y listo, mira el video para más
+                 información o contacta con nosotros.
               </p>
             </TabPane>
             <TabPane tab="Plan Mil" key="2">

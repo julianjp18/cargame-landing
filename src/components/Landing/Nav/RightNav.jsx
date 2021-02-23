@@ -50,27 +50,18 @@ const RightNav = ({ open }) => {
   const history = useHistory();
 
   const redirectLanding = (path) => {
-    const landing = landingNavigation(path.split('/')[1]);
-    if (!landing) history.push("/");
+    const pathCleaned = path.split('/')[1];
+    const landing = landingNavigation(pathCleaned);
+
+    if (!landing)
+      history.push({ pathname: path, state: { component: pathCleaned } });
   }
 
-  const singleRoute = (route, history) => {
+  const singleRoute = (route) => {
 
-    if (route.landing) return (
+    if (route.show) return (
       <li key={route.path} className="menu-item">
         <Button onClick={() => redirectLanding(route.path)}>
-          {route.key}
-        </Button>
-      </li>
-    );
-
-    const redirect = (path) => {
-      history.push(path);
-    };
-
-    return route.show && route.redirect && (
-      <li key={route.path} className="menu-item">
-        <Button type="button" onClick={() => redirect(route.path)}>
           {route.key}
         </Button>
       </li>
@@ -82,7 +73,7 @@ const RightNav = ({ open }) => {
       {ROUTES.map(route => {
         // if this route has sub-routes, then show the ROOT as a list item and recursively render a nested list of route links
         if (route.routes) {
-          return (singleRoute(route, history));
+          return (singleRoute(route));
         }
 
         // no nested routes, so just render a single route

@@ -8,6 +8,7 @@ import logoCargame from '../../assets/images/logocargame.png';
 import cargameUsuarios from '../../assets/videos/cargame-usuarios.mp4';
 import cargameTransportador from '../../assets/videos/cargame-transportador.mp4';
 import DownloadsApps from '../DownloadApps/DownloadApps';
+import { DARK_GREY } from '../../utils/colors';
 
 const { TabPane } = Tabs;
 
@@ -36,6 +37,7 @@ const ImageContainer = styled.div`
 `;
 
 const TabsContainer = styled.div`
+  color: ${DARK_GREY};
   padding: 20px 0 10px 0;
   margin: auto;
   width: 70%;
@@ -46,7 +48,7 @@ const VideoContainer = styled.div`
 `;
 
 const PContainer = styled.div`
-  padding-top: 90px;
+  padding-top: 20px;
 
   @media (max-width: 768px) {
     padding-top: 0;
@@ -54,10 +56,13 @@ const PContainer = styled.div`
   }
 `;
 
-const PContent = styled.i`
+const PContent = styled.p`
   font-size: 35px;
   font-weight: bold;
+  font-style: italic;
 `;
+
+
 
 const AboutUs = () => {
   return (
@@ -111,16 +116,16 @@ const AboutUs = () => {
               </TabPane>
               <TabPane tab="Políticas" key="3">
                 <p>
-                  <span className="number-list">1.</span> La seguridad de la información es de gran importancia estratégica
+                  <span className="number-list">1.</span> Tanto usuarios generadores de carga, como transportadores deben estar plenamente identificados
                 </p>
                 <p>
-                  <span className="number-list">2.</span> El servicio al cliente tiene la mayor relevancia
+                  <span className="number-list">2.</span> La seguridad de la información es de gran importancia estratégica
                 </p>
                 <p>
-                  <span className="number-list">3.</span> Tanto usuarios generadores de carga, como transportadores deben estar plenamente identificados
+                  <span className="number-list">3.</span>  La carga y las encomiendas siempre deben contar con un seguro de respaldo
                 </p>
                 <p>
-                  <span className="number-list">4.</span>  La carga y las encomiendas siempre deben contar con un seguro de respaldo
+                  <span className="number-list">4.</span> El servicio al cliente tiene la mayor relevancia
                 </p>
               </TabPane>
               <TabPane tab="Heráldica" key="4">
@@ -129,7 +134,7 @@ const AboutUs = () => {
                 </p>
                 <p>
                   <ul>
-                    <li>Al fondo tiene una caja en forma de cubo, que representa el objeto de CARGAME, la carga, el paquete, los documentos y paquetes.</li>
+                    <li>Al fondo tiene una caja en forma de cubo, que representa el objeto de CÁRGAME, la carga, el paquete, los documentos y paquetes.</li>
                     <li>El triangulo representa las tres dimensiones de la visión de CÁRGAME; Aire, Tierra y Agua. El triangulo pequeño representa a Colombia, la conquista del mercado nacional y el grande representa la expansión, la conquista del mercado internacional.</li>
                     <li>El nombre tiene dos formas de leerse, CÁRGAME (juego de carro) ó CÁRGAME (una exclamación en primera persona pidiendo ayuda para ser transportado)</li>
                     <li>Por último, la flecha tiene dos significados, el primero es el de cumplir función de tilde (´) cuando la palabra se lee en español; el segundo significado es el de avanzar, indicando hacia donde queda el norte del negocio.</li>
@@ -140,7 +145,7 @@ const AboutUs = () => {
           </TabsContainer>
         </Col>
       </Row>
-      <DownloadsApps />
+      <DownloadsApps color={DARK_GREY} />
     </AboutUsContainer>
   );
 };

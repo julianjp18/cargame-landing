@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PRIMARY_COLOR, SECOND_TEXT_COLOR } from '../../utils/colors';
+import { PRIMARY_COLOR, WHITE_COLOR } from '../../utils/colors';
 import SubMenu from './SubMenu/SubMenu';
 
 const FooterContainer = styled.div`
@@ -11,12 +11,12 @@ const FooterContainer = styled.div`
 `;
 
 const PContent = styled.p`
-color: ${SECOND_TEXT_COLOR};
+color: ${WHITE_COLOR};
 `;
 
 const PContainer = styled.div`
   margin-top: 10px;
-  color: ${SECOND_TEXT_COLOR};
+  color: ${WHITE_COLOR};
   background-color: ${PRIMARY_COLOR};
 `;
 

@@ -23,6 +23,7 @@ const ContactUsContent = styled.div`
 
 const IContent = styled.i`
   text-align: end;
+  color: ${PRIMARY_COLOR};
 `;
 
 const SocialMediaContainer = styled.div`

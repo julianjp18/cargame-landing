@@ -5,8 +5,6 @@ import { PRIMARY_COLOR, WHITE_COLOR, PRIMARY_BUTTON_BG_COLOR } from '../../utils
 import imageHeader from '../../assets/images/Asset_6.png';
 import mainVideo from '../../assets/videos/Inicio.mp4';
 import DownloadsApps from '../DownloadApps/DownloadApps';
-import { Redirect, useHistory } from 'react-router-dom';
-
 
 const HeaderContainer = styled.div`
   min-height: 80vh;
@@ -144,9 +142,8 @@ const PContent = styled.p`
   } 
 `;
 
-const Header = () => {
+const Header = ({ redirect }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const history = useHistory();
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -158,10 +155,6 @@ const Header = () => {
 
   const handleCancel = () => {
     setIsModalVisible(false);
-  };
-
-  const redirect = (path) => {
-    history.push(`/${path}`);
   };
 
   return (
@@ -176,7 +169,7 @@ const Header = () => {
             <ButttonsContainer>
               <SecondButtonContainer onClick={showModal}>Ver video</SecondButtonContainer>
               <Modal
-                title="¿Qué es CARGAME?"
+                title="¿Qué es CÁRGAME?"
                 visible={isModalVisible}
                 onOk={handleOk}
                 onCancel={handleCancel}
@@ -197,7 +190,9 @@ const Header = () => {
                 <PContent>
                   ¿Quieres ser parte?
                 </PContent>
-                <ButtonAuth onClick={() => redirect('sign-up')}>¡Registrate ya!</ButtonAuth>
+                <ButtonAuth onClick={() => {
+                  redirect('sign-up');
+                }}>¡Registrate ya!</ButtonAuth>
               </Col>
               <Col xs={24}>
                 <Image src={imageHeader} alt="phone" />

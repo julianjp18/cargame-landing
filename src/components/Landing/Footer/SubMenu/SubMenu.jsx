@@ -1,7 +1,7 @@
 import { Col, Row } from 'antd';
 import React from 'react';
 import styled from 'styled-components';
-import { PRIMARY_BUTTON_BG_COLOR, PRIMARY_COLOR, SECOND_TEXT_COLOR, WHITE_COLOR } from '../../../utils/colors';
+import { PRIMARY_BUTTON_BG_COLOR, PRIMARY_COLOR, WHITE_COLOR } from '../../../utils/colors';
 import { landingNavigation } from '../../../utils/extras';
 import DownloadsApps from '../../DownloadApps/DownloadApps';
 
@@ -13,13 +13,13 @@ const SubMenuContainer = styled.div`
 
 const PSocial = styled.p`
   margin-bottom: 0;
-  color: ${SECOND_TEXT_COLOR};
+  color: ${WHITE_COLOR};
 `;
 
 const PSubtitle = styled.p`
   font-size: 25px;
   font-weight: 500;
-  color: ${SECOND_TEXT_COLOR};
+  color: ${WHITE_COLOR};
 `;
 
 const Button = styled.button`
@@ -34,7 +34,7 @@ const ULContent = styled.ul`
 
 const LIContent = styled.li`
   padding-bottom: 10px;
-  color: ${SECOND_TEXT_COLOR};
+  color: ${WHITE_COLOR};
 
   &:hover {
     cursor: pointer;

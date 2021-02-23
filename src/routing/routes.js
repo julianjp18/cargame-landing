@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import HomeApp from "../components/App";
+import Dashboard from "../components/App/Dashboard/Dashboard";
 import Landing from "../components/Landing";
 
 const ROUTES = [
@@ -10,8 +11,9 @@ const ROUTES = [
   { path: "/business-plan", key: "Planes", exact: true, component: Landing, show: true, landing: true },
   { path: "/team", key: "Equipo", exact: true, component: Landing, show: true, landing: true },
   { path: "/contact-us", key: "Contáctanos", exact: true, component: Landing, show: true, landing: true },
-  { path: "/sign-up", key: "Registrarse", exact: true, component: HomeApp, show: false, landing: false },
-  { path: "/log-in", key: "Iniciar sesión", exact: true, component: HomeApp, show: false, landing: false },
+  { path: "/sign-up", key: "Registrarse", exact: true, component: HomeApp, show: true, landing: false },
+  { path: "/log-in", key: "Iniciar sesión", exact: true, component: HomeApp, show: true, landing: false },
+  { path: "/dashboard", key: "Dashboard - admin", exact: true, component: Dashboard, show: false, landing: false, auth: true },
 ];
 
 export default ROUTES;

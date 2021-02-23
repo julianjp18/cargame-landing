@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Form,
   Input,
@@ -8,6 +8,7 @@ import {
   Checkbox,
   Button,
 } from 'antd';
+
 const { Option } = Select;
 
 const formItemLayout = {

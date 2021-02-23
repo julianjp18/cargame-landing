@@ -3,8 +3,13 @@ import React from 'react';
 import styled from 'styled-components';
 import Title from '../Title/Title';
 import CardServices from './CardServices';
+import AllServicesImage from '../../assets/images/all-services.png';
 
 const ServicesContainer = styled.div`
+`;
+
+const ImageAllServices = styled.img`
+  max-width: 400px;
 `;
 
 const Services = () => {
@@ -20,14 +25,14 @@ const Services = () => {
           <CardServices
             title="Camiones"
             iconName="fa-truck"
-            description="Puedes enviar toda tu carga y encomiendas a través de nuestros camiones aliados, la cual, llegará más rapido y a un menor costo."
+            description="Puedes enviar toda tu carga y encomiendas a través de nuestros camiones aliados, la cual, llegará más rápido y a un menor costo."
           />
         </Col>
         <Col xs={24} md={6}>
           <CardServices
             title="Vehículos particulares"
             iconName="fa-car"
-            description="Viaja de forma segura, comoda y económica en nuestros vehículos aliados (automóviles y camiones)."
+            description="Viaja de forma segura, cómoda y económica en nuestros vehículos aliados (automóviles y camiones)."
           />
         </Col>
         <Col xs={24} md={6}>

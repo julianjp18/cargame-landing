@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PRIMARY_COLOR, SECOND_TEXT_COLOR, WHITE_COLOR } from '../../utils/colors';
+import { DARK_GREY, PRIMARY_COLOR, WHITE_COLOR } from '../../utils/colors';
+import PlaneImage from '../../assets/images/avion.png';
+import TruckImage from '../../assets/images/truck.png';
+import CarImage from '../../assets/images/car.png';
+import BriefCaseImage from '../../assets/images/briefcase.png';
+import CarCrashImage from '../../assets/images/crane.png';
 
 const CardContainer = styled.div`
   background-color: ${WHITE_COLOR};
@@ -13,7 +18,7 @@ const CardContainer = styled.div`
 `;
 
 const InfoContainer = styled.div`
-  color: ${SECOND_TEXT_COLOR};
+  color: ${WHITE_COLOR};
 `;
 
 const IconContainer = styled.div`
@@ -26,11 +31,11 @@ const SocialMediaContainer = styled.div`
 `;
 
 const PContent = styled.p`
-  color: black;
+  color: ${DARK_GREY};
 `;
 
 const Description = styled.i`
-  color: black;
+  color: ${DARK_GREY};
   font-size: 16px;
   font-weight: 700;
 `;
@@ -39,15 +44,36 @@ const Title = styled.h2`
   color: ${PRIMARY_COLOR};
 `;
 
+const ImageIcon = styled.img`
+  max-width: 70px;
+`;
+
 const CardServices = ({
   title,
   iconName,
   description,
 }) => {
+  const switchImageIcon = () => {
+    switch (iconName) {
+      case 'fa-plane':
+        return PlaneImage;
+      case 'fa-truck':
+        return TruckImage;
+      case 'fa-car':
+        return CarImage;
+      case 'fa-briefcase':
+        return BriefCaseImage;
+      case 'fa-car-crash':
+        return CarCrashImage;
+      default:
+        break;
+    }
+  }
+
   return (
     <CardContainer>
       <IconContainer>
-        <i className={`fas ${iconName}`} />
+        <ImageIcon src={switchImageIcon()} alt={iconName} />
       </IconContainer>
       <InfoContainer>
         <Title>{title}</Title>

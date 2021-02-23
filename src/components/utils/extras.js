@@ -3,7 +3,7 @@ export const landingNavigation = (ele) => {
   if (el) {
     const offsetTop = document.getElementById(ele).offsetTop;
     window.scrollTo({
-      top: offsetTop - 100,
+      top: offsetTop - 50,
       behavior: "smooth"
     });
     return true;
