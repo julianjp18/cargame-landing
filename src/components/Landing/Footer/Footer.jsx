@@ -26,7 +26,7 @@ const Footer = () => {
       <SubMenu />
       <PContainer>
         <PContent>
-          © Copyright <b>Cargame</b> Todos los derechos reservados.
+          © Copyright <b>Cárgame</b> Todos los derechos reservados.
         </PContent>
       </PContainer>
     </FooterContainer>

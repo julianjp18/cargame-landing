@@ -19,7 +19,7 @@ const Team = () => {
     <div id="team">
       <Title
         title="EQUIPO DE TRABAJO"
-        description="Cargame es una experiencia única para nuestros clientes"
+        description="Cárgame es una experiencia única para nuestros clientes"
         isSecond
       />
       <TeamContainer>

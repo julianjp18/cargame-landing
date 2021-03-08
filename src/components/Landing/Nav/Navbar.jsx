@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { WHITE_COLOR } from '../../utils/colors';
+import { PRIMARY_COLOR, WHITE_COLOR } from '../../utils/colors';
 import Burger from './Burger';
 import icon from '../../assets/images/icono.jpg';
+import iconDriver from '../../assets/images/icono-transportador.png';
 
 const Nav = styled.nav`
   width: 100%;
@@ -28,21 +29,27 @@ const Nav = styled.nav`
     flex-flow: column nowrap;
     background-color: ${WHITE_COLOR};
     z-index: 99;
+    top: 0;
   }
 `;
 
 const SpanContent = styled.p`
+  padding-top: 6px;
   font-weight: bold;
-  margin-left: 5px;
   margin-bottom: 0;
+  color: ${PRIMARY_COLOR};
+  float: left;
+  margin-right: 5px;
 `;
 
 const LogoImage = styled.img`
-  width: 5%;
+  width: 37px;
   max-width: 100%;
+  float: left;
+  margin-right: 5px;
 
   @media (max-width: 768px) {
-    width: 10%;
+    width: 40px;
   }
 `;
 
@@ -50,7 +57,11 @@ const Navbar = () => {
   return (
     <Nav>
       <div className="logo">
-        <LogoImage src={icon} alt="icon" />
+        <h1>
+          <LogoImage src={icon} alt="icon" />
+          <SpanContent>CÁRGAME</SpanContent>
+          <LogoImage src={iconDriver} alt="icon" />
+        </h1>
       </div>
       <Burger />
     </Nav>

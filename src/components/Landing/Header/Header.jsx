@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
-import { Modal, Button, Row, Col } from 'antd';
+import { Modal, Row, Col } from 'antd';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { PRIMARY_COLOR, WHITE_COLOR, PRIMARY_BUTTON_BG_COLOR } from '../../utils/colors';
+
+import { WHITE_COLOR, PRIMARY_BUTTON_BG_COLOR } from '../../utils/colors';
 import imageHeader from '../../assets/images/Asset_6.png';
 import mainVideo from '../../assets/videos/Inicio.mp4';
 import DownloadsApps from '../DownloadApps/DownloadApps';
+import AllServicesImage from '../../assets/images/cargame-usuario.jpg';
+
+const HeaderContent = styled.div`
+  background-color: rgba(29,80,158, 0.75);
+  min-height: 80vh;
+`;
+
 
 const HeaderContainer = styled.div`
   min-height: 80vh;
-  background-color: ${PRIMARY_COLOR};
+  background-image: url(${AllServicesImage});
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   @media (max-width: 768px) {
     padding-top: 30px;
@@ -25,9 +37,10 @@ const ButttonsContainer = styled.div`
 `;
 
 const Description = styled.p`
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 50px;
-  font-size: 24px;
+    color: ${WHITE_COLOR};
+    margin-bottom: 50px;
+    font-size: 24px;
+    font-weight: 500;
 `;
 
 const Title = styled.h1`
@@ -130,6 +143,14 @@ const ButtonAuth = styled.button`
     background: ${WHITE_COLOR};
     color: ${PRIMARY_BUTTON_BG_COLOR};
   }
+
+  .linkTo {
+    color: ${WHITE_COLOR};
+
+    &:hover {
+      color: ${PRIMARY_BUTTON_BG_COLOR};
+    } 
+  }
 `;
 
 const PContent = styled.p`
@@ -142,7 +163,7 @@ const PContent = styled.p`
   } 
 `;
 
-const Header = ({ redirect }) => {
+const Header = ({ }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
@@ -159,48 +180,48 @@ const Header = ({ redirect }) => {
 
   return (
     <HeaderContainer>
-      <Row>
-        <Col xs={24} md={12}>
-          <TitleContainer>
-            <Title>Una solución colaborativa para Colombia</Title>
-            <Description>
-              Somos una plataforma digital que búsca acercar las regiones más apartadas con las ciudades principales.
-        </Description>
-            <ButttonsContainer>
-              <SecondButtonContainer onClick={showModal}>Ver video</SecondButtonContainer>
-              <Modal
-                title="¿Qué es CÁRGAME?"
-                visible={isModalVisible}
-                onOk={handleOk}
-                onCancel={handleCancel}
-                cancelText='Volver'
-              >
-                <VideoContent>
-                  <video style={{ maxWidth: '100%' }} controls src={mainVideo} type="video/mp4" />
-                </VideoContent>
-              </Modal>
-            </ButttonsContainer>
-            <DownloadsApps color='white' />
-          </TitleContainer>
-        </Col>
-        <Col xs={24} md={12}>
-          <ImageContainer>
-            <Row>
-              <Col xs={24}>
-                <PContent>
-                  ¿Quieres ser parte?
+      <HeaderContent>
+        <Row>
+          <Col xs={24} md={12}>
+            <TitleContainer>
+              <Title>Una solución colaborativa para Colombia</Title>
+              <Description>
+                Somos una plataforma digital que búsca acercar las regiones más apartadas con las ciudades principales.
+              </Description>
+              <ButttonsContainer>
+                <SecondButtonContainer onClick={showModal}>Ver video</SecondButtonContainer>
+                <Modal
+                  title="¿Qué es CÁRGAME?"
+                  visible={isModalVisible}
+                  onOk={handleOk}
+                  onCancel={handleCancel}
+                  cancelText='Volver'
+                >
+                  <VideoContent>
+                    <video style={{ maxWidth: '100%' }} controls src={mainVideo} type="video/mp4" />
+                  </VideoContent>
+                </Modal>
+              </ButttonsContainer>
+              <DownloadsApps color='white' />
+            </TitleContainer>
+          </Col>
+          <Col xs={24} md={12}>
+            <ImageContainer>
+              <Row>
+                <Col xs={24}>
+                  <PContent>
+                    ¿Quieres ser transportador de Cárgame?
                 </PContent>
-                <ButtonAuth onClick={() => {
-                  redirect('sign-up');
-                }}>¡Registrate ya!</ButtonAuth>
-              </Col>
-              <Col xs={24}>
-                <Image src={imageHeader} alt="phone" />
-              </Col>
-            </Row>
-          </ImageContainer>
-        </Col>
-      </Row>
+                  <ButtonAuth><Link to='/sign-up' className='linkTo'>¡Registrate aquí!</Link></ButtonAuth>
+                </Col>
+                <Col xs={24}>
+                  <Image src={imageHeader} alt="phone" />
+                </Col>
+              </Row>
+            </ImageContainer>
+          </Col>
+        </Row>
+      </HeaderContent>
     </HeaderContainer>
   )
 }

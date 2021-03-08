@@ -8,5 +8,10 @@ export const landingNavigation = (ele) => {
     });
     return true;
   }
+
   return false;
 };
+
+export const CITIES = [{
+  "CUNDINAMARCA": ["Bogotá D.C.", "Zipaquirá"]
+}];

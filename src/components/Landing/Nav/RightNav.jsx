@@ -1,11 +1,12 @@
 import React from 'react';
 import { Button } from 'antd';
-import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-
+import { push } from 'connected-react-router';
 import ROUTES from '../../../routing/routes';
 import { landingNavigation } from '../../utils/extras';
 import { PRIMARY_COLOR, WHITE_COLOR, PRIMARY_BUTTON_BG_COLOR } from '../../utils/colors';
+import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const Ul = styled.ul`
   list-style: none;
@@ -17,7 +18,20 @@ const Ul = styled.ul`
     button {
       border: 0;
     }
+    
+    &.linkTo {
+      margin-top: 5px;
+
+      a {
+        color: rgba(0, 0, 0, 0.85);
+
+        &:hover {
+          color: ${PRIMARY_BUTTON_BG_COLOR};
+        }
+      }
+    }
   }
+
   @media (max-width: 768px) {
     flex-flow: column nowrap;
     background: ${PRIMARY_COLOR};
@@ -53,13 +67,27 @@ const RightNav = ({ open }) => {
     const pathCleaned = path.split('/')[1];
     const landing = landingNavigation(pathCleaned);
 
-    if (!landing)
+    if (!landing) {
       history.push({ pathname: path, state: { component: pathCleaned } });
+      push(path);
+    }
   }
 
   const singleRoute = (route) => {
 
-    if (route.show) return (
+    if (localStorage.getItem('user') != null && route.auth) return (
+      <li key={route.path} className="menu-item linkTo">
+        <Link to={route.path}>{route.key}</Link>
+      </li>
+    );
+
+    if (route.show && !route.landing && !route.auth) return (
+      <li key={route.path} className="menu-item linkTo">
+        <Link to={route.path}>{route.key}</Link>
+      </li>
+    );
+
+    if (route.show && route.landing && !localStorage.getItem('user')) return (
       <li key={route.path} className="menu-item">
         <Button onClick={() => redirectLanding(route.path)}>
           {route.key}

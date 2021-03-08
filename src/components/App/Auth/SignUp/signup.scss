@@ -1,0 +1,24 @@
+@import '../../../assets/scss/mixins.scss';
+
+.sign-up-container {
+  margin-top: 10px;
+
+  .subtitle-content {
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  .ant-form-item {
+    width: 80%;
+
+    @include smallscreen {
+      width: 100%;
+    }
+  }
+
+  @include smallscreen {
+    margin: auto;
+    margin-top: 50px;
+    width: 90%;
+  }
+}

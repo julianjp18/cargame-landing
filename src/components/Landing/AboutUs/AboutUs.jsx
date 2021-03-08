@@ -73,7 +73,7 @@ const AboutUs = () => {
       />
       <Row>
         <Col xs={24} md={8}>
-          <ImageLogo src={logoCargame} alt="cargame" />
+          <ImageLogo src={logoCargame} alt="cárgame" />
         </Col>
         <Col xs={24} md={8}>
           <PContainer>

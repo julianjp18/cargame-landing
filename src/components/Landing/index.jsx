@@ -8,22 +8,17 @@ import BusinessPlan from './BusinessPlan/BusinessPlan';
 import Services from './Services/Services';
 import ContactUs from './ContactUs/ContactUs';
 import AboutUs from './AboutUs/AboutUs';
+import { push } from 'connected-react-router';
 
 
 const Landing = () => {
   const history = useHistory();
-
-  const redirect = (path) => {
-    if (path) history.push({ pathname: `/${path}`, state: { component: path } });
-  };
-
   return (
     <div className="main-landing">
-      <Header redirect={redirect} />
+      <Header />
       <AboutUs id="us" />
       <BusinessPlan id="business-plan" />
       <Services id="services" />
-      <Team id="team" />
       <ContactUs id="contact-us" />
     </div>
   );

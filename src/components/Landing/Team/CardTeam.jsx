@@ -1,7 +1,7 @@
 import { Col, Row } from 'antd';
 import React from 'react';
 import styled from 'styled-components';
-import { PRIMARY_COLOR, SECOND_TEXT_COLOR, WHITE_COLOR } from '../../utils/colors';
+import { PRIMARY_COLOR, WHITE_COLOR } from '../../utils/colors';
 
 
 const CardContainer = styled.div`
@@ -15,7 +15,7 @@ const CardContainer = styled.div`
 `;
 
 const InfoContainer = styled.div`
-  color: ${SECOND_TEXT_COLOR};
+  color: ${WHITE_COLOR};
 `;
 
 const Image = styled.img`

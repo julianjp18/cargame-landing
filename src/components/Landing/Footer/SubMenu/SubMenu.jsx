@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { PRIMARY_BUTTON_BG_COLOR, PRIMARY_COLOR, WHITE_COLOR } from '../../../utils/colors';
 import { landingNavigation } from '../../../utils/extras';
 import DownloadsApps from '../../DownloadApps/DownloadApps';
+import SIC from '../../../assets/images/sic.png';
 
 const SubMenuContainer = styled.div`
   min-height: 20vh;
@@ -52,14 +53,29 @@ const AContent = styled.a`
   color: ${WHITE_COLOR};
 `;
 
+const ASIC = styled.a`
+  
+`;
+
+const SICImage = styled.img`
+  max-width: 100%;
+  object-fit: cover;
+  width: 14vw;
+  height: 100px;
+
+  @media (max-width: 768px) {
+    width: 50vw;
+  }
+`;
+
 const SubMenu = () => {
   return (
     <SubMenuContainer>
       <Row>
         <Col xs={12} md={6}>
-          <PSubtitle>CARGAME</PSubtitle>
+          <PSubtitle>CÁRGAME</PSubtitle>
           <p>
-            En Cargame estamos innovando todo el tiempo en beneficio de nuestros transportadores y usuarios,
+            En Cárgame estamos innovando todo el tiempo en beneficio de nuestros transportadores y usuarios,
             te invitamos a ser parte de nuestro equipo.
           </p>
           <DownloadsApps color='white' />
@@ -73,7 +89,10 @@ const SubMenu = () => {
               </Button>
             </LIContent>
             <LIContent>
-              Términos y condiciones
+              Términos y condiciones usuario
+            </LIContent>
+            <LIContent>
+              Términos y condiciones transportador
             </LIContent>
             <LIContent>
               Políticas de privacidad
@@ -115,6 +134,7 @@ const SubMenu = () => {
             <AContent href="https://www.youtube.com/channel/UCAEtD9ycbtx-PLudy2QvgoQ"><i className={`fab fa-youtube`}></i></AContent>
             <AContent href="https://instagram.com/cargameapp"><i className={`fab fa-instagram`}></i></AContent>
           </SocialMediaContainer>
+          <ASIC href="https://www.sic.gov.co/" target="blank"><SICImage src={SIC} /></ASIC>
         </Col>
       </Row>
     </SubMenuContainer>
