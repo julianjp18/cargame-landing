@@ -9,9 +9,9 @@ export const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, { type, payload }) => {
-  console.log(type, payload);
   switch (type) {
     case LOG_IN_SUCCESS:
+      console.log(true, { ...state, ...payload });
       return { ...state, ...payload };
     case VERIFY_TOKEN_SUCCESS:
       return { ...state, ...{ ...payload, verified: true } };

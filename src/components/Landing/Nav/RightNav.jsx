@@ -77,19 +77,19 @@ const RightNav = ({ open }) => {
 
     if (localStorage.getItem('user') != null && route.auth) return (
       <li key={route.path} className="menu-item linkTo">
-        <Link to={route.path}>{route.key}</Link>
+        <Link key={route.path} to={route.path}>{route.key}</Link>
       </li>
     );
 
     if (route.show && !route.landing && !route.auth) return (
       <li key={route.path} className="menu-item linkTo">
-        <Link to={route.path}>{route.key}</Link>
+        <Link key={route.path} to={route.path}>{route.key}</Link>
       </li>
     );
 
     if (route.show && route.landing && !localStorage.getItem('user')) return (
       <li key={route.path} className="menu-item">
-        <Button onClick={() => redirectLanding(route.path)}>
+        <Button key={route.path} onClick={() => redirectLanding(route.path)}>
           {route.key}
         </Button>
       </li>
@@ -100,8 +100,12 @@ const RightNav = ({ open }) => {
     <Ul open={open}>
       {ROUTES.map(route => {
         // if this route has sub-routes, then show the ROOT as a list item and recursively render a nested list of route links
-        if (route.routes) {
+        if (route.routes && !localStorage.getItem('user')) {
           return (singleRoute(route));
+        }
+
+        if (route.routes && localStorage.getItem('user')) {
+          console.log('ENTRÓ AL NAV USER');
         }
 
         // no nested routes, so just render a single route

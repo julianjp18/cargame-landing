@@ -26,7 +26,6 @@ function* logInAction({ formValues }) {
         .get().then((doc) => {
 
           if (doc.data()) {
-            responseLogIn.push(doc.data());
             const { name } = doc.data();
 
             resData.getIdToken().then((idToken) => {
@@ -38,6 +37,10 @@ function* logInAction({ formValues }) {
                 username,
                 name,
               );
+              responseLogIn.push({
+                ...doc.data(),
+                token: idToken,
+              });
             });
 
             openNotification('success', '¡Bienvenido!', '');
@@ -45,7 +48,6 @@ function* logInAction({ formValues }) {
             openNotification('warning', '¡Usuario y/o contraseña incorrectos!', '');
           }
         });
-      console.log(responseLogIn);
     })
     .catch(error => {
       let errorCode = error.code;

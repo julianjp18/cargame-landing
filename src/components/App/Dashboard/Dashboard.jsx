@@ -146,11 +146,13 @@ const Dashboard = () => {
 
     cities.forEach((city) => {
       listDriverCities.push({
+        key: `${city}-driver`,
         typeUser: 'driver',
         city,
         cant: 0,
       });
       listUserCities.push({
+        key: `${city}-user`,
         typeUser: 'user',
         city,
         cant: 0,
@@ -187,9 +189,11 @@ const Dashboard = () => {
     setcities(newCities);
   };
 
-  const showAmbassadors = () => {
+  const showAmbassadors = async () => {
     const referralsData = firestoreDB.collection("Referrals");
+    const historyOffersData = firestoreDB.collection("HistoryOffersNotificationCenter");
     const newReferralList = [];
+
     firestoreDB.collection("Users").get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
@@ -214,16 +218,45 @@ const Dashboard = () => {
                   quantity,
                 };
               } else {
+
                 newReferralList.push({
+                  key: numberId,
                   name,
                   typeUser: 'Usuario',
                   quantity,
                   identification: numberId,
+                  onePercent: 0,
                 });
               }
             }
 
-            if (newReferralList.length > 0) setambassadorsList(newReferralList);
+            if (newReferralList.length > 0) {
+              const newAmbassorsList = newReferralList;
+              newReferralList.forEach((ambassador, index) => {
+                const { identification } = ambassador;
+
+                historyOffersData.where("numberId", "==", identification)
+                  .get()
+                  .then((querySnapshotHistory) => {
+                    const sumTotalPriceOffers = [];
+
+                    querySnapshotHistory.forEach((doc) => {
+                      const { totalPrice } = doc.data();
+
+                      sumTotalPriceOffers.push(Number.parseInt(totalPrice));
+                    });
+
+                    const total = sumTotalPriceOffers.reduce((a, b) => a + b, 0);
+
+                    newAmbassorsList[index] = {
+                      ...newAmbassorsList[index],
+                      onePercent: (1 * total) / 100,
+                    }
+
+                    setambassadorsList(newAmbassorsList);
+                  });
+              });
+            }
           })
           .catch((error) => {
             console.log("Error getting documents: ", error);
@@ -231,6 +264,8 @@ const Dashboard = () => {
       });
 
     });
+
+
   };
 
   const showReferrals = () => {
@@ -261,6 +296,7 @@ const Dashboard = () => {
                 };
               } else {
                 newReferralList.push({
+                  key: numberId,
                   name,
                   typeUser: 'Usuario',
                   quantity,

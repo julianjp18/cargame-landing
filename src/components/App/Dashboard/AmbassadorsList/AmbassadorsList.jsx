@@ -27,6 +27,11 @@ const columns = [
     dataIndex: 'identification',
     key: 'identification',
   },
+  {
+    title: '1% valor ofertas',
+    dataIndex: 'onePercent',
+    key: 'onePercent',
+  },
 ];
 
 const AmbassadorsList = ({ ambassadors }) => {
