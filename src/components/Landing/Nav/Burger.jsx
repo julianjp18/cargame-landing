@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { DANGER_COLOR, ORANGE_COLOR, PRIMARY_COLOR, SECOND_COLOR, WHITE_COLOR } from '../../utils/colors';
 import RightNav from './RightNav';
 
 const StyledBurger = styled.div`
@@ -36,6 +37,66 @@ const StyledBurger = styled.div`
   }
 `;
 
+const RightNavContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const ButtonsContainer = styled.div`
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const FirstButtonContainer = styled.div`
+  height: 34px;  
+  display: inline-block;
+  padding: 4px 28px 10px 28px;
+  margin: 14px 0 0 0;
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  color: ${ORANGE_COLOR};
+  border: 1px solid ${ORANGE_COLOR};
+  border-radius: 50px;
+  transition: 0.5s;
+  cursor: pointer;
+  background-color: ${WHITE_COLOR};
+
+  &:hover {
+    background-color: ${WHITE_COLOR};
+    color: ${PRIMARY_COLOR};
+    border: 1px solid ${PRIMARY_COLOR};
+    cursor: pointer;
+  }
+`;
+
+const SecondButtonContainer = styled.div`
+  height: 34px;  
+  display: inline-block;
+  padding: 4px 28px 10px 28px;
+  margin: 14px 10px 0 0;
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  color: ${WHITE_COLOR};
+  border: 1px solid ${WHITE_COLOR};
+  border-radius: 50px;
+  background: linear-gradient(55.05deg, ${SECOND_COLOR} 0%, ${PRIMARY_COLOR} 100%);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+
+  &:hover {
+    background: linear-gradient(55.05deg, ${WHITE_COLOR} 0%, ${WHITE_COLOR} 100%);
+    color: ${PRIMARY_COLOR};
+    border: 1px solid ${PRIMARY_COLOR};
+    cursor: pointer;
+  }
+`;
+
 const Burger = () => {
   const [open, setOpen] = useState(false)
 
@@ -46,7 +107,13 @@ const Burger = () => {
         <div />
         <div />
       </StyledBurger>
-      <RightNav open={open} />
+      <RightNavContainer>
+        <RightNav open={open} />
+        <ButtonsContainer>
+          <SecondButtonContainer>Descarga la App</SecondButtonContainer>
+          <FirstButtonContainer><i class="fas fa-play"></i> ¿Deseas ser Transportador?</FirstButtonContainer>
+        </ButtonsContainer>
+      </RightNavContainer>
     </>
   )
 }

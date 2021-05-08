@@ -1,0 +1,42 @@
+.ant-table {
+  background-color: transparent;
+
+  .ant-table-container table > thead > tr .ant-table-cell {
+    font-family: Ruda;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30.2425px;
+    line-height: 37px;
+    text-align: center;
+    color: #1D509E;
+    background: #C4C4C4;
+  }
+  .ant-table-container table > thead > tr:first-child th:first-child {
+    border-top-left-radius: 38px;
+    border-bottom-left-radius: 38px;
+  }
+
+  .ant-table-container table > thead > tr:first-child th:last-child {
+    border-top-right-radius: 38px;
+    border-bottom-right-radius: 38px;
+  }
+
+  .ant-table-container table > tbody > tr .ant-table-cell {
+    text-align: center;
+    font-family: Quicksand;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+  }
+
+  .ant-table-tbody > tr.ant-table-row:hover > td {
+    background-color: transparent;
+  }
+}
+
+.ant-table-pagination.ant-pagination {
+  display: none;
+}

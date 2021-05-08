@@ -2,12 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { PRIMARY_COLOR, WHITE_COLOR } from '../../utils/colors';
 import Burger from './Burger';
-import icon from '../../assets/images/icono.jpg';
-import iconDriver from '../../assets/images/icono-transportador.png';
+import icon from '../../assets/images/new-version/cargame_Horizontal.png';
 
 const Nav = styled.nav`
   width: 100%;
-  height: 55px;
+  height: 60px;
   border-bottom: 2px solid #f1f1f1;
   padding: 0 20px;
   display: flex;
@@ -15,7 +14,7 @@ const Nav = styled.nav`
   
   .logo {
     text-align: initial;
-    padding: 5px 0 15px 0;
+    padding: 3px 0 15px 0;
 
     @media (max-width: 768px) {
       padding: 10px 0;
@@ -43,14 +42,9 @@ const SpanContent = styled.p`
 `;
 
 const LogoImage = styled.img`
-  width: 37px;
   max-width: 100%;
   float: left;
   margin-right: 5px;
-
-  @media (max-width: 768px) {
-    width: 40px;
-  }
 `;
 
 const Navbar = () => {
@@ -59,8 +53,6 @@ const Navbar = () => {
       <div className="logo">
         <h1>
           <LogoImage src={icon} alt="icon" />
-          <SpanContent>CÁRGAME</SpanContent>
-          <LogoImage src={iconDriver} alt="icon" />
         </h1>
       </div>
       <Burger />

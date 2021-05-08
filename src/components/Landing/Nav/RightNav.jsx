@@ -13,14 +13,29 @@ const Ul = styled.ul`
   display: flex;
   flex-flow: row nowrap;
   li {
+    font-family: Quicksand;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.03em;
     padding: 10px;
     
     button {
+      margin-top: 5px;
+      font-family: Quicksand;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 17px;
+      letter-spacing: 0.03em;
       border: 0;
+      box-shadow: 0 2px 0 rgb(0 0 0 / 0%);
     }
     
     &.linkTo {
-      margin-top: 5px;
+      padding: 10px 20px;
+      margin-top: 13px;
 
       a {
         color: rgba(0, 0, 0, 0.85);

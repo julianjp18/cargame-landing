@@ -1,20 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { DARK_GREY, PRIMARY_COLOR, WHITE_COLOR } from '../../utils/colors';
-import PlaneImage from '../../assets/images/avion.png';
-import TruckImage from '../../assets/images/truck.png';
-import CarImage from '../../assets/images/car.png';
-import BriefCaseImage from '../../assets/images/briefcase.png';
-import CarCrashImage from '../../assets/images/crane.png';
+import PlaneImage from '../../assets/images/new-version/viajero_avion.svg';
+import TruckImage from '../../assets/images/new-version/paquete.svg';
+import CarImage from '../../assets/images/new-version/viajesC.svg';
+import BriefCaseImage from '../../assets/images/new-version/maleta.svg';
+import CarCrashImage from '../../assets/images/new-version/grua.svg';
 
 const CardContainer = styled.div`
   background-color: ${WHITE_COLOR};
-  border: 1px solid #f2f2f2;
-  border-radius: 5px;
-  margin: 20px 40px 50px 40px;
-  padding: 20px 30px;
-  box-shadow: -1px 4px 19px -3px rgb(0 0 0 / 75%);
-  min-height: 371px;
 `;
 
 const InfoContainer = styled.div`
@@ -32,20 +26,31 @@ const SocialMediaContainer = styled.div`
 
 const PContent = styled.p`
   color: ${DARK_GREY};
+  padding: 0 50px;
 `;
 
 const Description = styled.i`
-  color: ${DARK_GREY};
-  font-size: 16px;
-  font-weight: 700;
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  color: #424B5A;
 `;
 
-const Title = styled.h2`
-  color: ${PRIMARY_COLOR};
+const Title = styled.p`
+  font-family: Ruda;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30.2425px;
+  line-height: 37px;
+  text-align: center;
+  color: #424B5A;
 `;
 
 const ImageIcon = styled.img`
-  max-width: 70px;
+
 `;
 
 const CardServices = ({

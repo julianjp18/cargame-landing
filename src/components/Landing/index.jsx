@@ -3,23 +3,27 @@ import { useHistory } from 'react-router-dom';
 import '../../App.scss';
 import 'antd/dist/antd.css';
 import Header from './Header/Header';
-import Team from './Team/Team';
-import BusinessPlan from './BusinessPlan/BusinessPlan';
 import Services from './Services/Services';
-import ContactUs from './ContactUs/ContactUs';
-import AboutUs from './AboutUs/AboutUs';
 import { push } from 'connected-react-router';
-
+import ContainsApp from './ContainsApp/ContainsApp';
+import DownloadsApps from './DownloadApps/DownloadApps';
+import EarnMoney from './EarnMoney/EarnMoney';
+import AppsVideos from './AppsVideos/AppsVideos';
+import HowItWorks from './HowItWorks/HowItWorks';
+import DriverInfo from './DriverInfo/DriverInfo';
 
 const Landing = () => {
   const history = useHistory();
   return (
     <div className="main-landing">
       <Header />
-      <AboutUs id="us" />
-      <BusinessPlan id="business-plan" />
-      <Services id="services" />
-      <ContactUs id="contact-us" />
+      <ContainsApp />
+      <HowItWorks />
+      <AppsVideos />
+      <DriverInfo />
+      <Services />
+      <EarnMoney />
+      <DownloadsApps />
     </div>
   );
 }
