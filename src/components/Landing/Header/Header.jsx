@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 import { WHITE_COLOR, PRIMARY_COLOR, ORANGE_COLOR, DANGER_COLOR } from '../../utils/colors';
 import mainBackground from '../../assets/images/new-version/main-background.png';
+import mainVideo from '../../assets/videos/Inicio.mp4';
+import Modal from 'antd/lib/modal/Modal';
 
 const HeaderContent = styled.div`
   background-color: rgba(0,0,0, 0.25);
@@ -127,6 +129,19 @@ const DownArrowContainer = styled.div`
 `;
 
 const Header = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
   return (
     <HeaderContainer id="header">
       <HeaderContent>
@@ -141,8 +156,19 @@ const Header = () => {
                 Con nuestra app puedes enviar y recibir carga, documentos, solicitar servicios de grúa o viajes compartidos.
               </Description>
               <ButttonsContainer>
-                <FirstButtonContainer><i class="fas fa-play"></i> Conoce más</FirstButtonContainer>
+                <FirstButtonContainer onClick={showModal}><i class="fas fa-play"></i> Conoce más</FirstButtonContainer>
                 <SecondButtonContainer>Gana dinero!</SecondButtonContainer>
+                <Modal
+                  title="¿Qué es CÁRGAME?"
+                  visible={isModalVisible}
+                  onOk={handleOk}
+                  onCancel={handleCancel}
+                  cancelText='Volver'
+                >
+                  <VideoContent>
+                    <video style={{ maxWidth: '100%' }} controls src={mainVideo} type="video/mp4" />
+                  </VideoContent>
+                </Modal>
               </ButttonsContainer>
             </TitleContainer>
           </Col>
