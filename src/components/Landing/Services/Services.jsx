@@ -16,6 +16,11 @@ const ServicesTitle = styled.p`
   line-height: 78px;
   text-align: center;
   color: ${PRIMARY_COLOR};
+
+  @media (max-width: 520px) {
+    font-size: 48px;
+    line-height: 68px;
+  }
 `;
 
 const RowAnt = styled.div`

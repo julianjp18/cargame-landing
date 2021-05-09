@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { PRIMARY_COLOR, WHITE_COLOR, SECOND_COLOR, ORANGE_COLOR } from '../../utils/colors';
+import { useHistory } from 'react-router';
+import { push } from 'connected-react-router';
 
 import CargameLogoImage from '../../assets/images/new-version/logo-footer.png';
 import CargameNaranja from '../../assets/images/new-version/cargame-small-naranja.png';
 import CargameAzul from '../../assets/images/new-version/cargame-small-azul.png';
+import { landingNavigation } from '../../utils/extras';
 
 const FooterContainer = styled.div`
   min-height: 40vh;
@@ -123,34 +126,45 @@ const SocialMedia = () => (
 );
 
 const Footer = () => {
+  const history = useHistory();
+
+  const redirectLanding = (path) => {
+    const newPath = `/${path}`;
+    history.push({ pathname: newPath, state: { component: newPath } });
+    push(newPath);
+  }
+
   return (
     <FooterContainer id="footer">
       <MainInfoContainer>
         <FirstPartContainer>
           <CargameLogo src={CargameLogoImage} alt="Cárgame" />
           <TermsAndConditions>
-            Términos y condiciones <ExternalLink>cliente</ExternalLink> y <ExternalLink>transportador</ExternalLink>
+            {`Términos y condiciones `}
+            <ExternalLink onClick={() => redirectLanding('terms-and-conditions-user')}>cliente</ExternalLink>
+            {` y `}
+            <ExternalLink onClick={() => redirectLanding('terms-and-conditions-driver')}>transportador</ExternalLink>
           </TermsAndConditions>
           <SocialMedia />
         </FirstPartContainer>
         <SecondPartContainer>
           <ULContent>
-            <LIContent>
+            <LIContent onClick={() => redirectLanding('us')}>
               Nosotros
             </LIContent>
-            <LIContent>
+            <LIContent onClick={() => landingNavigation('app')}>
               App
             </LIContent>
-            <LIContent>
+            <LIContent onClick={() => redirectLanding('contact-us')}>
               Contáctanos
             </LIContent>
-            <LIContent>
+            <LIContent onClick={() => redirectLanding('download-app')}>
               Descarga la app
             </LIContent>
-            <LIContent>
+            <LIContent onClick={() => redirectLanding('register-driver')}>
               ¿Deseas ser transportador?
             </LIContent>
-            <LIContent>
+            <LIContent onClick={() => redirectLanding('privacy')}>
               Política de privacidad
             </LIContent>
           </ULContent>

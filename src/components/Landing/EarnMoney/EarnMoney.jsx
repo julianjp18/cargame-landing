@@ -20,7 +20,7 @@ const RowAntTwo = styled.div`
   background-color: ${PRIMARY_COLOR};
 
   @media (max-width: 768px) {
-    padding: 0 30px;
+    padding: 0 10px;
   }
 `;
 
@@ -29,6 +29,10 @@ const ColAnt = styled.div`
 
   @media (max-width: 768px) {
     padding: 20px 150px;
+  }
+
+  @media (max-width: 520px) {
+    padding: 2px;
   }
 `;
 

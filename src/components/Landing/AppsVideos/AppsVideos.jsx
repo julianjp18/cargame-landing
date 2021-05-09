@@ -15,6 +15,10 @@ const RowAnt = styled.div`
 const RowAntTwo = styled.div`
   padding: 0 150px;
   margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    padding: 0 10px;
+  }
 `;
 
 const ColAnt = styled.div`
@@ -29,6 +33,16 @@ const AppsVideosTitle = styled.p`
   line-height: 78px;
   text-align: center;
   color: ${PRIMARY_COLOR};
+
+  @media (max-width: 768px) {
+    font-size: 50px;
+    line-height: 57px;
+  }
+
+  @media (max-width: 530px) {
+    font-size: 45px;
+    line-height: 65px;
+  }
 `;
 
 const UsersImage = styled.img`

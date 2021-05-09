@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Row, Col } from 'antd';
 import styled from 'styled-components';
 
@@ -6,6 +6,7 @@ import { WHITE_COLOR, PRIMARY_COLOR, ORANGE_COLOR, DANGER_COLOR } from '../../ut
 import mainBackground from '../../assets/images/new-version/main-background.png';
 import mainVideo from '../../assets/videos/Inicio.mp4';
 import Modal from 'antd/lib/modal/Modal';
+import { landingNavigation } from '../../utils/extras';
 
 const HeaderContent = styled.div`
   background-color: rgba(0,0,0, 0.25);
@@ -120,12 +121,21 @@ const DownArrowContainer = styled.div`
   i {
     color: ${WHITE_COLOR};
     font-size: 44px;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+      color: ${ORANGE_COLOR};
+    }
   }
 
   @media (max-width: 768px) {
     position: static;
     padding-bottom: 10px;
   }
+`;
+
+const VideoContent = styled.div`
 `;
 
 const Header = () => {
@@ -142,6 +152,7 @@ const Header = () => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+
   return (
     <HeaderContainer id="header">
       <HeaderContent>
@@ -157,7 +168,7 @@ const Header = () => {
               </Description>
               <ButttonsContainer>
                 <FirstButtonContainer onClick={showModal}><i class="fas fa-play"></i> Conoce más</FirstButtonContainer>
-                <SecondButtonContainer>Gana dinero!</SecondButtonContainer>
+                <SecondButtonContainer onClick={() => landingNavigation('earn-money')}>Gana dinero!</SecondButtonContainer>
                 <Modal
                   title="¿Qué es CÁRGAME?"
                   visible={isModalVisible}
@@ -174,7 +185,7 @@ const Header = () => {
           </Col>
           <Col xs={24}>
             <DownArrowContainer>
-              <i class="fas fa-arrow-down"></i>
+              <i class="fas fa-arrow-down" onClick={() => landingNavigation('app')}></i>
             </DownArrowContainer>
           </Col>
         </Row>

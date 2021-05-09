@@ -4,6 +4,8 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import HomeApp from "../components/App";
 import Dashboard from "../components/App/Dashboard/Dashboard";
 import Landing from "../components/Landing";
+import AboutUs from "../components/Landing/AboutUs/AboutUs";
+import ContactUs from "../components/Landing/ContactUs/ContactUs";
 import { ROOT_PATH } from './paths';
 
 export const AUTH_ROUTES = [
@@ -14,16 +16,16 @@ export const AUTH_ROUTES = [
 
 const ROUTES = [
   { path: "/", key: "Inicio", exact: true, component: Landing, show: true, landing: true },
-  { path: "/", key: "App", exact: true, component: Landing, show: true, landing: true },
-  { path: "/", key: "Transportadores", exact: true, component: Landing, show: true, landing: true },
-  { path: "/us", key: "Nosotros", exact: true, component: Landing, show: true, landing: false },
-  { path: "/contact-us", key: "Contáctanos", exact: true, component: Landing, show: true, landing: false },
+  { path: "/app", key: "App", exact: true, component: Landing, show: true, landing: true },
+  { path: "/driver-info", key: "Transportadores", exact: true, component: Landing, show: true, landing: true },
+  { path: "/us", key: "Nosotros", exact: true, component: AboutUs, show: true, landing: false },
+  { path: "/contact-us", key: "Contáctanos", exact: true, component: ContactUs, show: true, landing: false },
   //{ path: "/sign-up", key: "Transportador", exact: true, component: HomeApp, show: true, landing: false },
   { path: "/log-in", key: "Iniciar sesión", exact: true, component: HomeApp, show: false, landing: false },
   { path: "/cargame-landing", key: "Inicio", exact: true, component: Landing, show: false, landing: false },
-  { path: "/terms-and-conditions-user", key: "Términos y condiciones usuario", exact: true, component: Dashboard, show: false, landing: false, auth: false },
-  { path: "/terms-and-conditions-driver", key: "Términos y condiciones transportador", exact: true, component: Dashboard, show: false, landing: false, auth: false },
-  { path: "/privacy", key: "Políticas de privacidad", exact: true, component: Dashboard, show: false, landing: false, auth: false },
+  { path: "/terms-and-conditions-user", key: "Términos y condiciones usuario", exact: true, component: Landing, show: false, landing: false, auth: false },
+  { path: "/terms-and-conditions-driver", key: "Términos y condiciones transportador", exact: true, component: Landing, show: false, landing: false, auth: false },
+  { path: "/privacy", key: "Políticas de privacidad", exact: true, component: Landing, show: false, landing: false, auth: false },
   ...AUTH_ROUTES,
 ];
 

@@ -5,11 +5,19 @@
     font-family: Ruda;
     font-style: normal;
     font-weight: normal;
-    font-size: 30.2425px;
+    font-size: 30px;
     line-height: 37px;
     text-align: center;
     color: #1D509E;
     background: #C4C4C4;
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
+
+    @media (max-width: 520px) {
+      font-size: 12px;
+    }
   }
   .ant-table-container table > thead > tr:first-child th:first-child {
     border-top-left-radius: 38px;
@@ -30,6 +38,14 @@
     line-height: 30px;
     letter-spacing: 0.02em;
     color: #ffffff;
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
+
+    @media (max-width: 520px) {
+      font-size: 12px;
+    }
   }
 
   .ant-table-tbody > tr.ant-table-row:hover > td {

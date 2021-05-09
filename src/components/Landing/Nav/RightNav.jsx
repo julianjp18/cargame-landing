@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button } from 'antd';
 import styled from 'styled-components';
+import { useHistory } from 'react-router';
 import { push } from 'connected-react-router';
 import ROUTES from '../../../routing/routes';
 import { landingNavigation } from '../../utils/extras';
 import { PRIMARY_COLOR, WHITE_COLOR, PRIMARY_BUTTON_BG_COLOR } from '../../utils/colors';
-import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 
 const Ul = styled.ul`

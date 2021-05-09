@@ -1,33 +1,14 @@
-import { Col } from 'antd';
+import { Col, Row } from 'antd';
 import React from 'react';
 import styled from 'styled-components';
-import DownloadAppImage from '../../assets/images/new-version/transportadores.png';
+import PolicyImage from '../../../assets/images/new-version/policy-image.png';
 
-import { PRIMARY_COLOR, SECOND_COLOR, WHITE_COLOR } from '../../utils/colors';
+import { PRIMARY_COLOR, SECOND_COLOR, WHITE_COLOR } from '../../../utils/colors';
 
 const PhonesImages = styled.img`
-  position: absolute;
-  right: 30px;
   object-fit: contain;
   width: 100%;
-  height: 600px;
-
-  @media (max-width: 1250px) {
-    position: absolute;
-    right: 52px;
-    object-fit: contain;
-    width: 100%;
-    height: 50vw;
-  }
-
-  @media (max-width: 768px) {
-    position: static;
-    object-fit: contain;
-    width: 90%;
-    height: 100%;
-    margin: auto;
-    margin-top: 10px;
-  }
+  
 `;
 
 const DownloadContainerInfo = styled.div`
@@ -40,23 +21,14 @@ const DownloadContainerInfo = styled.div`
 `;
 
 const DownloadTitle = styled.p`
-  text-align: center;
+  margin-bottom: 0;
+  text-align: end;
   font-family: Ruda;
   font-style: normal;
   font-weight: 600;
   font-size: 64px;
   line-height: 78px;
   color: ${PRIMARY_COLOR};
-
-  @media (max-width: 768px) {
-    font-size: 50px;
-    line-height: 70px;
-  }
-  
-  @media (max-width: 530px) {
-    font-size: 45px;
-    line-height: 65px;
-  }
 `;
 
 const RowAnt = styled.div`
@@ -64,10 +36,11 @@ const RowAnt = styled.div`
 `;
 
 const RowAntTwo = styled.div`
+  padding-left: 30px;
 `;
 
 const ColAnt = styled.div`
-  background: linear-gradient(55.05deg, ${SECOND_COLOR} 0%, ${PRIMARY_COLOR} 100%);
+
 `;
 
 const ColAntTwo = styled.div`
@@ -111,11 +84,14 @@ const ItemDescription = styled.div`
   margin-bottom: 50px;
 `;
 
-const DriverInfo = () => (
-  <RowAnt id="driver-info" className="ant-row">
+const Policies = () => (
+  <RowAnt id="App" className="ant-row">
+    <ColAnt className="ant-col ant-col-xs-24 ant-col-md-12">
+      <DownloadTitle>Políticas</DownloadTitle>
+      <PhonesImages src={PolicyImage} alt='phone images' />
+    </ColAnt>
     <Col xs={24} md={12}>
       <DownloadContainerInfo>
-        <DownloadTitle>Transportadores</DownloadTitle>
         <RowAntTwo className="ant-row">
           <ColAntTwo className="ant-col ant-col-xs-4">
             <NumberContent>
@@ -124,7 +100,7 @@ const DriverInfo = () => (
           </ColAntTwo>
           <Col xs={20}>
             <ItemDescription>
-              Activa tu vehículo registrado.
+              Tanto usuarios generadores de carga, como transportadores deben estar plenamente identificados.
             </ItemDescription>
           </Col>
           <ColAntTwo className="ant-col ant-col-xs-4">
@@ -134,7 +110,7 @@ const DriverInfo = () => (
           </ColAntTwo>
           <Col xs={20}>
             <ItemDescription>
-              Recibe solicitudes de servicios y oferta en el servicio que más te sirva.
+              La seguridad de la información es de gran importancia estratégica.
             </ItemDescription>
           </Col>
           <ColAntTwo className="ant-col ant-col-xs-4">
@@ -144,7 +120,7 @@ const DriverInfo = () => (
           </ColAntTwo>
           <Col xs={20}>
             <ItemDescription>
-              CÁRGAME selecciona la oferta más económica del mercado y la envía al usuario.
+              La carga y las encomiendas siempre deben contar con un seguro de respaldo.
             </ItemDescription>
           </Col>
           <ColAntTwo className="ant-col ant-col-xs-4">
@@ -154,16 +130,13 @@ const DriverInfo = () => (
           </ColAntTwo>
           <Col xs={20}>
             <ItemDescription>
-              Una vez aceptada la oferta, contacta al usuario y coordina la carga.
+              El servicio al cliente tiene la mayor relevancia.
             </ItemDescription>
           </Col>
         </RowAntTwo>
       </DownloadContainerInfo>
     </Col>
-    <ColAnt className="ant-col ant-col-xs-24 ant-col-md-12">
-      <PhonesImages src={DownloadAppImage} alt='phone images' />
-    </ColAnt>
   </RowAnt>
 );
 
-export default DriverInfo;
+export default Policies;

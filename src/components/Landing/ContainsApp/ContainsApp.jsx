@@ -46,7 +46,7 @@ const ItemContent = ({ image, text }) => (
 
 const ContainsApp = () => {
   return (
-    <Container id="contains-app">
+    <Container id="app">
       <Row>
         <ColOne className='ant-col ant-col-xs-24 ant-col-md-8'>
           <ItemContent image={ItemOne} text='Ubicación en tiempo real ' />
