@@ -1,13 +1,14 @@
-import { Col, Row } from 'antd';
+import { Col } from 'antd';
 import React from 'react';
 import styled from 'styled-components';
-import PolicyImage from '../../../assets/images/new-version/policy-image.png';
+import CargameLogoImage from '../../../assets/images/new-version/logo-footer.png';
 
-import { PRIMARY_COLOR, SECOND_COLOR, WHITE_COLOR } from '../../../utils/colors';
+import { PRIMARY_COLOR, SECOND_COLOR } from '../../../utils/colors';
 
 const PhonesImages = styled.img`
+  margin-top: 90px;
   object-fit: contain;
-  width: 100%;
+  max-width: 100%;
   
 `;
 
@@ -84,7 +85,7 @@ const Brand = () => (
     <Col xs={24} md={12}>
       <DownloadTitle>Nuestra Marca</DownloadTitle>
       <ImageContainer>
-        <PhonesImages src={PolicyImage} alt='phone images' />
+        <PhonesImages src={CargameLogoImage} alt='phone images' />
       </ImageContainer>
     </Col>
   </RowAnt>

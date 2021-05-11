@@ -7,6 +7,7 @@ import { push } from 'connected-react-router';
 import CargameLogoImage from '../../assets/images/new-version/logo-footer.png';
 import CargameNaranja from '../../assets/images/new-version/cargame-small-naranja.png';
 import CargameAzul from '../../assets/images/new-version/cargame-small-azul.png';
+import SICImage from '../../assets/images/sic.png';
 import { landingNavigation } from '../../utils/extras';
 
 const FooterContainer = styled.div`
@@ -20,7 +21,6 @@ const MainInfoContainer = styled.div`
   justify-content: space-between;
   align-content: space-around;
   align-items: flex-start;
-  margin-bottom: 20px;
 `;
 
 const FirstPartContainer = styled.div`
@@ -116,6 +116,10 @@ const ImageLogo = styled.img`
   margin-right: 10px;
 `;
 
+const SicImage = styled.img`
+  width: 140px;
+`;
+
 const SocialMedia = () => (
   <SocialMediaContainer>
     <SocialMediaText>Siguenos en:</SocialMediaText>
@@ -172,6 +176,7 @@ const Footer = () => {
             <ImageLogo src={CargameNaranja} alt='cargame naranja' />
             <ImageLogo src={CargameAzul} alt='cargame azul' />
           </CargameImagesContainer>
+          <SicImage src={SICImage} alt='Logo Industria y comercio' />
         </SecondPartContainer>
       </MainInfoContainer>
       <HRContent />
