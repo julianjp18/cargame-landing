@@ -2,14 +2,14 @@ import { Form, Input, notification } from 'antd';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import { PRIMARY_COLOR } from '../../utils/colors';
+import { PRIMARY_COLOR, SECOND_COLOR, WHITE_COLOR } from '../../utils/colors';
 
 const layout = {
   labelCol: {
     span: 8,
   },
   wrapperCol: {
-    span: 16,
+    span: 24,
   },
 };
 
@@ -35,6 +35,8 @@ const openNotificationWithIcon = (type, title, message) => {
 const ButtonContainer = styled.button`
   background: linear-gradient(55.05deg, ${SECOND_COLOR} 0%, ${PRIMARY_COLOR} 100%);
   border-radius: 20px;
+  width: 100%;
+  color: ${WHITE_COLOR};
 `;
 
 const ContactForm = () => {
