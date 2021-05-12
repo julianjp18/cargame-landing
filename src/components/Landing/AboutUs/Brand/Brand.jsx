@@ -1,15 +1,13 @@
 import { Col } from 'antd';
 import React from 'react';
 import styled from 'styled-components';
-import CargameLogoImage from '../../../assets/images/new-version/logo-footer.png';
+import CargameLogoImage from '../../../assets/images/new-version/nuestra_marca.jpg';
 
 import { PRIMARY_COLOR, SECOND_COLOR } from '../../../utils/colors';
 
 const PhonesImages = styled.img`
-  margin-top: 90px;
   object-fit: contain;
   max-width: 100%;
-  
 `;
 
 const DownloadContainerInfo = styled.div`
@@ -33,10 +31,6 @@ const DownloadTitle = styled.p`
 
 const RowAnt = styled.div`
   margin-top: 20px;
-`;
-
-const RowAntTwo = styled.div`
-  padding-left: 30px;
 `;
 
 const ColAnt = styled.div`

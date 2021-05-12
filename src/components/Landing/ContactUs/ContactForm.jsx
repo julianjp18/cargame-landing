@@ -1,13 +1,8 @@
-import { Form, Input, Button } from 'antd';
-import React from 'react';
+import { Form, Input, notification } from 'antd';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import Title from '../Title/Title';
-
-const ContactUsContainer = styled.div`
-`;
-
-const ContactUsContent = styled.div`
-`;
+import axios from 'axios';
+import { PRIMARY_COLOR } from '../../utils/colors';
 
 const layout = {
   labelCol: {
@@ -19,24 +14,55 @@ const layout = {
 };
 
 const validateMessages = {
-  required: '${label} is required!',
+  required: '${label} es requerido!',
   types: {
-    email: '${label} is not a valid email!',
-    number: '${label} is not a valid number!',
+    email: '${label} no es un correo electrónico válido!',
+    number: '${label} no es un número válido!',
   },
   number: {
     range: '${label} must be between ${min} and ${max}',
   },
 };
 
+const openNotificationWithIcon = (type, title, message) => {
+  notification[type]({
+    message: title,
+    description:
+      message,
+  });
+};
+
+const ButtonContainer = styled.button`
+  background: linear-gradient(55.05deg, ${SECOND_COLOR} 0%, ${PRIMARY_COLOR} 100%);
+  border-radius: 20px;
+`;
+
 const ContactForm = () => {
+  const [successMessage, setSuccessMessage] = useState();
+  const [errorMessage, setErrorMessage] = useState();
 
   const onFinish = (values) => {
-    console.log(values);
+    if (values) {
+      axios.post(` https://cargame-server.herokuapp.com/send-email/`, {
+        ...values,
+      })
+        .then(res => {
+          setSuccessMessage(res.message);
+        }).catch((err) => {
+          setErrorMessage(err.message);
+        });
+    }
   };
 
   return (
-    <Form className="form-content" {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
+    <Form
+      className="form-content"
+      {...layout}
+      name="nest-messages"
+      onFinish={onFinish} validateMessages={validateMessages}
+    >
+      {successMessage && openNotificationWithIcon('success', 'Enviado correctamente', successMessage)}
+      {errorMessage && openNotificationWithIcon('error', '¡UPS, ocurrió un problema!', errorMessage)}
       <Form.Item
         name={'name'}
         label="Nombre completo"
@@ -55,6 +81,9 @@ const ContactForm = () => {
           {
             type: 'email',
           },
+          {
+            required: true,
+          }
         ]}
       >
         <Input />
@@ -70,13 +99,25 @@ const ContactForm = () => {
       >
         <Input />
       </Form.Item>
-      <Form.Item name={'message'} label="Mensaje">
-        <Input.TextArea rows={6} />
+      <Form.Item
+        name={'message'}
+        label="Mensaje"
+        rules={[
+          {
+            required: true,
+          },
+        ]}
+      >
+        <Input.TextArea rows={8} />
       </Form.Item>
       <Form.Item wrapperCol={{ ...layout.wrapperCol }}>
-        <Button type="primary" htmlType="submit">
+        <ButtonContainer
+          className="ant-btn"
+          type="primary"
+          htmlType="submit"
+        >
           Enviar
-        </Button>
+        </ButtonContainer>
       </Form.Item>
     </Form>
   );

@@ -1,5 +1,4 @@
 .info-col {
-  padding-left: 30px;
 
   .i-content-col {
     text-align: end;
@@ -9,18 +8,7 @@
   }
   
   .descrip-content-col {
-    h3 {
-      font-size: 24px;
-      margin-bottom: 0;
-    }
-  
-    p {
-      font-size: 18px;
-    }
-
-    .social-title {
-      text-align: center;
-    }
+    
   }
   
   @media (max-width: 768px) {
@@ -29,13 +17,35 @@
 }
 
 .form-container {
-  padding: 0 42px;
-
   .form-content {
     padding-right: 50px;
 
-    .ant-form-item-control-input-content {
-      text-align: end;
+    .ant-form-item-label {
+      label {
+        font-family: Quicksand;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        letter-spacing: 0.03em;
+        color: #1D509E;
+      }
+    }
+    .ant-form-item-control-input {
+      .ant-form-item-control-input-content {
+        text-align: end;
+  
+        input {
+          border: 1px solid #1D509E;
+          border-radius: 10px;
+        }
+
+        textarea {
+          border: 1px solid #1D509E;
+          border-radius: 10px;
+        }
+      }
     }
 
     @media (max-width: 768px) {
