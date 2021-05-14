@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "https://www.cargame.com.co/static/css/main.5d42de0b.chunk.css",
-    "main.js": "https://www.cargame.com.co/static/js/main.b5e26a98.chunk.js",
-    "main.js.map": "https://www.cargame.com.co/static/js/main.b5e26a98.chunk.js.map",
+    "main.js": "https://www.cargame.com.co/static/js/main.52f716a0.chunk.js",
+    "main.js.map": "https://www.cargame.com.co/static/js/main.52f716a0.chunk.js.map",
     "runtime-main.js": "https://www.cargame.com.co/static/js/runtime-main.7ca72129.js",
     "runtime-main.js.map": "https://www.cargame.com.co/static/js/runtime-main.7ca72129.js.map",
     "static/css/2.f3f01324.chunk.css": "https://www.cargame.com.co/static/css/2.f3f01324.chunk.css",
@@ -14,6 +14,7 @@
     "static/js/2.8fe41126.chunk.js.LICENSE.txt": "https://www.cargame.com.co/static/js/2.8fe41126.chunk.js.LICENSE.txt",
     "static/media/Inicio.6cc87045.mp4": "https://www.cargame.com.co/static/media/Inicio.6cc87045.mp4",
     "static/media/Referido.faa41917.mp4": "https://www.cargame.com.co/static/media/Referido.faa41917.mp4",
+    "static/media/about-us-background.68af9e83.png": "https://www.cargame.com.co/static/media/about-us-background.68af9e83.png",
     "static/media/cargame-transportador.0fce15f6.mp4": "https://www.cargame.com.co/static/media/cargame-transportador.0fce15f6.mp4",
     "static/media/cargame-usuarios.7963fab3.mp4": "https://www.cargame.com.co/static/media/cargame-usuarios.7963fab3.mp4",
     "static/media/como_funciona.13ecac89.png": "https://www.cargame.com.co/static/media/como_funciona.13ecac89.png",
@@ -42,6 +43,6 @@
     "static/css/2.f3f01324.chunk.css",
     "static/js/2.8fe41126.chunk.js",
     "static/css/main.5d42de0b.chunk.css",
-    "static/js/main.b5e26a98.chunk.js"
+    "static/js/main.52f716a0.chunk.js"
   ]
 }
