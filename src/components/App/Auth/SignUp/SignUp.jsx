@@ -10,7 +10,6 @@ import {
   notification,
 } from 'antd';
 import './signup.scss';
-import LogIn from '../LogIn/LogIn';
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -67,7 +66,6 @@ const SignUp = ({ signUp }) => {
       password,
       confirm,
       phone,
-      referidNumber,
       city,
       agreement,
     } = values;
@@ -121,6 +119,7 @@ const SignUp = ({ signUp }) => {
             rules={[
               {
                 required: true,
+                message: 'Ingresa tu nombre completo!',
               },
             ]}
           >

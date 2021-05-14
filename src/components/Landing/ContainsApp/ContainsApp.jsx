@@ -20,6 +20,7 @@ const Container = styled.div`
 `;
 
 const TextItemContent = styled.p`
+  font-size: 25px;
   color: ${WHITE_COLOR};
   margin-top: 20px;
   margin-bottom: 0;

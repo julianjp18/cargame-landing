@@ -8,6 +8,7 @@ import { PRIMARY_COLOR, SECOND_COLOR, WHITE_COLOR } from '../../utils/colors';
 const PhonesImages = styled.img`
   position: absolute;
   right: -90px;
+  top: 35px;
   object-fit: contain;
   width: 100%;
   height: 600px;

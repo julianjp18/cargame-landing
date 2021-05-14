@@ -23,10 +23,9 @@ const PhonesImages = styled.img`
   @media (max-width: 768px) {
     position: static;
     object-fit: contain;
-    width: 90%;
+    width: 100%;
     height: 100%;
-    margin: auto;
-    margin-top: 10px;
+    margin: 10px 6px;
   }
 `;
 

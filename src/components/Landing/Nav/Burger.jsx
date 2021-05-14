@@ -1,6 +1,8 @@
+import { push } from 'connected-react-router';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 import styled from 'styled-components';
-import { DANGER_COLOR, ORANGE_COLOR, PRIMARY_COLOR, SECOND_COLOR, WHITE_COLOR } from '../../utils/colors';
+import { ORANGE_COLOR, PRIMARY_COLOR, SECOND_COLOR, WHITE_COLOR } from '../../utils/colors';
 import RightNav from './RightNav';
 
 const StyledBurger = styled.div`
@@ -98,7 +100,14 @@ const SecondButtonContainer = styled.div`
 `;
 
 const Burger = () => {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
+  const history = useHistory();
+
+  const redirectLanding = (path) => {
+    const newPath = `/${path}`;
+    history.push({ pathname: newPath, state: { component: newPath } });
+    push(newPath);
+  }
 
   return (
     <>
@@ -111,7 +120,9 @@ const Burger = () => {
         <RightNav open={open} />
         <ButtonsContainer>
           <SecondButtonContainer>Descarga la App</SecondButtonContainer>
-          <FirstButtonContainer><i class="fas fa-play"></i> ¿Deseas ser Transportador?</FirstButtonContainer>
+          <FirstButtonContainer onClick={() => redirectLanding('sign-up')}>
+            <i class="fas fa-play"></i> ¿Deseas ser Transportador?
+          </FirstButtonContainer>
         </ButtonsContainer>
       </RightNavContainer>
     </>

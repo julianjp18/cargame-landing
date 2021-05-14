@@ -100,7 +100,6 @@ const SecondButtonContainer = styled.div`
   line-height: 17px;
   font-size: 14px;
   color: ${WHITE_COLOR};
-  border: 1px solid ${WHITE_COLOR};
   border-radius: 50px;
   background: linear-gradient(55.05deg, ${ORANGE_COLOR} 0%, ${DANGER_COLOR} 100%);
   transition: 0.5s;

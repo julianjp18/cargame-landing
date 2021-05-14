@@ -12,8 +12,10 @@ const Ul = styled.ul`
   list-style: none;
   display: flex;
   flex-flow: row nowrap;
+  font-family: 'Quicksand';
+
   li {
-    font-family: Quicksand;
+    font-family: 'Quicksand';
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -23,7 +25,7 @@ const Ul = styled.ul`
     
     button {
       margin-top: 5px;
-      font-family: Quicksand;
+      font-family: 'Quicksand';
       font-style: normal;
       font-weight: 600;
       font-size: 14px;

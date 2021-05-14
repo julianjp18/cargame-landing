@@ -55,7 +55,7 @@ const SocialMediaContainer = styled.div`
 `;
 
 const SocialMediaText = styled.p`
-  font-family: Quicksand;
+  font-family: 'Quicksand';
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -89,7 +89,7 @@ const LIContent = styled.li`
 
   &:hover {
     cursor: pointer;
-    color: ${ORANGE_COLOR};
+    color: ${SECOND_COLOR};
   }
 `;
 
@@ -101,7 +101,7 @@ const CopyText = styled.p`
   padding-top: 15px;
   margin-bottom: 0;
   text-align: start;
-  font-family: Quicksand;
+  font-family: 'Quicksand';
   font-style: normal;
   font-weight: 600;
   font-size: 14px;

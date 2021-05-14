@@ -20,7 +20,7 @@ const ROUTES = [
   { path: "/driver-info", key: "Transportadores", exact: true, component: Landing, show: true, landing: true },
   { path: "/us", key: "Nosotros", exact: true, component: AboutUs, show: true, landing: false },
   { path: "/contact-us", key: "Contáctanos", exact: true, component: ContactUs, show: true, landing: false },
-  //{ path: "/sign-up", key: "Transportador", exact: true, component: HomeApp, show: true, landing: false },
+  { path: "/sign-up", key: "Transportador", exact: true, component: HomeApp, show: false, landing: false },
   { path: "/log-in", key: "Iniciar sesión", exact: true, component: HomeApp, show: false, landing: false },
   { path: "/cargame-landing", key: "Inicio", exact: true, component: Landing, show: false, landing: false },
   { path: "/terms-and-conditions-user", key: "Términos y condiciones usuario", exact: true, component: Landing, show: false, landing: false, auth: false },
