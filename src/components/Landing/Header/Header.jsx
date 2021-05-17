@@ -166,7 +166,7 @@ const Header = () => {
                 Con nuestra app puedes enviar y recibir carga, documentos, solicitar servicios de grúa o viajes compartidos.
               </Description>
               <ButttonsContainer>
-                <FirstButtonContainer onClick={showModal}><i class="fas fa-play"></i> Conoce más</FirstButtonContainer>
+                <FirstButtonContainer onClick={showModal}><i className="fas fa-play"></i> ¿Qué es CÁRGAME?</FirstButtonContainer>
                 <SecondButtonContainer onClick={() => landingNavigation('earn-money')}>Gana dinero!</SecondButtonContainer>
                 <Modal
                   title="¿Qué es CÁRGAME?"
@@ -184,7 +184,7 @@ const Header = () => {
           </Col>
           <Col xs={24}>
             <DownArrowContainer>
-              <i class="fas fa-arrow-down" onClick={() => landingNavigation('app')}></i>
+              <i className="fas fa-arrow-down" onClick={() => landingNavigation('app')}></i>
             </DownArrowContainer>
           </Col>
         </Row>

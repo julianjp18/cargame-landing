@@ -46,7 +46,7 @@ const ExternalLink = styled.a`
   text-decoration: underline;
 
   &:hover {
-    color: ${ORANGE_COLOR};
+    color: ${SECOND_COLOR};
   }
 `;
 
@@ -71,7 +71,7 @@ const AContent = styled.a`
   color: ${WHITE_COLOR};
 
   &:hover {
-    color: ${ORANGE_COLOR};
+    color: ${SECOND_COLOR};
   }
 `;
 
@@ -156,13 +156,13 @@ const Footer = () => {
             <LIContent onClick={() => redirectLanding('us')}>
               Nosotros
             </LIContent>
-            <LIContent onClick={() => landingNavigation('app')}>
+            <LIContent onClick={() => landingNavigation('download-apps')}>
               App
             </LIContent>
             <LIContent onClick={() => redirectLanding('contact-us')}>
               Contáctanos
             </LIContent>
-            <LIContent onClick={() => redirectLanding('download-app')}>
+            <LIContent onClick={() => landingNavigation('download-apps')}>
               Descarga la app
             </LIContent>
             <LIContent onClick={() => redirectLanding('register-driver')}>

@@ -90,7 +90,7 @@ const AppStoreImage = styled.img`
 `;
 
 const DownloadsApps = () => (
-  <RowAnt id="downloads-apps" className="ant-row">
+  <RowAnt id="download-apps" className="ant-row">
     <Col xs={24} md={12}>
       <PhonesImages src={DownloadAppImage} alt='phone images' />
     </Col>

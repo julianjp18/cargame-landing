@@ -121,7 +121,7 @@ const Burger = () => {
         <ButtonsContainer>
           <SecondButtonContainer>Descarga la App</SecondButtonContainer>
           <FirstButtonContainer onClick={() => redirectLanding('sign-up')}>
-            <i class="fas fa-play"></i> ¿Deseas ser Transportador?
+            <i className="fas fa-play"></i> ¿Deseas ser Transportador?
           </FirstButtonContainer>
         </ButtonsContainer>
       </RightNavContainer>

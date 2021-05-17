@@ -1,5 +1,5 @@
-import { Row, Col, Tabs } from 'antd';
-import React from 'react';
+import { Skeleton } from 'antd';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import './aboutUs.scss';
@@ -10,7 +10,7 @@ import Policies from './Policies/Policies';
 import Brand from './Brand/Brand';
 
 const AboutUsContainer = styled.div`
-
+  min-height: 94vh;
 `;
 
 const HeaderContent = styled.div`
@@ -80,24 +80,38 @@ const MainInfoText = styled.p`
 `;
 
 const AboutUs = () => {
+  const [isLoading, setisLoading] = useState(true);
+
+  useEffect(() => {
+    if (isLoading)
+      setTimeout(() => {
+        setisLoading(false);
+      }, 2000);
+  }, [isLoading]);
+
   return (
     <AboutUsContainer id="us">
-      <HeaderContainer>
-        <HeaderContent>
-          <Title>Sobre nosotros</Title>
-          <Subtitle>
-            Somos una plataforma digital que busca conectar a usuarios que tengan la necesidad de realizar envíos, con transportadores que viajen hacia el lugar donde se necesita el envio.
-          </Subtitle>
-        </HeaderContent>
-      </HeaderContainer>
-      <MainInfoContainer>
-        <MainInfoText>
-          Nos proyectamos como una plataforma digital reconocida a nivel nacional e internacional, con soporte tecnológico robusto y servicio al cliente eficiente, manteniendo altos y rigurosos protocolos de seguridad informática.
-        </MainInfoText>
-      </MainInfoContainer>
-      <Policies />
-      <Brand />
-      <DownloadsApps />
+      {isLoading ? (
+        <Skeleton active />
+      ) : (
+        <>
+          <HeaderContainer>
+            <HeaderContent>
+              <Title>Sobre nosotros</Title>
+              <Subtitle>
+                Somos una plataforma digital que busca conectar a usuarios que tengan la necesidad de realizar envíos, con transportadores que viajen hacia el lugar donde se necesita el envio.
+              </Subtitle>
+            </HeaderContent>
+          </HeaderContainer>
+          <MainInfoContainer>
+            <MainInfoText>
+              Nos proyectamos como una plataforma digital reconocida a nivel nacional e internacional, con soporte tecnológico robusto y servicio al cliente eficiente, manteniendo altos y rigurosos protocolos de seguridad informática.
+            </MainInfoText>
+          </MainInfoContainer>
+          <Policies />
+          <DownloadsApps />
+        </>
+      )}
     </AboutUsContainer>
   );
 };
