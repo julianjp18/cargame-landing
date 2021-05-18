@@ -1,19 +1,23 @@
 {
   "files": {
-    "main.css": "https://www.cargame.com.co/static/css/main.5d42de0b.chunk.css",
-    "main.js": "https://www.cargame.com.co/static/js/main.52f716a0.chunk.js",
-    "main.js.map": "https://www.cargame.com.co/static/js/main.52f716a0.chunk.js.map",
+    "main.css": "https://www.cargame.com.co/static/css/main.a2accc12.chunk.css",
+    "main.js": "https://www.cargame.com.co/static/js/main.458ff18d.chunk.js",
+    "main.js.map": "https://www.cargame.com.co/static/js/main.458ff18d.chunk.js.map",
     "runtime-main.js": "https://www.cargame.com.co/static/js/runtime-main.7ca72129.js",
     "runtime-main.js.map": "https://www.cargame.com.co/static/js/runtime-main.7ca72129.js.map",
     "static/css/2.f3f01324.chunk.css": "https://www.cargame.com.co/static/css/2.f3f01324.chunk.css",
-    "static/js/2.8fe41126.chunk.js": "https://www.cargame.com.co/static/js/2.8fe41126.chunk.js",
-    "static/js/2.8fe41126.chunk.js.map": "https://www.cargame.com.co/static/js/2.8fe41126.chunk.js.map",
+    "static/js/2.4b6c338e.chunk.js": "https://www.cargame.com.co/static/js/2.4b6c338e.chunk.js",
+    "static/js/2.4b6c338e.chunk.js.map": "https://www.cargame.com.co/static/js/2.4b6c338e.chunk.js.map",
     "index.html": "https://www.cargame.com.co/index.html",
     "static/css/2.f3f01324.chunk.css.map": "https://www.cargame.com.co/static/css/2.f3f01324.chunk.css.map",
-    "static/css/main.5d42de0b.chunk.css.map": "https://www.cargame.com.co/static/css/main.5d42de0b.chunk.css.map",
-    "static/js/2.8fe41126.chunk.js.LICENSE.txt": "https://www.cargame.com.co/static/js/2.8fe41126.chunk.js.LICENSE.txt",
+    "static/css/main.a2accc12.chunk.css.map": "https://www.cargame.com.co/static/css/main.a2accc12.chunk.css.map",
+    "static/js/2.4b6c338e.chunk.js.LICENSE.txt": "https://www.cargame.com.co/static/js/2.4b6c338e.chunk.js.LICENSE.txt",
+    "static/media/Aviso_de_Privacidad.ceead61d.pdf": "https://www.cargame.com.co/static/media/Aviso_de_Privacidad.ceead61d.pdf",
     "static/media/Inicio.6cc87045.mp4": "https://www.cargame.com.co/static/media/Inicio.6cc87045.mp4",
+    "static/media/Política_de_Privacidad.77c9df6d.pdf": "https://www.cargame.com.co/static/media/Política_de_Privacidad.77c9df6d.pdf",
     "static/media/Referido.faa41917.mp4": "https://www.cargame.com.co/static/media/Referido.faa41917.mp4",
+    "static/media/T&C_driver.117a043b.pdf": "https://www.cargame.com.co/static/media/T&C_driver.117a043b.pdf",
+    "static/media/T&C_user.22ee2e9b.pdf": "https://www.cargame.com.co/static/media/T&C_user.22ee2e9b.pdf",
     "static/media/about-us-background.68af9e83.png": "https://www.cargame.com.co/static/media/about-us-background.68af9e83.png",
     "static/media/cargame-transportador.0fce15f6.mp4": "https://www.cargame.com.co/static/media/cargame-transportador.0fce15f6.mp4",
     "static/media/cargame-usuarios.7963fab3.mp4": "https://www.cargame.com.co/static/media/cargame-usuarios.7963fab3.mp4",
@@ -41,8 +45,8 @@
   "entrypoints": [
     "static/js/runtime-main.7ca72129.js",
     "static/css/2.f3f01324.chunk.css",
-    "static/js/2.8fe41126.chunk.js",
-    "static/css/main.5d42de0b.chunk.css",
-    "static/js/main.52f716a0.chunk.js"
+    "static/js/2.4b6c338e.chunk.js",
+    "static/css/main.a2accc12.chunk.css",
+    "static/js/main.458ff18d.chunk.js"
   ]
 }
