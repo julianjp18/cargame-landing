@@ -1,25 +1,26 @@
-import React, { useState } from 'react';
-import { Document, Page } from 'react-pdf';
+import React from 'react';
+import styled from 'styled-components';
 import TCDriverPDF from '../../assets/PDF/T&C_driver.pdf';
+import AllPages from './AllPages';
+
+const PDFContainer = styled.div`
+  min-height: 94vh;
+  padding-top: 10px;
+`;
+
+const Title = styled.p`
+  font-family: 'Quicksand';
+  font-size: 30px;
+  font-weight: bold;
+`;
 
 const TCDriver = () => {
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
-
-  function onDocumentLoadSuccess({ numPages }) {
-    setNumPages(numPages);
-  }
 
   return (
-    <div>
-      <Document
-        file={TCDriverPDF}
-        onLoadSuccess={onDocumentLoadSuccess}
-      >
-        <Page pageNumber={pageNumber} />
-      </Document>
-      <p>Página {pageNumber} de {numPages}</p>
-    </div>
+    <PDFContainer>
+      <Title>Términos y condiciones transportador</Title>
+      <AllPages pdf={TCDriverPDF} />
+    </PDFContainer>
   );
 };
 

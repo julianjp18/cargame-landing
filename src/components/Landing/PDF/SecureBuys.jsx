@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import TCUserPDF from '../../assets/PDF/T&C_user.pdf';
+import PrivacyPolicyPDF from '../../assets/PDF/Política_de_Privacidad.pdf';
 import AllPages from './AllPages';
 
 const PDFContainer = styled.div`
@@ -15,14 +15,14 @@ const Title = styled.p`
 `;
 
 
-const TCUser = () => {
+const SecureBuys = () => {
 
   return (
     <PDFContainer>
-      <Title>Términos y condiciones usuario</Title>
-      <AllPages pdf={TCUserPDF} />
+      <Title>Seguro de compra</Title>
+      <AllPages pdf={PrivacyPolicyPDF} />
     </PDFContainer>
   );
 };
 
-export default TCUser;
+export default SecureBuys;

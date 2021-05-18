@@ -6,6 +6,9 @@ import Dashboard from "../components/App/Dashboard/Dashboard";
 import Landing from "../components/Landing";
 import AboutUs from "../components/Landing/AboutUs/AboutUs";
 import ContactUs from "../components/Landing/ContactUs/ContactUs";
+import PrivacyAds from "../components/Landing/PDF/PrivacyAds";
+import PrivacyPolicy from "../components/Landing/PDF/PrivacyPolicy";
+import SecureBuys from "../components/Landing/PDF/SecureBuys";
 import TCDriver from "../components/Landing/PDF/TCDriver";
 import TCUser from "../components/Landing/PDF/TCUser";
 import { ROOT_PATH } from './paths';
@@ -27,7 +30,9 @@ const ROUTES = [
   { path: "/cargame-landing", key: "Inicio", exact: true, component: Landing, show: false, landing: false },
   { path: "/terms-and-conditions-user", key: "Términos y condiciones usuario", exact: true, component: TCUser, show: false, landing: false, auth: false },
   { path: "/terms-and-conditions-driver", key: "Términos y condiciones transportador", exact: true, component: TCDriver, show: false, landing: false, auth: false },
-  { path: "/privacy", key: "Políticas de privacidad", exact: true, component: Landing, show: false, landing: false, auth: false },
+  { path: "/privacy", key: "Políticas de privacidad", exact: true, component: PrivacyPolicy, show: false, landing: false, auth: false },
+  { path: "/privacy-ads", key: "Aviso de privacidad", exact: true, component: PrivacyAds, show: false, landing: false, auth: false },
+  { path: "/secure-buys", key: "Seguridad de compra", exact: true, component: SecureBuys, show: false, landing: false, auth: false },
   ...AUTH_ROUTES,
 ];
 

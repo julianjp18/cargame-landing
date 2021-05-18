@@ -1,25 +1,27 @@
-import React, { useState } from 'react';
-import { Document, Page } from 'react-pdf';
+import React from 'react';
+import styled from 'styled-components';
 import PrivacyAdsPDF from '../../assets/PDF/Aviso_de_Privacidad.pdf';
+import AllPages from './AllPages';
+
+const PDFContainer = styled.div`
+  min-height: 94vh;
+  padding-top: 10px;
+`;
+
+const Title = styled.p`
+  font-family: 'Quicksand';
+  font-size: 30px;
+  font-weight: bold;
+`;
+
 
 const PrivacyAds = () => {
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
-
-  function onDocumentLoadSuccess({ numPages }) {
-    setNumPages(numPages);
-  }
 
   return (
-    <div>
-      <Document
-        file={PrivacyAdsPDF}
-        onLoadSuccess={onDocumentLoadSuccess}
-      >
-        <Page pageNumber={pageNumber} />
-      </Document>
-      <p>Página {pageNumber} de {numPages}</p>
-    </div>
+    <PDFContainer>
+      <Title>Aviso de privacidad</Title>
+      <AllPages pdf={PrivacyAdsPDF} />
+    </PDFContainer>
   );
 };
 
