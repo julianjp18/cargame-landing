@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Form,
   Input,
@@ -10,6 +10,9 @@ import {
   notification,
 } from 'antd';
 import './signup.scss';
+import { POLICY_ADS } from '../../../utils/extras';
+import { useHistory } from 'react-router';
+import styled from 'styled-components';
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -53,10 +56,25 @@ const showPasswordError = () => {
   });
 };
 
+const TermsLink = styled.span`
+  color: #1890ff;
 
-const SignUp = ({ signUp }) => {
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const SignUp = ({ signUp, auth }) => {
+  const history = useHistory();
   const [form] = Form.useForm();
   const [passwordError, setpasswordError] = useState(false);
+
+  useEffect(() => {
+    if (auth && auth.role) {
+      history.push('/dashboard-driver');
+    }
+  }, [auth]);
+
   const onFinish = (values) => {
     setpasswordError(false);
     const {
@@ -98,6 +116,9 @@ const SignUp = ({ signUp }) => {
     </Form.Item>
   );
 
+  const sendTerms = () => {
+    history.push('/terms-and-conditions-driver');
+  };
   return (
     <Row className="sign-up-container">
       <Col xs={24}>
@@ -258,7 +279,7 @@ const SignUp = ({ signUp }) => {
                 disabled: true,
               },
             ]}
-            initialValue="AQUI VA EL TEXTO 2"
+            initialValue={POLICY_ADS}
           >
             <TextArea bordered disabled rows={4} />
           </Form.Item>
@@ -274,7 +295,7 @@ const SignUp = ({ signUp }) => {
             {...tailFormItemLayout}
           >
             <Checkbox>
-              Estoy de acuerdo con los <a href="">términos y condiciones</a>
+              Estoy de acuerdo con los <TermsLink onClick={sendTerms}>términos y condiciones</TermsLink>
             </Checkbox>
           </Form.Item>
           <Form.Item {...tailFormItemLayout}>

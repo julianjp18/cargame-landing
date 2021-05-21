@@ -99,7 +99,7 @@ const SecondButtonContainer = styled.div`
   }
 `;
 
-const Burger = () => {
+const Burger = ({ isAuth, role, routes }) => {
   const [open, setOpen] = useState(false);
   const history = useHistory();
 
@@ -117,13 +117,15 @@ const Burger = () => {
         <div />
       </StyledBurger>
       <RightNavContainer>
-        <RightNav open={open} />
-        <ButtonsContainer>
-          <SecondButtonContainer>Descarga la App</SecondButtonContainer>
-          <FirstButtonContainer onClick={() => redirectLanding('sign-up')}>
-            <i className="fas fa-play"></i> ¿Deseas ser Transportador?
-          </FirstButtonContainer>
-        </ButtonsContainer>
+        <RightNav open={open} role={role} routes={routes} />
+        {!isAuth && (
+          <ButtonsContainer>
+            <SecondButtonContainer>Descarga la App</SecondButtonContainer>
+            <FirstButtonContainer onClick={() => redirectLanding('sign-up')}>
+              <i className="fas fa-play"></i> ¿Deseas ser Transportador?
+            </FirstButtonContainer>
+          </ButtonsContainer>
+        )}
       </RightNavContainer>
     </>
   )

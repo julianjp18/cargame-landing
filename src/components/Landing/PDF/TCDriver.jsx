@@ -14,12 +14,23 @@ const Title = styled.p`
   font-weight: bold;
 `;
 
+const ExternalText = styled.p`
+
+`;
+
+const ExternalLink = styled.a`
+
+`;
+
 const TCDriver = () => {
 
   return (
     <PDFContainer>
       <Title>Términos y condiciones transportador</Title>
       <AllPages pdf={TCDriverPDF} />
+      <ExternalText>
+        Si no puedes visualizar el documento, <ExternalLink href="https://cargame.com.co/T&C_driver.pdf" target="_blank">haz clic acá</ExternalLink>
+      </ExternalText>
     </PDFContainer>
   );
 };

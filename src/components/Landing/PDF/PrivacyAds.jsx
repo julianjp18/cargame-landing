@@ -14,6 +14,13 @@ const Title = styled.p`
   font-weight: bold;
 `;
 
+const ExternalText = styled.p`
+
+`;
+
+const ExternalLink = styled.a`
+
+`;
 
 const PrivacyAds = () => {
 
@@ -21,6 +28,9 @@ const PrivacyAds = () => {
     <PDFContainer>
       <Title>Aviso de privacidad</Title>
       <AllPages pdf={PrivacyAdsPDF} />
+      <ExternalText>
+        Si no puedes visualizar el documento, <ExternalLink href="https://cargame.com.co/Aviso_de_Privacidad.pdf" target="_blank">haz clic acá</ExternalLink>
+      </ExternalText>
     </PDFContainer>
   );
 };

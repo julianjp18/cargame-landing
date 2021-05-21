@@ -47,7 +47,7 @@ const LogoImage = styled.img`
   margin-right: 5px;
 `;
 
-const Navbar = () => {
+const Navbar = ({ isAuth, role, routes }) => {
   return (
     <Nav>
       <div className="logo">
@@ -55,7 +55,7 @@ const Navbar = () => {
           <LogoImage src={icon} alt="icon" />
         </h1>
       </div>
-      <Burger />
+      <Burger isAuth={isAuth} role={role} routes={routes} />
     </Nav>
   )
 }

@@ -1,4 +1,4 @@
-export const saveDataToStorage = (idToken, uid, expirationDate, email, name) => {
+export const saveDataToStorage = (idToken, uid, expirationDate, email, name, role, isVerified = false) => {
   localStorage.setItem(
     'user',
     JSON.stringify({
@@ -7,6 +7,8 @@ export const saveDataToStorage = (idToken, uid, expirationDate, email, name) => 
       expirationDate,
       email,
       name,
+      role,
+      isVerified,
     }))
 };
 

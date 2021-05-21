@@ -7,7 +7,8 @@ import mainBackground from '../../assets/images/new-version/about-us-background.
 import DownloadsApps from '../DownloadApps/DownloadApps';
 import { WHITE_COLOR } from '../../utils/colors';
 import Policies from './Policies/Policies';
-import Brand from './Brand/Brand';
+import Fade from 'react-reveal/Fade';
+import Slide from 'react-reveal/Slide';
 
 const AboutUsContainer = styled.div`
   min-height: 94vh;
@@ -91,27 +92,29 @@ const AboutUs = () => {
 
   return (
     <AboutUsContainer id="us">
-      {isLoading ? (
-        <Skeleton active />
-      ) : (
-        <>
-          <HeaderContainer>
-            <HeaderContent>
-              <Title>Sobre nosotros</Title>
-              <Subtitle>
-                Somos una plataforma digital que busca conectar a usuarios que tengan la necesidad de realizar envíos, con transportadores que viajen hacia el lugar donde se necesita el envio.
+      <HeaderContainer>
+        <HeaderContent>
+          <Fade>
+            <Title>Sobre nosotros</Title>
+            <Subtitle>
+              Somos una plataforma digital que busca conectar a usuarios que tengan la necesidad de realizar envíos, con transportadores que viajen hacia el lugar donde se necesita el envio.
               </Subtitle>
-            </HeaderContent>
-          </HeaderContainer>
-          <MainInfoContainer>
-            <MainInfoText>
-              Nos proyectamos como una plataforma digital reconocida a nivel nacional e internacional, con soporte tecnológico robusto y servicio al cliente eficiente, manteniendo altos y rigurosos protocolos de seguridad informática.
-            </MainInfoText>
-          </MainInfoContainer>
-          <Policies />
-          <DownloadsApps />
-        </>
-      )}
+          </Fade>
+        </HeaderContent>
+      </HeaderContainer>
+      <MainInfoContainer>
+        <Slide right>
+          <MainInfoText>
+            Nos proyectamos como una plataforma digital reconocida a nivel nacional e internacional, con soporte tecnológico robusto y servicio al cliente eficiente, manteniendo altos y rigurosos protocolos de seguridad informática.
+              </MainInfoText>
+        </Slide>
+      </MainInfoContainer>
+      <Slide left>
+        <Policies />
+      </Slide>
+      <Slide bottom>
+        <DownloadsApps />
+      </Slide>
     </AboutUsContainer>
   );
 };

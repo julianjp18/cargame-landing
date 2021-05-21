@@ -1,11 +1,12 @@
 import moment from 'moment';
 import axios from 'axios';
 import { firebaseAuth, firestoreDB } from '../../../../components/utils/firebase';
-import { SIGN_UP } from '../constants';
+import { SIGN_UP, SIGN_UP_FAILURE, SIGN_UP_SUCCESS } from '../constants';
 import notify from '../../../helpers/notify';
 import { openNotification } from '../../../helpers/extras';
 
 import { saveDataToStorage } from '../../../helpers/localStorage';
+import { put } from '@redux-saga/core/effects';
 
 const signUpNotifier = (formValues) =>
   notify({
@@ -24,6 +25,7 @@ function* signUpAction({ formValues }) {
     password,
     city,
   } = formValues;
+  const responseLogIn = [];
 
   axios.get("http://ip-api.com/json").then(response => {
     let data = response.data || {};
@@ -41,7 +43,7 @@ function* signUpAction({ formValues }) {
       const resData = response.user;
 
       resData.getIdToken().then((idToken) => {
-        saveDataToStorage(idToken, resData.uid, moment().format(), email, name);
+        saveDataToStorage(idToken, resData.uid, moment().format(), email, name, 'driver');
       });
 
       firestoreDB
@@ -54,6 +56,7 @@ function* signUpAction({ formValues }) {
           referidNumber: referidNumber ? referidNumber : 'N/A',
           profilePicture: null,
           isActive: true,
+          isVerified: false,
           strikes: 0,
           address: '',
           city,
@@ -67,6 +70,22 @@ function* signUpAction({ formValues }) {
           country: ipAddressInfo ? ipAddressInfo.country : 'N/A',
           termsAndConditions: true,
         });
+
+      responseLogIn.push({
+        name,
+        phone,
+        identification,
+        referidNumber,
+        email,
+        password,
+        city,
+        isVerified: false,
+        isActive: true,
+        expireLicense: '',
+        expiresPropertyCard: '',
+        propertyCard: '',
+        role: 'driver',
+      });
 
       openNotification('success', '¡Que bien!', 'Te has registrado exitosamente');
     })
@@ -83,6 +102,12 @@ function* signUpAction({ formValues }) {
 
       openNotification('warning', '¡UPS!', errorMessage);
     });
+
+  if (responseLogIn.length > 0) {
+    yield put({ type: SIGN_UP_SUCCESS, payload: { ...responseLogIn[0] }, });
+  } else {
+    yield put({ type: SIGN_UP_FAILURE, payload: {}, });
+  }
 }
 
 export { signUpAction, signUpNotifier };

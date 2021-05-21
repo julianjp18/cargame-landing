@@ -1,22 +1,22 @@
-import { LOG_IN, LOG_IN_FAILURE, LOG_IN_SUCCESS, LOG_OUT, LOG_OUT_SUCCESS } from '../constants';
+import { UPLOAD_DRIVER_DOCS } from '../constants';
 import notify from '../../../helpers/notify';
 import { firebaseAuth, firestoreDB } from '../../../../components/utils/firebase';
 import { saveDataToStorage } from '../../../helpers/localStorage';
 import { openNotification } from '../../../helpers/extras';
 import { put } from '@redux-saga/core/effects';
 
-const logInNotifier = (formValues) =>
+const uploadDriverDocsNotifier = (formValues) =>
   notify({
-    type: LOG_IN,
+    type: UPLOAD_DRIVER_DOCS,
     formValues,
   });
 
-function* logInAction({ formValues }) {
+function* uploadDriverDocsAction({ formValues }) {
   const { username, password } = formValues;
   const responseLogIn = [];
 
   yield firebaseAuth
-    .signInWithEmailAndPassword(username.replace(' ', ''), password)
+    .signInWithEmailAndPassword(username, password)
     .then(async (response) => {
       const resData = response.user;
       let isDriver = false;
@@ -102,21 +102,13 @@ function* logInAction({ formValues }) {
       openNotification('warning', '¡UPS!', errorMessage);
     });
 
+  /*
   if (responseLogIn.length > 0) {
     yield put({ type: LOG_IN_SUCCESS, payload: { ...responseLogIn[0] }, });
   } else {
     yield put({ type: LOG_IN_FAILURE, payload: {}, });
   }
+*/
 }
 
-const logOutNotifier = (formValues) =>
-  notify({
-    type: LOG_OUT,
-    formValues,
-  });
-
-function* logOutAction() {
-  yield put({ type: LOG_OUT_SUCCESS, payload: {}, });
-}
-
-export { logInAction, logInNotifier, logOutNotifier, logOutAction };
+export { uploadDriverDocsAction, uploadDriverDocsNotifier };

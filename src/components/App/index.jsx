@@ -10,7 +10,7 @@ import { signUpNotifier } from '../../redux/sagas/auth/actions/signUp';
 import { logInNotifier } from '../../redux/sagas/auth/actions/logIn';
 import { Col, Row } from 'antd';
 
-const AppContainer = ({ signUp, logIn }) => {
+const AppContainer = ({ signUp, logIn, auth }) => {
   const [location, setlocation] = useState('');
   const history = useHistory();
 
@@ -23,21 +23,13 @@ const AppContainer = ({ signUp, logIn }) => {
     if (state && state.component !== undefined) setlocation(state.component);
   }, []);
 
-  /*
-  return lgocation === 'sin-up' ? (
-    <SignUp signUp={signUp} />
-  ) : (
-    <LogIn logIn={logIn} redirect={redirect} />
-  );
-  */
-
   return (
     <Row>
       <Col xs={24} md={12}>
-        <SignUp signUp={signUp} />
+        <SignUp signUp={signUp} auth={auth} />
       </Col>
       <Col xs={24} md={12}>
-        <LogIn logIn={logIn} />
+        <LogIn logIn={logIn} auth={auth} />
       </Col>
     </Row>
   );

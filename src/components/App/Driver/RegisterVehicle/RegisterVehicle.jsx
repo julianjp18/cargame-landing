@@ -30,7 +30,7 @@ const formItemLayout = {
   },
 };
 
-const DriverForm = ({ }) => {
+const RegisterVehicle = ({ }) => {
   const [expireLicense, setexpireLicense] = useState();
   const [expirePropertyCard, setexpirePropertyCard] = useState();
 
@@ -165,4 +165,4 @@ const DriverForm = ({ }) => {
   );
 };
 
-export default DriverForm;
+export default RegisterVehicle;

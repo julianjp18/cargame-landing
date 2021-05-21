@@ -2,9 +2,17 @@ export const LOG_IN = 'LOG_IN';
 export const LOG_IN_SUCCESS = `${LOG_IN}_SUCCESS`;
 export const LOG_IN_FAILURE = `${LOG_IN}_FAILURE`;
 
+export const LOG_OUT = 'LOG_OUT';
+export const LOG_OUT_SUCCESS = `${LOG_OUT}_SUCCESS`;
+export const LOG_OUT_FAILURE = `${LOG_OUT}_FAILURE`;
+
 export const SIGN_UP = 'SIGN_UP';
 export const SIGN_UP_SUCCESS = `${SIGN_UP}_SUCCESS`;
 export const SIGN_UP_FAILURE = `${SIGN_UP}_FAILURE`;
+
+export const UPLOAD_DRIVER_DOCS = 'UPLOAD_DRIVER_DOCS';
+export const UPLOAD_DRIVER_DOCS_SUCCESS = `${UPLOAD_DRIVER_DOCS}_SUCCESS`;
+export const UPLOAD_DRIVER_DOCS_FAILURE = `${UPLOAD_DRIVER_DOCS}_FAILURE`;
 
 export const RESTORE_PASSWORD = 'RESTORE_PASSWORD';
 export const RESTORE_PASSWORD_SUCCESS = `${RESTORE_PASSWORD}_SUCCESS`;

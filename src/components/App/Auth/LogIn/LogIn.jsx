@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Input, Button, Row, Col, notification } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import './login.scss';
@@ -38,7 +38,7 @@ const showPasswordError = () => {
   });
 };
 
-const LogIn = ({ redirect, fromDriverView, logIn }) => {
+const LogIn = ({ redirect, fromDriverView, logIn, auth }) => {
   const [passwordError, setpasswordError] = useState(false);
   const [form] = Form.useForm();
   const history = useHistory();
@@ -47,10 +47,18 @@ const LogIn = ({ redirect, fromDriverView, logIn }) => {
     if (values.username && values.password) {
       setpasswordError(false);
       logIn(values);
-      history.push('/login-success');
-    }
-    else setpasswordError(true);
+    } else setpasswordError(true);
   };
+
+  useEffect(() => {
+    if (auth && auth.role) {
+      if (auth.role === 'admin') {
+        history.push('/dashboard');
+      } else {
+        history.push('/dashboard-driver');
+      }
+    }
+  }, [auth]);
 
   return (
     <Row className="log-in-container">
@@ -101,20 +109,15 @@ const LogIn = ({ redirect, fromDriverView, logIn }) => {
               placeholder="Contraseña"
             />
           </Form.Item>
-          <Form.Item>
-            <a className="login-form-forgot" href="">
-              ¿Olvidaste tu contraseña?
-            </a>
-          </Form.Item>
           <Form.Item {...tailFormItemLayout}>
             <Button type="primary" htmlType="submit" className="login-form-button">
               Iniciar sesión
             </Button>
-            {!fromDriverView && (
-              <p>
-                ó <Button type="link" onClick={() => redirect('sign-up')}> ¡Registrate ahora!</Button>
-              </p>
-            )}
+          </Form.Item>
+          <Form.Item>
+            <a className="login-form-forgot" href="">
+              ¿Olvidaste tu contraseña?
+            </a>
           </Form.Item>
         </Form>
       </Col>

@@ -165,7 +165,7 @@ const Footer = () => {
             <LIContent onClick={() => landingNavigation('download-apps')}>
               Descarga la app
             </LIContent>
-            <LIContent onClick={() => redirectLanding('register-driver')}>
+            <LIContent onClick={() => redirectLanding('sign-up')}>
               ¿Deseas ser transportador?
             </LIContent>
             <LIContent onClick={() => redirectLanding('privacy')}>

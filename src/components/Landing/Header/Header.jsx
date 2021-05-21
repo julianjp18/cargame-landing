@@ -41,7 +41,7 @@ const ButttonsContainer = styled.div`
 `;
 
 const Description = styled.p`
-  margin: 40px 116px;
+  margin: 40px;
   color: ${WHITE_COLOR};
   font-family: 'Quicksand', sans-serif;
   font-size: 24px;
@@ -49,8 +49,15 @@ const Description = styled.p`
   line-height: 30px;
 
   @media (max-width: 560px) {
-    margin: 40px 50px;
+    margin: 20px;
   }
+`;
+
+const VideoTitle = styled.p`
+  color: ${WHITE_COLOR};
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 30px;
 `;
 
 const Title = styled.h1`
@@ -115,7 +122,6 @@ const SecondButtonContainer = styled.div`
 
 const DownArrowContainer = styled.div`
   position: relative;
-  top: 110px;
 
   i {
     color: ${WHITE_COLOR};
@@ -135,6 +141,13 @@ const DownArrowContainer = styled.div`
 `;
 
 const VideoContent = styled.div`
+  margin-top: 15vh;
+  padding: 0 20px;
+
+  @media (max-width: 768px) {
+    margin-top: 2vh;
+    padding: 0 10px 20px 10px;
+  }
 `;
 
 const Header = () => {
@@ -156,7 +169,7 @@ const Header = () => {
     <HeaderContainer id="header">
       <HeaderContent>
         <Row>
-          <Col xs={24}>
+          <Col xs={24} md={12}>
             <TitleContainer>
               <Title>Envía y recibe paquetes fácilmente.</Title>
               <Description>
@@ -166,21 +179,15 @@ const Header = () => {
                 Con nuestra app puedes enviar y recibir carga, documentos, solicitar servicios de grúa o viajes compartidos.
               </Description>
               <ButttonsContainer>
-                <FirstButtonContainer onClick={showModal}><i className="fas fa-play"></i> ¿Qué es CÁRGAME?</FirstButtonContainer>
                 <SecondButtonContainer onClick={() => landingNavigation('earn-money')}>Gana dinero!</SecondButtonContainer>
-                <Modal
-                  title="¿Qué es CÁRGAME?"
-                  visible={isModalVisible}
-                  onOk={handleOk}
-                  onCancel={handleCancel}
-                  cancelText='Volver'
-                >
-                  <VideoContent>
-                    <video style={{ maxWidth: '100%' }} controls src={mainVideo} type="video/mp4" />
-                  </VideoContent>
-                </Modal>
               </ButttonsContainer>
             </TitleContainer>
+          </Col>
+          <Col xs={24} md={12}>
+            <VideoContent>
+              <VideoTitle>¿Qué es CÁRGAME?</VideoTitle>
+              <video style={{ maxWidth: '100%' }} controls src={mainVideo} type="video/mp4" />
+            </VideoContent>
           </Col>
           <Col xs={24}>
             <DownArrowContainer>

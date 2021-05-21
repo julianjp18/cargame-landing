@@ -220,7 +220,7 @@ const EarnMoney = () => (
           </UsersDescription>
           <UsersDescription>Ahora puedes ganar dinero refiriendo a tus conocidos y amigos.</UsersDescription>
         </ColAnt>
-        <Col xs={24} md={18}>
+        <Col className="earn-money-table-col" xs={24} md={18}>
           <Table
             dataSource={dataSource}
             pagination={{ position: ['none', 'none'] }}

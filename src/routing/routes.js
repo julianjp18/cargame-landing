@@ -2,7 +2,12 @@ import { Skeleton } from "antd";
 import React, { Suspense } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import HomeApp from "../components/App";
+import LogOut from "../components/App/Auth/LogOut/LogOut";
 import Dashboard from "../components/App/Dashboard/Dashboard";
+import Driver from "../components/App/Driver/Driver";
+import DriverForm from "../components/App/Driver/DriverForm/DriverForm";
+import RegisterVehicle from "../components/App/Driver/RegisterVehicle/RegisterVehicle";
+import Profile from "../components/App/Profile";
 import Landing from "../components/Landing";
 import AboutUs from "../components/Landing/AboutUs/AboutUs";
 import ContactUs from "../components/Landing/ContactUs/ContactUs";
@@ -13,10 +18,23 @@ import TCDriver from "../components/Landing/PDF/TCDriver";
 import TCUser from "../components/Landing/PDF/TCUser";
 import { ROOT_PATH } from './paths';
 
-export const AUTH_ROUTES = [
+export const ADMIN_ROUTES = [
+  { path: "/", key: "Dashboard - admin", exact: true, component: Dashboard, show: false, landing: false, auth: false },
   { path: "/dashboard", key: "Dashboard - admin", exact: true, component: Dashboard, show: true, landing: false, auth: true },
-  { path: "/profile", key: "Perfil", exact: true, component: Dashboard, show: true, landing: false, auth: true },
-  { path: "/log-out", key: "Cerrar sesión", exact: true, component: Dashboard, show: true, landing: false, auth: true },
+  { path: "/profile", key: "Perfil", exact: true, component: Profile, show: true, landing: false, auth: true },
+  { path: "/log-out", key: "Cerrar sesión", exact: true, component: LogOut, show: true, landing: false, auth: true },
+  { path: "/landing-page", key: "Dashboard - admin", exact: true, component: Landing, show: false, landing: false, auth: false },
+];
+
+export const DRIVER_ROUTES = [
+  { path: "/", key: "Inicio", exact: true, component: Driver, show: false, landing: false, auth: false },
+  { path: "/dashboard-driver", key: "Inicio", exact: true, component: Driver, show: false, landing: false, auth: true },
+  { path: "/profile", key: "Perfil", exact: true, component: Profile, show: true, landing: false, auth: true },
+  { path: "/second-form-driver", key: "Completa información", exact: true, component: DriverForm, show: false, landing: false, auth: false },
+  { path: "/register-vehicle", key: "Registrar Vehiculo", exact: true, component: RegisterVehicle, show: false, landing: false, auth: true },
+  { path: "/log-out", key: "Cerrar sesión", exact: true, component: Landing, show: true, landing: false, auth: true },
+  { path: "/terms-and-conditions-driver", key: "Términos y condiciones transportador", exact: true, component: TCDriver, show: false, landing: false, auth: false },
+  { path: "/landing-page", key: "Dashboard - admin", exact: true, component: Landing, show: false, landing: false, auth: false },
 ];
 
 const ROUTES = [
@@ -33,7 +51,6 @@ const ROUTES = [
   { path: "/privacy", key: "Políticas de privacidad", exact: true, component: PrivacyPolicy, show: false, landing: false, auth: false },
   { path: "/privacy-ads", key: "Aviso de privacidad", exact: true, component: PrivacyAds, show: false, landing: false, auth: false },
   { path: "/secure-buys", key: "Seguridad de compra", exact: true, component: SecureBuys, show: false, landing: false, auth: false },
-  ...AUTH_ROUTES,
 ];
 
 export default ROUTES;
@@ -60,7 +77,6 @@ export function RenderRoutes({ routes }) {
     <Suspense fallback={<Skeleton active />}>
       <Switch>
         {renderRoutes(routes)}
-        <Redirect exact from="/login-success" to="/dashboard" />
         <Redirect to={ROOT_PATH} />
       </Switch>
     </Suspense>

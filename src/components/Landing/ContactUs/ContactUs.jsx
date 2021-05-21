@@ -5,6 +5,7 @@ import { PRIMARY_COLOR, THIRD_TEXT_COLOR, WHITE_COLOR } from '../../utils/colors
 import ContactForm from './ContactForm';
 import './contactUs.scss';
 import mainBackground from '../../assets/images/new-version/contact-us-background.png';
+import Fade from 'react-reveal/Fade';
 
 const ContactUsContainer = styled.div`
   
@@ -114,47 +115,49 @@ const ContactUs = () => {
   return (
     <ContactUsContainer id="contact-us">
       <HeaderContainer>
-        <HeaderContent>
-          <ContactUsFormContainer>
-            <Row>
-              <Col className="form-container" xs={24} md={14}>
-                <ContactUsContent>
-                  <ContactUsSubtitle>Dejanos tu mensaje</ContactUsSubtitle>
-                  <ContactForm />
-                </ContactUsContent>
-              </Col>
-              <Col className="info-col" xs={24} md={10}>
-                <ContactUsContent>
-                  <CargameContactInfo>
-                    <Row>
-                      <Col xs={24}>
-                        <ContactInfoTitle>
-                          Telefono
+        <Fade>
+          <HeaderContent>
+            <ContactUsFormContainer>
+              <Row>
+                <Col className="form-container" xs={24} md={14}>
+                  <ContactUsContent>
+                    <ContactUsSubtitle>Dejanos tu mensaje</ContactUsSubtitle>
+                    <ContactForm />
+                  </ContactUsContent>
+                </Col>
+                <Col className="info-col" xs={24} md={10}>
+                  <ContactUsContent>
+                    <CargameContactInfo>
+                      <Row>
+                        <Col xs={24}>
+                          <ContactInfoTitle>
+                            Telefono
                         </ContactInfoTitle>
-                        <ContactInfoP>
-                          +57 317 528-4083
+                          <ContactInfoP>
+                            +57 317 528-4083
                         </ContactInfoP>
-                      </Col>
-                      <Col className="descrip-content-col" xs={24}>
-                        <ContactInfoTitle>
-                          Correo electrónico
+                        </Col>
+                        <Col className="descrip-content-col" xs={24}>
+                          <ContactInfoTitle>
+                            Correo electrónico
                         </ContactInfoTitle>
-                        <ContactInfoP>
-                          info@cargame.com.co
+                          <ContactInfoP>
+                            info@cargame.com.co
                         </ContactInfoP>
-                      </Col>
-                    </Row>
-                  </CargameContactInfo>
-                  <SocialMediaContainer>
-                    <AContent href="https://www.facebook.com/Cargameapp"><i className={`fab fa-facebook`}></i></AContent>
-                    <AContent href="https://instagram.com/cargameapp"><i className={`fab fa-instagram`}></i></AContent>
-                    <AContent href="https://www.youtube.com/channel/UCAEtD9ycbtx-PLudy2QvgoQ"><i className={`fab fa-youtube`}></i></AContent>
-                  </SocialMediaContainer>
-                </ContactUsContent>
-              </Col>
-            </Row>
-          </ContactUsFormContainer>
-        </HeaderContent>
+                        </Col>
+                      </Row>
+                    </CargameContactInfo>
+                    <SocialMediaContainer>
+                      <AContent href="https://www.facebook.com/Cargameapp"><i className={`fab fa-facebook`}></i></AContent>
+                      <AContent href="https://instagram.com/cargameapp"><i className={`fab fa-instagram`}></i></AContent>
+                      <AContent href="https://www.youtube.com/channel/UCAEtD9ycbtx-PLudy2QvgoQ"><i className={`fab fa-youtube`}></i></AContent>
+                    </SocialMediaContainer>
+                  </ContactUsContent>
+                </Col>
+              </Row>
+            </ContactUsFormContainer>
+          </HeaderContent>
+        </Fade>
       </HeaderContainer>
       <ExtraContactInfo />
     </ContactUsContainer>

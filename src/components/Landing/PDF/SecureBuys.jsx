@@ -14,6 +14,13 @@ const Title = styled.p`
   font-weight: bold;
 `;
 
+const ExternalText = styled.p`
+
+`;
+
+const ExternalLink = styled.a`
+
+`;
 
 const SecureBuys = () => {
 
@@ -21,6 +28,9 @@ const SecureBuys = () => {
     <PDFContainer>
       <Title>Seguro de compra</Title>
       <AllPages pdf={PrivacyPolicyPDF} />
+      <ExternalText>
+        Si no puedes visualizar el documento, <ExternalLink href="https://cargame.com.co/T&C_user.pdf" target="_blank">haz clic acá</ExternalLink>
+      </ExternalText>
     </PDFContainer>
   );
 };

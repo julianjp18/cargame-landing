@@ -4,3 +4,10 @@
   box-sizing: border-box;
   font-family: 'Ruda', sans-serif;
 }
+
+.ant-table {
+  .ant-table-container table > thead > tr .ant-table-cell {
+    font-size: 15px;
+    font-weight: bold;
+  }
+}

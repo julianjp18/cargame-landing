@@ -3,7 +3,6 @@ import { Button } from 'antd';
 import styled from 'styled-components';
 import { useHistory } from 'react-router';
 import { push } from 'connected-react-router';
-import ROUTES from '../../../routing/routes';
 import { landingNavigation } from '../../utils/extras';
 import { PRIMARY_COLOR, WHITE_COLOR, PRIMARY_BUTTON_BG_COLOR } from '../../utils/colors';
 import { Link } from 'react-router-dom';
@@ -77,7 +76,7 @@ const Ul = styled.ul`
   }
 `;
 
-const RightNav = ({ open }) => {
+const RightNav = ({ open, routes }) => {
   const history = useHistory();
 
   const redirectLanding = (path) => {
@@ -115,14 +114,10 @@ const RightNav = ({ open }) => {
 
   return (
     <Ul open={open}>
-      {ROUTES.map(route => {
+      {routes.map(route => {
         // if this route has sub-routes, then show the ROOT as a list item and recursively render a nested list of route links
         if (route.routes && !localStorage.getItem('user')) {
           return (singleRoute(route));
-        }
-
-        if (route.routes && localStorage.getItem('user')) {
-          console.log('ENTRÓ AL NAV USER');
         }
 
         // no nested routes, so just render a single route
