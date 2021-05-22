@@ -62,7 +62,7 @@ function* logInAction({ formValues }) {
           .get().then((doc) => {
 
             if (doc.data()) {
-              const { name } = doc.data();
+              const { name, role } = doc.data();
 
               resData.getIdToken().then((idToken) => {
                 const expirationDate = new Date(new Date().getTime() + parseInt(resData.createdAt) * 1000);
@@ -72,13 +72,13 @@ function* logInAction({ formValues }) {
                   expirationDate,
                   username,
                   name,
-                  'admin',
+                  role,
                 );
 
                 responseLogIn.push({
                   ...doc.data(),
                   token: idToken,
-                  role: 'admin',
+                  role,
                 });
               });
 

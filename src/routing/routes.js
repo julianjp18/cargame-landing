@@ -3,6 +3,7 @@ import React, { Suspense } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import HomeApp from "../components/App";
 import LogOut from "../components/App/Auth/LogOut/LogOut";
+import Customer from "../components/App/Customer/Customer";
 import Dashboard from "../components/App/Dashboard/Dashboard";
 import Driver from "../components/App/Driver/Driver";
 import DriverForm from "../components/App/Driver/DriverForm/DriverForm";
@@ -32,9 +33,15 @@ export const DRIVER_ROUTES = [
   { path: "/profile", key: "Perfil", exact: true, component: Profile, show: true, landing: false, auth: true },
   { path: "/second-form-driver", key: "Completa información", exact: true, component: DriverForm, show: false, landing: false, auth: false },
   { path: "/register-vehicle", key: "Registrar Vehiculo", exact: true, component: RegisterVehicle, show: false, landing: false, auth: true },
-  { path: "/log-out", key: "Cerrar sesión", exact: true, component: Landing, show: true, landing: false, auth: true },
+  { path: "/log-out", key: "Cerrar sesión", exact: true, component: LogOut, show: true, landing: false, auth: true },
   { path: "/terms-and-conditions-driver", key: "Términos y condiciones transportador", exact: true, component: TCDriver, show: false, landing: false, auth: false },
   { path: "/landing-page", key: "Dashboard - admin", exact: true, component: Landing, show: false, landing: false, auth: false },
+];
+
+export const CUSTOMER_ROUTES = [
+  { path: "/", key: "Inicio", exact: true, component: Customer, show: false, landing: false, auth: false },
+  { path: "/dashboard-driver", key: "Inicio", exact: true, component: Customer, show: false, landing: false, auth: true },
+  { path: "/log-out", key: "Cerrar sesión", exact: true, component: LogOut, show: true, landing: false, auth: true },
 ];
 
 const ROUTES = [
@@ -54,20 +61,6 @@ const ROUTES = [
 ];
 
 export default ROUTES;
-
-/**
- * Render a route with potential sub routes
- * https://reacttraining.com/react-router/web/example/route-config
- */
-function RouteWithSubRoutes(route) {
-  return (
-    <Route
-      path={route.path}
-      exact={route.exact}
-      render={props => <route.component {...props} routes={route.routes} />}
-    />
-  );
-}
 
 /**
 * Use this component for any new section of routes (any config object that has a "routes" property

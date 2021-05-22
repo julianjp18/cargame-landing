@@ -3,7 +3,12 @@ import './App.scss';
 import 'antd/dist/antd.css';
 import Navbar from './Landing/Nav/Navbar';
 import Footer from './Landing/Footer/Footer';
-import ROUTES, { ADMIN_ROUTES, DRIVER_ROUTES, RenderRoutes } from '../routing/routes';
+import ROUTES, {
+  ADMIN_ROUTES,
+  DRIVER_ROUTES,
+  CUSTOMER_ROUTES,
+  RenderRoutes,
+} from '../routing/routes';
 import { connect } from 'react-redux';
 
 const App = ({ auth }) => {
@@ -22,6 +27,9 @@ const App = ({ auth }) => {
         break;
       case 'driver':
         setRoutes(DRIVER_ROUTES);
+        break;
+      case 'customer':
+        setRoutes(CUSTOMER_ROUTES);
         break;
       default:
         setRoutes(ROUTES);

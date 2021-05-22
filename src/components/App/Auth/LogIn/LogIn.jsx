@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Form, Input, Button, Row, Col, notification } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import './login.scss';
-import { push } from 'connected-react-router';
 import { useHistory } from 'react-router';
 
 const formItemLayout = {
@@ -38,7 +37,7 @@ const showPasswordError = () => {
   });
 };
 
-const LogIn = ({ redirect, fromDriverView, logIn, auth }) => {
+const LogIn = ({ fromDriverView, logIn, auth }) => {
   const [passwordError, setpasswordError] = useState(false);
   const [form] = Form.useForm();
   const history = useHistory();
@@ -54,8 +53,10 @@ const LogIn = ({ redirect, fromDriverView, logIn, auth }) => {
     if (auth && auth.role) {
       if (auth.role === 'admin') {
         history.push('/dashboard');
-      } else {
+      } else if (auth.role === 'driver') {
         history.push('/dashboard-driver');
+      } else if (auth.role === 'customer') {
+        history.push('/dashboard-customer');
       }
     }
   }, [auth]);

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Button, Col, DatePicker, Form, message, Row, Upload } from 'antd';
+import { Col, DatePicker, Form, message, Row, Upload } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
-import { PRIMARY_COLOR } from '../../../utils/colors';
-import { PERMITTED_FORMATS } from '../../../utils/extras';
+import { PRIMARY_COLOR, SECOND_COLOR, WHITE_COLOR } from '../../../utils/colors';
+import RegisterVehicle from '../RegisterVehicle/RegisterVehicle';
+import { validationFormatOnChange } from '../../../utils/validations';
 
 const Title = styled.p`
   margin-bottom: 0;
@@ -19,6 +20,32 @@ const Title = styled.p`
 
 const ColRow = styled.div`
   margin: auto;
+`;
+
+const SecondButtonContainer = styled.button`
+  width: 200px;
+  height: 34px;  
+  display: inline-block;
+  padding: 4px 28px 10px 28px;
+  margin: 14px 10px 0 0;
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  color: ${WHITE_COLOR};
+  border: 1px solid ${WHITE_COLOR};
+  border-radius: 50px;
+  background: linear-gradient(55.05deg, ${SECOND_COLOR} 0%, ${PRIMARY_COLOR} 100%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    background: linear-gradient(55.05deg, ${WHITE_COLOR} 0%, ${WHITE_COLOR} 100%);
+    color: ${PRIMARY_COLOR};
+    border: 1px solid ${PRIMARY_COLOR};
+    cursor: pointer;
+  }
 `;
 
 const formItemLayout = {
@@ -42,13 +69,32 @@ const DriverForm = ({ }) => {
     return e && e.fileList;
   };
 
-  const onChange = (date, dateString) => {
-    console.log(date, dateString);
-  };
-
   const onFinish = (values) => {
-    const { drivenLicense, propertyCard } = values;
-    if (expirePropertyCard && expireLicense && drivenLicense && propertyCard) {
+    const {
+      driverPhoto,
+      identificationFront,
+      identificationBack,
+      drivenLicenseFront,
+      drivenLicenseBack,
+      propertyCardFront,
+      propertyCardBack,
+      mecanictecnic,
+      soat,
+    } = values;
+
+    if (
+      expirePropertyCard &&
+      expireLicense &&
+      drivenLicenseFront &&
+      propertyCardFront &&
+      driverPhoto &&
+      identificationFront &&
+      identificationBack &&
+      drivenLicenseBack &&
+      propertyCardBack &&
+      mecanictecnic &&
+      soat
+    ) {
       console.log('values form', {
         ...values,
         expirePropertyCard,
@@ -67,23 +113,6 @@ const DriverForm = ({ }) => {
     setexpirePropertyCard(dateString);
   };
 
-  const propertyCardOnChange = (file) => {
-
-    if (PERMITTED_FORMATS.includes(file.type)) {
-      return false;
-    }
-
-    message.error(`${file.name} no es de tipo: .png, .jpg, .pdf`);
-  };
-
-  const drivenLicenseOnChange = (file) => {
-
-    if (PERMITTED_FORMATS.includes(file.type)) {
-      return false;
-    }
-    message.error(`${file.name} no es de tipo: .png, .jpg, .pdf`);
-  };
-
   return (
     <Row>
       <ColRow className='ant-col ant-col-xs-14'>
@@ -93,71 +122,182 @@ const DriverForm = ({ }) => {
           onFinish={onFinish}
           {...formItemLayout}
         >
-          <Form.Item label="Licencia de conducción">
-            <Form.Item
-              accept="image/png, image/jpeg, document/pdf"
-              label="Licencia de conducción"
-              name="drivenLicense"
-              valuePropName="fileList"
-              getValueFromEvent={normFile}
-              noStyle
-              required
-            >
-              <Upload.Dragger name="files" beforeUpload={drivenLicenseOnChange}>
-                <p className="ant-upload-drag-icon">
-                  <InboxOutlined />
-                </p>
-                <p className="ant-upload-text">Selecciona o arrastra el archivo a esta área.</p>
-                <p className="ant-upload-hint"></p>
-              </Upload.Dragger>
-            </Form.Item>
-          </Form.Item>
-          <Form.Item
-            name="expireLicense"
-            label="Fecha de expiración licencia de conducción"
-            required
-          >
-            <DatePicker onChange={onChangeExpireLicense} format="DD-MM-YYYY" required />
-          </Form.Item>
-          <Form.Item label="Tarjeta de propiedad">
-            <Form.Item
-              label="Tarjeta de propiedad"
-              name="propertyCard"
-              valuePropName="fileList"
-              getValueFromEvent={normFile}
-              noStyle
-              required
-              accept="image/png, image/jpeg, document/pdf"
-            >
-              <Upload.Dragger
-                name="files"
-                beforeUpload={propertyCardOnChange}
+          <Row>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Foto (Selfie)"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Foto (Selfie) requerida!',
+                  },
+                ]}
               >
-                <p className="ant-upload-drag-icon">
-                  <InboxOutlined />
-                </p>
-                <p className="ant-upload-text">Selecciona o arrastra el archivo a esta área.</p>
-                <p className="ant-upload-hint"></p>
-              </Upload.Dragger>
-            </Form.Item>
-          </Form.Item>
-          <Form.Item
-            name="expirePropertyCard"
-            label="Fecha de expiración tarjeta de propiedad"
-            required
-          >
-            <DatePicker onChange={onChangeExpirePropertyCard} format="DD-MM-YYYY" required />
-          </Form.Item>
-
+                <Form.Item
+                  accept="image/png, image/jpeg, document/pdf"
+                  label="Foto"
+                  name="driverPhoto"
+                  valuePropName="fileList"
+                  getValueFromEvent={normFile}
+                  noStyle
+                  required
+                >
+                  <Upload.Dragger name="files" beforeUpload={validationFormatOnChange}>
+                    <p className="ant-upload-drag-icon">
+                      <InboxOutlined />
+                    </p>
+                    <p className="ant-upload-text">Selfie con buena iluminación</p>
+                    <p className="ant-upload-hint"></p>
+                  </Upload.Dragger>
+                </Form.Item>
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Identificación (CC, CE)"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Identificación requerida!',
+                  },
+                ]}
+              >
+                <Form.Item
+                  accept="image/png, image/jpeg, document/pdf"
+                  label="Identificación"
+                  name="identificationFront"
+                  valuePropName="fileList"
+                  getValueFromEvent={normFile}
+                  noStyle
+                  required
+                >
+                  <Upload.Dragger name="files" beforeUpload={validationFormatOnChange}>
+                    <p className="ant-upload-drag-icon">
+                      <InboxOutlined />
+                    </p>
+                    <p className="ant-upload-text">Parte frontal de identificación</p>
+                    <p className="ant-upload-hint"></p>
+                  </Upload.Dragger>
+                </Form.Item>
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label=""
+                rules={[
+                  {
+                    required: true,
+                    message: 'Parte trasera de identificación requerida!',
+                  },
+                ]}
+              >
+                <Form.Item
+                  accept="image/png, image/jpeg, document/pdf"
+                  label="Identificación"
+                  name="identificationBack"
+                  valuePropName="fileList"
+                  getValueFromEvent={normFile}
+                  noStyle
+                  required
+                >
+                  <Upload.Dragger name="files" beforeUpload={validationFormatOnChange}>
+                    <p className="ant-upload-drag-icon">
+                      <InboxOutlined />
+                    </p>
+                    <p className="ant-upload-text">Parte de atrás de identificación</p>
+                    <p className="ant-upload-hint"></p>
+                  </Upload.Dragger>
+                </Form.Item>
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Licencia de conducción"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Parte frontal de licencia de conducción requerida!',
+                  },
+                ]}
+              >
+                <Form.Item
+                  accept="image/png, image/jpeg, document/pdf"
+                  label="Licencia de conducción"
+                  name="drivenLicenseFront"
+                  valuePropName="fileList"
+                  getValueFromEvent={normFile}
+                  noStyle
+                  required
+                >
+                  <Upload.Dragger name="files" beforeUpload={validationFormatOnChange}>
+                    <p className="ant-upload-drag-icon">
+                      <InboxOutlined />
+                    </p>
+                    <p className="ant-upload-text">Parte frontal de licencia</p>
+                    <p className="ant-upload-hint"></p>
+                  </Upload.Dragger>
+                </Form.Item>
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label=""
+                rules={[
+                  {
+                    required: true,
+                    message: 'Parte trasera de licencia de conducción requerida!',
+                  },
+                ]}
+              >
+                <Form.Item
+                  accept="image/png, image/jpeg, document/pdf"
+                  label="Licencia de conducción"
+                  name="drivenLicenseBack"
+                  valuePropName="fileList"
+                  getValueFromEvent={normFile}
+                  noStyle
+                  required
+                >
+                  <Upload.Dragger name="files" beforeUpload={validationFormatOnChange}>
+                    <p className="ant-upload-drag-icon">
+                      <InboxOutlined />
+                    </p>
+                    <p className="ant-upload-text">Parte de atrás de licencia</p>
+                    <p className="ant-upload-hint"></p>
+                  </Upload.Dragger>
+                </Form.Item>
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={20}>
+              <Form.Item
+                name="expireLicense"
+                label="Fecha de expiración licencia de conducción"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Fecha de expiración de licencia requerida!',
+                  },
+                ]}
+              >
+                <DatePicker onChange={onChangeExpireLicense} format="DD-MM-YYYY" required />
+              </Form.Item>
+            </Col>
+          </Row>
+          <RegisterVehicle onChangeExpirePropertyCard={onChangeExpirePropertyCard} />
           <Form.Item
             wrapperCol={{
-              span: 12,
-              offset: 6,
+              span: 18,
             }}
           >
-            <Button type="primary" htmlType="submit">
-              Actualizar
-        </Button>
+            <SecondButtonContainer className="ant-btn" type="primary" htmlType="submit">
+              Enviar
+            </SecondButtonContainer>
           </Form.Item>
         </Form>
       </ColRow>

@@ -5,6 +5,21 @@ import { uploadDriverDocsNotifier } from '../../../redux/sagas/auth/actions/driv
 import { func } from 'prop-types';
 import DriverForm from './DriverForm/DriverForm';
 import { useHistory } from 'react-router';
+import styled from 'styled-components';
+import { PRIMARY_COLOR } from '../../utils/colors';
+import Profile from '../Profile';
+
+const Title = styled.p`
+  margin-top: 20px;
+  color: ${PRIMARY_COLOR};
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 30px;
+`;
+
+const HomeDriverContainer = styled.div`
+  min-height: 94vh;
+`;
 
 const Driver = ({ uploadDriverDocs, auth }) => {
   const history = useHistory();
@@ -17,7 +32,16 @@ const Driver = ({ uploadDriverDocs, auth }) => {
 
   return auth.isVerified ? (
     <Row>
-      <p>Home</p>
+      <Col xs={24}>
+        <HomeDriverContainer>
+          <Profile auth={auth} isFromOtherView />
+          <Row>
+            <Col xs={24}>
+              <Title>Mis vehiculos registrados</Title>
+            </Col>
+          </Row>
+        </HomeDriverContainer>
+      </Col>
     </Row>
   ) : (
     <DriverForm uploadDriverDocs={uploadDriverDocs} />
