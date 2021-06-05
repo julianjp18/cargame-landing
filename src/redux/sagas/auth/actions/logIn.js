@@ -43,6 +43,7 @@ function* logInAction({ formValues }) {
 
               responseLogIn.push({
                 ...doc.data(),
+                id: doc.id,
                 token: idToken,
                 role: 'driver',
               });
@@ -77,6 +78,7 @@ function* logInAction({ formValues }) {
 
                 responseLogIn.push({
                   ...doc.data(),
+                  id: doc.id,
                   token: idToken,
                   role,
                 });

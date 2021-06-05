@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Col, Row } from 'antd';
-import { uploadDriverDocsNotifier } from '../../../redux/sagas/auth/actions/driver';
+import { uploadDriverDocsNotifier } from '../../../redux/sagas/driver/actions/driver';
 import { func } from 'prop-types';
 import DriverForm from './DriverForm/DriverForm';
 import { useHistory } from 'react-router';
@@ -44,7 +44,7 @@ const Driver = ({ uploadDriverDocs, auth }) => {
       </Col>
     </Row>
   ) : (
-    <DriverForm uploadDriverDocs={uploadDriverDocs} />
+    <DriverForm uploadDriverDocs={uploadDriverDocs} auth={auth} />
   );
 }
 

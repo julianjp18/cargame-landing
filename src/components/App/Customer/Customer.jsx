@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Col, Row, Tabs } from 'antd';
 import { firestoreDB } from '../../utils/firebase';
-import { uploadDriverDocsNotifier } from '../../../redux/sagas/auth/actions/driver';
 import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import { PRIMARY_COLOR } from '../../utils/colors';
@@ -29,13 +28,13 @@ const { TabPane } = Tabs;
 const Customer = ({ auth }) => {
   const [activeDriversList, setactiveDriversList] = useState([]);
   const [deactiveDriversList, setdeactiveDriversList] = useState([]);
-
   const history = useHistory();
+
   useEffect(() => {
     if (auth && auth.role) {
       if (!auth.role) history.push('/log-out');
     }
-  }, [auth]);
+  }, [auth, history]);
 
   useEffect(() => {
     showActiveDrivers();
@@ -113,9 +112,7 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-const mapDispatchToProps = {
-  uploadDriverDocs: uploadDriverDocsNotifier,
-};
+const mapDispatchToProps = {};
 
 export default connect(
   mapStateToProps,

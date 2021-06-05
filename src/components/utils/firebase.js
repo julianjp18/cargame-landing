@@ -18,6 +18,7 @@ try {
   firebase.initializeApp(firebaseConfig);
 } catch (err) { }
 
+export const firebaseInit = firebase;
 export const firebaseAuth = firebase.auth();
 export const firestoreDB = firebase.firestore();
 export const firebaseStorage = firebase.storage();

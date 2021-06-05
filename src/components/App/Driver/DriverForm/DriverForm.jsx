@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { PRIMARY_COLOR, SECOND_COLOR, WHITE_COLOR } from '../../../utils/colors';
 import RegisterVehicle from '../RegisterVehicle/RegisterVehicle';
 import { validationFormatOnChange } from '../../../utils/validations';
+import { func, object } from 'prop-types';
 
 const Title = styled.p`
   margin-bottom: 0;
@@ -57,7 +58,7 @@ const formItemLayout = {
   },
 };
 
-const DriverForm = ({ }) => {
+const DriverForm = ({ uploadDriverDocs, auth }) => {
   const [expireLicense, setexpireLicense] = useState();
   const [expirePropertyCard, setexpirePropertyCard] = useState();
 
@@ -99,7 +100,15 @@ const DriverForm = ({ }) => {
         ...values,
         expirePropertyCard,
         expireLicense,
-      })
+        id: auth.id,
+      });
+
+      uploadDriverDocs({
+        ...values,
+        expirePropertyCard,
+        expireLicense,
+        id: auth.id,
+      });
     } else {
       message.error('Por favor llena todos los campos');
     }
@@ -304,5 +313,12 @@ const DriverForm = ({ }) => {
     </Row>
   );
 };
+
+DriverForm.propTypes = {
+  uploadDriverDocs: func.isRequired,
+  auth: object.isRequired,
+};
+
+DriverForm.defaultProps = {};
 
 export default DriverForm;
