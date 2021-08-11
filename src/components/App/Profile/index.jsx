@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Col, Row } from 'antd';
-import NoPhotoImage from '../../assets/images/new-version/profile-picture.webp';
 import { PRIMARY_COLOR, WHITE_COLOR } from '../../utils/colors';
 import styled from 'styled-components';
+import ProfileInfo from './ProfileInfo';
+import RegisterVehicleList from '../Driver/RegisterVehicle/RegisterVehicleList';
 
 const Title = styled.p`
   margin-top: 20px;
@@ -11,37 +12,10 @@ const Title = styled.p`
   font-size: 30px;
   font-weight: 600;
   line-height: 30px;
-`;
 
-const UserInfoContainer = styled.div`
-  margin: 0 150px;
-  padding: 20px;
-  border: 1px solid #f3f3f3;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px -2px #000000;
-`;
-
-const ProfileContainer = styled.div`
-
-`;
-
-const ProfileImage = styled.img`
-  max-width: 200px;
-  border-radius: 50%;
-`;
-
-const InfoContainer = styled.div`
-
-`;
-
-const InfoTitle = styled.p`
-  margin-bottom: 1px;
-  color: ${PRIMARY_COLOR};
-  font-weight: 600;
-`;
-
-const InfoText = styled.p`
-
+  @media (max-width: 768px) {
+    margin-top: 80px;
+  }
 `;
 
 const ExtraInfoContainer = styled.div`
@@ -63,68 +37,13 @@ const Profile = ({ auth, isFromOtherView }) => {
             <Title>Mis datos personales</Title>
           </Col>
         </Row>
-        <UserInfoContainer className="ant-row">
-          <Col xs={12}>
-            <ProfileContainer>
-              <ProfileImage src={auth.profilePicture ?? NoPhotoImage} alt="profile" />
-            </ProfileContainer>
-          </Col>
-          <Col xs={12}>
-            <Row>
-              <Col xs={24} md={12}>
-                <InfoContainer>
-                  <InfoTitle>
-                    Nombre:
-                    </InfoTitle>
-                  <InfoText>
-                    {auth.name ?? '-'}
-                  </InfoText>
-                </InfoContainer>
-              </Col>
-              <Col xs={24} md={12}>
-                <InfoContainer>
-                  <InfoTitle>
-                    Identificación:
-                    </InfoTitle>
-                  <InfoText>
-                    {auth.numberId ?? '-'}
-                  </InfoText>
-                </InfoContainer>
-              </Col>
-              <Col xs={24} md={12}>
-                <InfoContainer>
-                  <InfoTitle>
-                    Celular:
-                    </InfoTitle>
-                  <InfoText>
-                    {auth.phone ?? '-'}
-                  </InfoText>
-                </InfoContainer>
-              </Col>
-              <Col xs={24} md={12}>
-                <InfoContainer>
-                  <InfoTitle>
-                    Ciudad:
-                    </InfoTitle>
-                  <InfoText>
-                    {auth.city ?? '-'}
-                  </InfoText>
-                </InfoContainer>
-              </Col>
-              <Col xs={24}>
-                <InfoContainer>
-                  <InfoTitle>
-                    Correo electrónico:
-                    </InfoTitle>
-                  <InfoText>
-                    {auth.email ?? '-'}
-                  </InfoText>
-                </InfoContainer>
-              </Col>
-            </Row>
-          </Col>
-        </UserInfoContainer>
+        <ProfileInfo data={auth} />
       </Col>
+      {auth.role === 'driver' && (
+        <Col xs={24}>
+          <RegisterVehicleList data={{}} />
+        </Col>
+      )}
       {!isFromOtherView && (
         <ExtraInfoContainer />
       )}

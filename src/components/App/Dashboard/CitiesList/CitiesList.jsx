@@ -1,82 +1,75 @@
-import { Table } from 'antd';
+import { Col, Row, Select } from 'antd';
 import React from 'react';
+import Chart from 'react-apexcharts';
 import styled from 'styled-components';
+import { PRIMARY_COLOR } from '../../../utils/colors';
+import { CITIES } from '../../../utils/extras';
 
 const CitiesListContainer = styled.div`
   margin: 20px 40px;
 `;
 
-const columns = [
-  {
-    title: 'Tipo de usuario',
-    dataIndex: 'typeUser',
-    key: 'typeUser',
-    render: (typeUser) => {
-      let returnTypeUser = typeUser;
-      if (typeUser === 'driver') returnTypeUser = 'Transportador';
-      else if (returnTypeUser === 'user') returnTypeUser = 'Usuario';
-      return returnTypeUser;
-    },
-    filter: [
-      {
-        text: 'Transportador',
-        value: 'driver',
-      },
-      {
-        text: 'Usuario',
-        value: 'user',
-      },
-    ],
-    onFilter: (value, record) => {
-      if (record.typeUser) return record.typeUser.indexOf(value) === 0;
-    },
-    sorter: (a, b) => {
-      if (a.typeUser && b.typeUser)
-        return a.typeUser.length - b.typeUser.length;
-    },
-    sortDirections: ['descend', 'ascend'],
-  },
-  {
-    title: 'Ciudad',
-    dataIndex: 'city',
-    key: 'city',
-    filter: [
-      {
-        text: 'Bogotá D.C.',
-        value: 'Bogotá D.C.',
-      },
-      {
-        text: 'Villavicencio',
-        value: 'Villavicencio',
-      },
-    ],
-    filterMultiple: false,
-    onFilter: (value, record) => {
-      if (record.city) return record.city.indexOf(value) === 0;
-    },
-    sorter: (a, b) => {
-      if (a.city && b.city)
-        return a.city.length - b.city.length;
-    },
-    sortDirections: ['descend', 'ascend'],
-  },
-  {
-    title: 'Cantidad usuarios',
-    dataIndex: 'cant',
-    key: 'cant',
-    filterMultiple: false,
-    sorter: (a, b) => {
-      if (a.cant && b.cant)
-        return a.cant.length - b.cant.length;
-    },
-    sortDirections: ['descend', 'ascend'],
-  },
-];
+const SelectContainer = styled.div`
+margin-bottom: 20px;
+`;
 
-const CitiesList = ({ cities }) => {
+const Subtitle = styled.p`
+  margin-bottom: 0;
+`;
+
+const Title = styled.p`
+`;
+
+const Highlight = styled.span`
+  color: ${PRIMARY_COLOR};
+  font-size: 20px;
+  font-weight: 'bold';
+`;
+
+const { Option } = Select;
+
+const CitiesList = ({ cities, citySelected, cityOnChange }) => {
+  const labels = ['Conductores', 'Usuarios'];
+  const options = {
+    labels,
+  };
+  const series = [cities.drivers, cities.users];
+
+  const onChange = (value) => {
+    cityOnChange(value);
+  };
+
   return (
     <CitiesListContainer>
-      <Table dataSource={cities} columns={columns} />
+      <Row>
+        <Col xs={24}>
+        <SelectContainer>
+            <Select
+              showSearch
+              style={{ width: 200 }}
+              placeholder="Selecciona una ciudad"
+              optionFilterProp="children"
+              onChange={onChange}
+              filterOption={(input, option) =>
+                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+              }
+            >
+              {CITIES.map((city) => (
+                <Option value={city}>{city}</Option>
+              ))}
+            </Select>
+          </SelectContainer>
+          
+        </Col>
+        <Col xs={6}>
+        <Title>Ciudad seleccionada: <Highlight>{citySelected}</Highlight></Title>
+          <Subtitle>Total Conductores: <Highlight>{cities.drivers}</Highlight></Subtitle>
+          <Subtitle>Total Usuarios: <Highlight>{cities.users}</Highlight></Subtitle>
+        </Col>
+        <Col xs={6}>
+          <Chart options={options} series={series} type="donut" width="380" />
+        </Col>
+      </Row>
     </CitiesListContainer>
   );
 };

@@ -1,16 +1,24 @@
 import React from 'react';
+
 import styled from 'styled-components';
-import { PRIMARY_COLOR, WHITE_COLOR } from '../../utils/colors';
+
 import Burger from './Burger';
 import icon from '../../assets/images/new-version/cargame_Horizontal.png';
+import { Link } from 'react-router-dom';
+import { WHITE_COLOR } from '../../utils/colors';
 
 const Nav = styled.nav`
-  width: 100%;
-  height: 60px;
+  position: fixed;
+  background-color: #fff;
   border-bottom: 2px solid #f1f1f1;
-  padding: 0 20px;
   display: flex;
+  font-family: Quicksand;
+  height: 60px;
   justify-content: space-between;
+  padding: 0 20px;
+  top: 0;
+  width: 100%;
+  z-index: 10;
   
   .logo {
     text-align: initial;
@@ -22,7 +30,6 @@ const Nav = styled.nav`
   }
 
   @media (max-width: 768px) {
-    position: fixed;
     display: flex;
     justify-content: space-around;
     flex-flow: column nowrap;
@@ -30,15 +37,6 @@ const Nav = styled.nav`
     z-index: 99;
     top: 0;
   }
-`;
-
-const SpanContent = styled.p`
-  padding-top: 6px;
-  font-weight: bold;
-  margin-bottom: 0;
-  color: ${PRIMARY_COLOR};
-  float: left;
-  margin-right: 5px;
 `;
 
 const LogoImage = styled.img`
@@ -52,7 +50,9 @@ const Navbar = ({ isAuth, role, routes }) => {
     <Nav>
       <div className="logo">
         <h1>
+        <Link key="home" to="/">
           <LogoImage src={icon} alt="icon" />
+        </Link>
         </h1>
       </div>
       <Burger isAuth={isAuth} role={role} routes={routes} />

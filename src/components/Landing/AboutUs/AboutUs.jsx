@@ -1,32 +1,29 @@
-import { Skeleton } from 'antd';
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-
-import './aboutUs.scss';
-import mainBackground from '../../assets/images/new-version/about-us-background.png';
+import { BLACK_COLOR, WHITE_COLOR } from '../../utils/colors';
 import DownloadsApps from '../DownloadApps/DownloadApps';
-import { WHITE_COLOR } from '../../utils/colors';
-import Policies from './Policies/Policies';
 import Fade from 'react-reveal/Fade';
+import FooterButtons from '../FooterButtons/FooterButtons';
+import mainBackground from '../../assets/images/new-version/about-us-background.png';
+import Policies from './Policies/Policies';
 import Slide from 'react-reveal/Slide';
+import styled from 'styled-components';
+import './aboutUs.scss';
 
 const AboutUsContainer = styled.div`
-  min-height: 94vh;
+  min-height: 100vh;
 `;
 
 const HeaderContent = styled.div`
   background-color: rgba(0,0,0, 0.25);
-  min-height: 94vh;
-
-  @media (max-width: 768px) {
-    min-height: 100vh;
-  }
+  min-height: 100vh;
 `;
 
 const HeaderContainer = styled.div`
-  min-height: 94vh;
+  min-height: 100vh;
   background-image: url(${mainBackground});
   background-attachment: fixed;
+  background-color: ${BLACK_COLOR};
+  background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -65,6 +62,10 @@ const Subtitle = styled.p`
 
 const MainInfoContainer = styled.div`
   padding: 150px 100px;
+
+  @media (max-width: 768px) {
+    padding: 70px 30px;
+  }
 `;
 
 const MainInfoText = styled.p`
@@ -78,11 +79,16 @@ const MainInfoText = styled.p`
   text-align: center;
   letter-spacing: 0.02em;
   color: #424B5A;
+
 `;
 
 const AboutUs = () => {
   const [isLoading, setisLoading] = useState(true);
 
+  useEffect(() => {
+    window.scrollTo(0,0);
+  }, []);
+  
   useEffect(() => {
     if (isLoading)
       setTimeout(() => {
@@ -106,7 +112,7 @@ const AboutUs = () => {
         <Slide right>
           <MainInfoText>
             Nos proyectamos como una plataforma digital reconocida a nivel nacional e internacional, con soporte tecnológico robusto y servicio al cliente eficiente, manteniendo altos y rigurosos protocolos de seguridad informática.
-              </MainInfoText>
+          </MainInfoText>
         </Slide>
       </MainInfoContainer>
       <Slide left>
@@ -115,6 +121,7 @@ const AboutUs = () => {
       <Slide bottom>
         <DownloadsApps />
       </Slide>
+      <FooterButtons />
     </AboutUsContainer>
   );
 };

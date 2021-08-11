@@ -1,9 +1,8 @@
 import { Col } from 'antd';
 import React from 'react';
-import styled from 'styled-components';
 import CargameLogoImage from '../../../assets/images/new-version/nuestra_marca.jpg';
-
 import { PRIMARY_COLOR, SECOND_COLOR } from '../../../utils/colors';
+import styled from 'styled-components';
 
 const PhonesImages = styled.img`
   object-fit: contain;

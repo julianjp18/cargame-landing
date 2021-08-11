@@ -43,13 +43,12 @@ function* logInAction({ formValues }) {
 
               responseLogIn.push({
                 ...doc.data(),
-                id: doc.id,
+                id: resData.uid,
                 token: idToken,
                 role: 'driver',
               });
             });
 
-            openNotification('success', '¡Bienvenido!', '');
             isDriver = true;
           } else {
             isDriver = false;
@@ -83,8 +82,6 @@ function* logInAction({ formValues }) {
                   role,
                 });
               });
-
-              openNotification('success', '¡Bienvenido!', '');
             } else {
               openNotification('warning', '¡Usuario y/o contraseña incorrectos!', '');
             }

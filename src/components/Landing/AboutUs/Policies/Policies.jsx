@@ -1,9 +1,9 @@
-import { Col, Row } from 'antd';
+import { Col } from 'antd';
 import React from 'react';
-import styled from 'styled-components';
 import PolicyImage from '../../../assets/images/new-version/policy-image.png';
+import { PRIMARY_COLOR, WHITE_COLOR } from '../../../utils/colors';
+import styled from 'styled-components';
 
-import { PRIMARY_COLOR, SECOND_COLOR, WHITE_COLOR } from '../../../utils/colors';
 
 const PhonesImages = styled.img`
   object-fit: contain;
@@ -29,6 +29,10 @@ const DownloadTitle = styled.p`
   font-size: 64px;
   line-height: 78px;
   color: ${PRIMARY_COLOR};
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;
 
 const RowAnt = styled.div`

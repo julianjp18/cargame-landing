@@ -11,8 +11,8 @@ import SICImage from '../../assets/images/sic.png';
 import { landingNavigation } from '../../utils/extras';
 
 const FooterContainer = styled.div`
-  min-height: 40vh;
-  padding: 40px 50px;
+  min-height: 30vh;
+  padding: 23px 47px;
   background: linear-gradient(55.05deg, ${SECOND_COLOR} 0%, ${PRIMARY_COLOR} 100%);
 `;
 
@@ -117,7 +117,7 @@ const ImageLogo = styled.img`
 `;
 
 const SicImage = styled.img`
-  width: 140px;
+  width: 120px;
 `;
 
 const SocialMedia = () => (
@@ -145,7 +145,7 @@ const Footer = () => {
           <CargameLogo src={CargameLogoImage} alt="Cárgame" />
           <TermsAndConditions>
             {`Términos y condiciones `}
-            <ExternalLink onClick={() => redirectLanding('terms-and-conditions-user')}>cliente</ExternalLink>
+            <ExternalLink onClick={() => redirectLanding('terms-and-conditions-user')}>usuario</ExternalLink>
             {` y `}
             <ExternalLink onClick={() => redirectLanding('terms-and-conditions-driver')}>transportador</ExternalLink>
           </TermsAndConditions>

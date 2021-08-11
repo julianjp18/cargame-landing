@@ -13,6 +13,7 @@ import DriverInfo from './DriverInfo/DriverInfo';
 import Fade from 'react-reveal/Fade';
 import Slide from 'react-reveal/Slide';
 import PaymentMethods from './PaymentMethods/PaymentMethods';
+import FooterButtons from './FooterButtons/FooterButtons';
 
 const Landing = () => {
   const history = useHistory();
@@ -45,6 +46,7 @@ const Landing = () => {
       <Slide bottom>
         <DownloadsApps />
       </Slide>
+      <FooterButtons />
     </div>
   );
 }

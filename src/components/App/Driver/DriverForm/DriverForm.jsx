@@ -1,26 +1,34 @@
 import React, { useState } from 'react';
-import { Col, DatePicker, Form, message, Row, Upload } from 'antd';
-import { InboxOutlined } from '@ant-design/icons';
+import { Col, DatePicker, Form, message, Row, Tooltip, Upload } from 'antd';
+import { InboxOutlined, QuestionCircleFilled } from '@ant-design/icons';
 import styled from 'styled-components';
 import { PRIMARY_COLOR, SECOND_COLOR, WHITE_COLOR } from '../../../utils/colors';
 import RegisterVehicle from '../RegisterVehicle/RegisterVehicle';
-import { validationFormatOnChange } from '../../../utils/validations';
+import { disabledDate, validationFormatOnChange } from '../../../utils/validations';
 import { func, object } from 'prop-types';
 
 const Title = styled.p`
-  margin-bottom: 0;
+  margin-bottom: 20px;
   text-align: start;
   font-family: Ruda;
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
-  line-height: 78px;
   color: ${PRIMARY_COLOR};
   text-align: center;
+
+  @media (max-width: 768px) {
+    margin-top: 80px;
+  }
 `;
 
 const ColRow = styled.div`
   margin: auto;
+  margin-top: 70px;
+
+  @media (max-width: 768px) {
+    margin: 0 20px;
+  }
 `;
 
 const SecondButtonContainer = styled.button`
@@ -58,10 +66,29 @@ const formItemLayout = {
   },
 };
 
-const DriverForm = ({ uploadDriverDocs, auth }) => {
-  const [expireLicense, setexpireLicense] = useState();
-  const [expirePropertyCard, setexpirePropertyCard] = useState();
+const SelfieTooltip = () => (
+  <Tooltip placement="topLeft" title="Sin nada que tape tu rostro ni tus orejas">
+    Foto (Selfie) <QuestionCircleFilled />
+  </Tooltip>
+);
 
+const DriverForm = ({ uploadDriverDocs, auth }) => {
+  const [expireMecanictecnic, setexpireMecanictecnic] = useState();
+  const [expireLicense, setexpireLicense] = useState();
+  const [expireSoat, setexpireSoat] = useState();
+  
+  const onChangeExpireMecanictecnic = (date, dateString) => {
+    setexpireMecanictecnic(dateString);
+  };
+
+  const onChangeExpireLicense = (date, dateString) => {
+    setexpireLicense(dateString);
+  };
+
+  const onChangeExpireSOAT = (date, dateString) => {
+    setexpireSoat(dateString);
+  };
+  
   const normFile = (e) => {
     if (Array.isArray(e)) {
       return e;
@@ -84,8 +111,8 @@ const DriverForm = ({ uploadDriverDocs, auth }) => {
     } = values;
 
     if (
-      expirePropertyCard &&
       expireLicense &&
+      expireSoat &&
       drivenLicenseFront &&
       propertyCardFront &&
       driverPhoto &&
@@ -96,17 +123,11 @@ const DriverForm = ({ uploadDriverDocs, auth }) => {
       mecanictecnic &&
       soat
     ) {
-      console.log('values form', {
-        ...values,
-        expirePropertyCard,
-        expireLicense,
-        id: auth.id,
-      });
-
       uploadDriverDocs({
         ...values,
-        expirePropertyCard,
+        expireMecanictecnic,
         expireLicense,
+        expireSoat,
         id: auth.id,
       });
     } else {
@@ -114,17 +135,9 @@ const DriverForm = ({ uploadDriverDocs, auth }) => {
     }
   };
 
-  const onChangeExpireLicense = (date, dateString) => {
-    setexpireLicense(dateString);
-  };
-
-  const onChangeExpirePropertyCard = (date, dateString) => {
-    setexpirePropertyCard(dateString);
-  };
-
   return (
     <Row>
-      <ColRow className='ant-col ant-col-xs-14'>
+      <ColRow className='ant-col ant-col-md-24 ant-col ant-col-md-14'>
         <Title>Información necesaria para activar la cuenta</Title>
         <Form
           name="complete-info-form"
@@ -134,7 +147,7 @@ const DriverForm = ({ uploadDriverDocs, auth }) => {
           <Row>
             <Col xs={24} md={12}>
               <Form.Item
-                label="Foto (Selfie)"
+                label={<SelfieTooltip />}
                 rules={[
                   {
                     required: true,
@@ -151,7 +164,7 @@ const DriverForm = ({ uploadDriverDocs, auth }) => {
                   noStyle
                   required
                 >
-                  <Upload.Dragger name="files" beforeUpload={validationFormatOnChange}>
+                  <Upload.Dragger name="files" beforeUpload={validationFormatOnChange} maxCount={1}>
                     <p className="ant-upload-drag-icon">
                       <InboxOutlined />
                     </p>
@@ -182,7 +195,7 @@ const DriverForm = ({ uploadDriverDocs, auth }) => {
                   noStyle
                   required
                 >
-                  <Upload.Dragger name="files" beforeUpload={validationFormatOnChange}>
+                  <Upload.Dragger name="files" beforeUpload={validationFormatOnChange} maxCount={1}>
                     <p className="ant-upload-drag-icon">
                       <InboxOutlined />
                     </p>
@@ -211,7 +224,7 @@ const DriverForm = ({ uploadDriverDocs, auth }) => {
                   noStyle
                   required
                 >
-                  <Upload.Dragger name="files" beforeUpload={validationFormatOnChange}>
+                  <Upload.Dragger name="files" beforeUpload={validationFormatOnChange} maxCount={1}>
                     <p className="ant-upload-drag-icon">
                       <InboxOutlined />
                     </p>
@@ -242,7 +255,7 @@ const DriverForm = ({ uploadDriverDocs, auth }) => {
                   noStyle
                   required
                 >
-                  <Upload.Dragger name="files" beforeUpload={validationFormatOnChange}>
+                  <Upload.Dragger name="files" beforeUpload={validationFormatOnChange} maxCount={1}>
                     <p className="ant-upload-drag-icon">
                       <InboxOutlined />
                     </p>
@@ -271,7 +284,7 @@ const DriverForm = ({ uploadDriverDocs, auth }) => {
                   noStyle
                   required
                 >
-                  <Upload.Dragger name="files" beforeUpload={validationFormatOnChange}>
+                  <Upload.Dragger name="files" beforeUpload={validationFormatOnChange} maxCount={1}>
                     <p className="ant-upload-drag-icon">
                       <InboxOutlined />
                     </p>
@@ -283,22 +296,26 @@ const DriverForm = ({ uploadDriverDocs, auth }) => {
             </Col>
           </Row>
           <Row>
-            <Col xs={20}>
-              <Form.Item
-                name="expireLicense"
-                label="Fecha de expiración licencia de conducción"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Fecha de expiración de licencia requerida!',
-                  },
-                ]}
-              >
-                <DatePicker onChange={onChangeExpireLicense} format="DD-MM-YYYY" required />
-              </Form.Item>
-            </Col>
-          </Row>
-          <RegisterVehicle onChangeExpirePropertyCard={onChangeExpirePropertyCard} />
+          <Col xs={20}>
+            <Form.Item
+              name="expireLicense"
+              label="Fecha de expiración licencia de conducción"
+              rules={[
+                {
+                  required: true,
+                  message: 'Fecha de expiración de licencia de conducción requerida!',
+                },
+              ]}
+            >
+              <DatePicker onChange={onChangeExpireLicense} disabledDate={disabledDate} format="DD-MM-YYYY" placeholder="DD-MM-YYYY" required size="large" />
+            </Form.Item>
+          </Col>
+        </Row>
+        
+          <RegisterVehicle
+            onChangeExpireMecanictecnic={onChangeExpireMecanictecnic}
+            onChangeExpireSOAT={onChangeExpireSOAT}
+          />
           <Form.Item
             wrapperCol={{
               span: 18,

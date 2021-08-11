@@ -1,7 +1,9 @@
-import { push } from 'connected-react-router';
 import React, { useState } from 'react';
-import { useHistory } from 'react-router';
+
+import { push } from 'connected-react-router';
 import styled from 'styled-components';
+import { useHistory } from 'react-router';
+
 import { ORANGE_COLOR, PRIMARY_COLOR, SECOND_COLOR, WHITE_COLOR } from '../../utils/colors';
 import RightNav from './RightNav';
 
@@ -13,6 +15,7 @@ const StyledBurger = styled.div`
   right: 20px;
   z-index: 101;
   display: none;
+  font-family: Quicksand;
   @media (max-width: 768px) {
     display: flex;
     justify-content: space-around;

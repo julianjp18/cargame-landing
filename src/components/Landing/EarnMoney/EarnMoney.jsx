@@ -1,12 +1,11 @@
 import { Col, Table } from 'antd';
 import React from 'react';
-import styled from 'styled-components';
-import './earnMoney.scss';
-
+import firstPlanVideo from '../../assets/videos/Referido.mp4';
 import ItemOne from '../../assets/images/new-version/embajadores.svg';
 import ItemTwo from '../../assets/images/new-version/mil_usuarios.svg';
 import { PRIMARY_COLOR, WHITE_COLOR } from '../../utils/colors';
-import firstPlanVideo from '../../assets/videos/Referido.mp4';
+import styled from 'styled-components';
+import './earnMoney.scss';
 
 const RowAnt = styled.div`
   padding: 50px 0;
@@ -44,6 +43,10 @@ const EarnTitle = styled.p`
   line-height: 78px;
   text-align: center;
   color: ${WHITE_COLOR};
+
+  @media (max-width: 768px) {
+    font-size: 40px;
+  }
 `;
 
 const EmbassadorsImage = styled.img`
@@ -96,6 +99,10 @@ const VideoTitle = styled.p`
   line-height: 46px;
   letter-spacing: 0.02em;
   color: ${WHITE_COLOR};
+
+  @media (max-width: 768px) {
+    font-size: 36px;
+  }
 `;
 
 const VideoContainer = styled.div`
@@ -182,7 +189,8 @@ const columns = [
         obj.props.rowSpan = 0;
       }
       return obj;
-    }
+    },
+    responsive: ['md'],
   },
 ];
 

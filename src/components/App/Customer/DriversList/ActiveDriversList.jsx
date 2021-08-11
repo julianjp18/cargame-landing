@@ -1,4 +1,5 @@
 import { Table } from 'antd';
+import moment from 'moment';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -50,7 +51,42 @@ const columns = [
     },
     sortDirections: ['descend', 'ascend'],
   },
+  {
+    title: 'Fecha de registro',
+    dataIndex: 'created_at',
+    key: 'created_at',
+    filterMultiple: false,
+    onFilter: (value, record) => {
+      if (record.created_at) return record.created_at.indexOf(value) === 0;
+    },
+    render: (createdAt) => {
+      return moment(createdAt).format('DD-MM-YYYY');
+    },
+    sorter: (a, b) => {
+      if (a.created_at && b.created_at)
+        return a.created_at.length - b.created_at.length;
+    },
+    sortDirections: ['descend', 'ascend'],
+  },
+  {
+    title: 'Fecha de activación',
+    dataIndex: 'isVerifiedDate',
+    key: 'isVerifiedDate',
+    filterMultiple: false,
+    onFilter: (value, record) => {
+      if (record.isVerifiedDate) return record.isVerifiedDate.indexOf(value) === 0;
+    },
+    render: (isVerifiedDate) => {
+      return isVerifiedDate ? moment(isVerifiedDate).format('DD-MM-YYYY') : 'N/A';
+    },
+    sorter: (a, b) => {
+      if (a.isVerifiedDate && b.isVerifiedDate)
+        return a.isVerifiedDate.length - b.isVerifiedDate.length;
+    },
+    sortDirections: ['descend', 'ascend'],
+  },
 ];
+
 
 const ActiveDriversList = ({ drivers }) => {
   return (

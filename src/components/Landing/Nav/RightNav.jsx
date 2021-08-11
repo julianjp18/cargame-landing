@@ -4,8 +4,9 @@ import styled from 'styled-components';
 import { useHistory } from 'react-router';
 import { push } from 'connected-react-router';
 import { landingNavigation } from '../../utils/extras';
-import { PRIMARY_COLOR, WHITE_COLOR, PRIMARY_BUTTON_BG_COLOR } from '../../utils/colors';
+import { PRIMARY_COLOR, WHITE_COLOR, PRIMARY_BUTTON_BG_COLOR, BLACK_COLOR } from '../../utils/colors';
 import { Link } from 'react-router-dom';
+import WhatsAppImage from '../../assets/images/new-version/whatsapp-icon.svg';
 
 const Ul = styled.ul`
   list-style: none;
@@ -39,10 +40,15 @@ const Ul = styled.ul`
       margin-top: 13px;
 
       a {
+        font-family: Quicksand;
         color: rgba(0, 0, 0, 0.85);
 
         &:hover {
           color: ${PRIMARY_BUTTON_BG_COLOR};
+        }
+
+        @media (max-width: 768px) {
+          color: #ffffff;
         }
       }
     }
@@ -55,7 +61,7 @@ const Ul = styled.ul`
     transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
     top: 0;
     right: 0;
-    height: 100vh;
+    height: 60vh;
     width: 300px;
     padding-top: 3.5rem;
     transition: transform 0.3s ease-in-out;
@@ -73,6 +79,26 @@ const Ul = styled.ul`
         }
       }
     }
+  }
+`;
+
+const WhatsAppContainer = styled.div`
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+const WhatsAppImageContent = styled.img`
+  border-radius: 50%;
+  box-shadow: 2px 2px 9px 5px ${BLACK_COLOR};
+  cursor: pointer;
+  margin-top: 10px;
+  height: 30px;
+  width: 30px;
+  transition: 0.5s;
+
+  &:hover {
+    transform: translateY(-5px);
   }
 `;
 
@@ -112,6 +138,11 @@ const RightNav = ({ open, routes }) => {
     );
   };
 
+  
+  const redirect = () => {
+    window.location.href= 'https://wa.link/wus2o4';
+  }
+
   return (
     <Ul open={open}>
       {routes.map(route => {
@@ -123,6 +154,9 @@ const RightNav = ({ open, routes }) => {
         // no nested routes, so just render a single route
         return singleRoute(route);
       })}
+      <WhatsAppContainer>
+        <WhatsAppImageContent alt="whatsapp image" onClick={redirect} src={WhatsAppImage} />
+      </WhatsAppContainer>
     </Ul>
   )
 }

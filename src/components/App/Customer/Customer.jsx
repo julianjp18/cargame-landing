@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { PRIMARY_COLOR } from '../../utils/colors';
 import ActiveDriversList from './DriversList/ActiveDriversList';
 import DeactiveDriversList from './DriversList/DeactiveDriversList';
+import { viewDriverNotifier } from '../../../redux/sagas/customer/actions/customer';
 
 const Title = styled.p`
   margin-top: 30px;
@@ -25,7 +26,7 @@ const CustomerContainer = styled.div`
 
 const { TabPane } = Tabs;
 
-const Customer = ({ auth }) => {
+const Customer = ({ auth, viewDriver }) => {
   const [activeDriversList, setactiveDriversList] = useState([]);
   const [deactiveDriversList, setdeactiveDriversList] = useState([]);
   const history = useHistory();
@@ -95,7 +96,7 @@ const Customer = ({ auth }) => {
               <ActiveDriversList drivers={activeDriversList} />
             </TabPane>
             <TabPane tab="No activos" key="2">
-              <DeactiveDriversList drivers={deactiveDriversList} />
+              <DeactiveDriversList drivers={deactiveDriversList} viewDriver={viewDriver} />
             </TabPane>
           </Tabs>
         </CustomerContainer>
@@ -112,7 +113,9 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  viewDriver: viewDriverNotifier,
+};
 
 export default connect(
   mapStateToProps,

@@ -1,11 +1,12 @@
 import { Col, Row } from 'antd';
-import React from 'react';
-import styled from 'styled-components';
-import { PRIMARY_COLOR, THIRD_TEXT_COLOR, WHITE_COLOR } from '../../utils/colors';
+import React, { useEffect } from 'react';
+import { BLACK_COLOR, PRIMARY_COLOR, THIRD_TEXT_COLOR, WHITE_COLOR } from '../../utils/colors';
 import ContactForm from './ContactForm';
-import './contactUs.scss';
-import mainBackground from '../../assets/images/new-version/contact-us-background.png';
 import Fade from 'react-reveal/Fade';
+import FooterButtons from '../FooterButtons/FooterButtons';
+import mainBackground from '../../assets/images/new-version/contact-us-background.png';
+import styled from 'styled-components';
+import './contactUs.scss';
 
 const ContactUsContainer = styled.div`
   
@@ -21,17 +22,15 @@ const ContactUsContent = styled.div`
 
 const HeaderContent = styled.div`
   background-color: rgba(0,0,0, 0.25);
-  min-height: 94vh;
-
-  @media (max-width: 768px) {
-    min-height: 100vh;
-  }
+  min-height: 100vh;
 `;
 
 const HeaderContainer = styled.div`
-  min-height: 94vh;
+  min-height: 100vh;
   background-image: url(${mainBackground});
   background-attachment: fixed;
+  background-color: ${BLACK_COLOR};
+  background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -112,6 +111,11 @@ const ExtraContactInfo = styled.div`
 `;
 
 const ContactUs = () => {
+
+  useEffect(() => {
+    window.scrollTo(0,0);
+  }, []);
+  
   return (
     <ContactUsContainer id="contact-us">
       <HeaderContainer>
@@ -160,6 +164,7 @@ const ContactUs = () => {
         </Fade>
       </HeaderContainer>
       <ExtraContactInfo />
+      <FooterButtons />
     </ContactUsContainer>
   );
 };

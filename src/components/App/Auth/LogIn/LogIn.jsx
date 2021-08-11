@@ -3,6 +3,7 @@ import { Form, Input, Button, Row, Col, notification } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import './login.scss';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const formItemLayout = {
   wrapperCol: {
@@ -69,7 +70,7 @@ const LogIn = ({ fromDriverView, logIn, auth }) => {
             ¿Te falta completar información?
           </p>
         ) : (
-          <h1>Iniciar sesión</h1>
+          <p className="subtitle-content">Iniciar sesión</p>
         )}
         {passwordError && showPasswordError()}
       </Col>
@@ -116,9 +117,9 @@ const LogIn = ({ fromDriverView, logIn, auth }) => {
             </Button>
           </Form.Item>
           <Form.Item>
-            <a className="login-form-forgot" href="">
+            <Link key="forgot" to="/forgot-password">
               ¿Olvidaste tu contraseña?
-            </a>
+            </Link>
           </Form.Item>
         </Form>
       </Col>

@@ -8,7 +8,12 @@ import LogIn from './Auth/LogIn/LogIn';
 import { func } from 'prop-types';
 import { signUpNotifier } from '../../redux/sagas/auth/actions/signUp';
 import { logInNotifier } from '../../redux/sagas/auth/actions/logIn';
-import { Col, Row } from 'antd';
+import { Col } from 'antd';
+import styled from 'styled-components';
+
+const MainRow = styled.div`
+  margin-top: 60px;
+`;
 
 const AppContainer = ({ signUp, logIn, auth }) => {
   const [location, setlocation] = useState('');
@@ -20,18 +25,20 @@ const AppContainer = ({ signUp, logIn, auth }) => {
   const { state } = useLocation();
 
   useEffect(() => {
+    window.scrollTo(0,0);
     if (state && state.component !== undefined) setlocation(state.component);
   }, []);
 
+
   return (
-    <Row>
-      <Col xs={24} md={12}>
-        <SignUp signUp={signUp} auth={auth} />
-      </Col>
+    <MainRow className="ant-row">
       <Col xs={24} md={12}>
         <LogIn logIn={logIn} auth={auth} />
       </Col>
-    </Row>
+      <Col xs={24} md={12}>
+        <SignUp signUp={signUp} auth={auth} />
+      </Col>
+    </MainRow>
   );
 }
 

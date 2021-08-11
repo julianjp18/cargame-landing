@@ -26,7 +26,7 @@ function* signUpAction({ formValues }) {
     city,
   } = formValues;
   const responseLogIn = [];
-
+  /*
   axios.get("http://ip-api.com/json").then(response => {
     let data = response.data || {};
     ipAddressInfo = {
@@ -35,7 +35,9 @@ function* signUpAction({ formValues }) {
       loading: false,
     };
   }).catch((err) => {
+    console.log(err);
   });
+  */
 
   yield firebaseAuth
     .createUserWithEmailAndPassword(email, password)
@@ -57,17 +59,14 @@ function* signUpAction({ formValues }) {
           profilePicture: null,
           isActive: true,
           isVerified: false,
+          isInfoCompleted: false,
           strikes: 0,
           address: '',
           city,
-          drivenLicense: '',
           email,
-          expireLicense: '',
-          expiresPropertyCard: '',
-          propertyCard: '',
           created_at: moment().format(),
-          ipAdress: ipAddressInfo ? ipAddressInfo.ip : 'N/A',
-          country: ipAddressInfo ? ipAddressInfo.country : 'N/A',
+          //ipAddress: ipAddressInfo ? ipAddressInfo.ip : 'N/A',
+          //country: ipAddressInfo ? ipAddressInfo.country : 'N/A',
           termsAndConditions: true,
         });
 
@@ -81,10 +80,9 @@ function* signUpAction({ formValues }) {
         city,
         isVerified: false,
         isActive: true,
-        expireLicense: '',
-        expiresPropertyCard: '',
-        propertyCard: '',
+        isInfoCompleted: false,
         role: 'driver',
+        id: resData.uid,
       });
 
       openNotification('success', '¡Que bien!', 'Te has registrado exitosamente');

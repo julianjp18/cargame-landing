@@ -4,14 +4,18 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import HomeApp from "../components/App";
 import LogOut from "../components/App/Auth/LogOut/LogOut";
 import Customer from "../components/App/Customer/Customer";
+import DriverProfile from "../components/App/Customer/DriverProfile";
 import Dashboard from "../components/App/Dashboard/Dashboard";
 import Driver from "../components/App/Driver/Driver";
 import DriverForm from "../components/App/Driver/DriverForm/DriverForm";
-import RegisterVehicle from "../components/App/Driver/RegisterVehicle/RegisterVehicle";
+import Notifications from "../components/App/Driver/Notifications";
+import RegisterVehicle from "../components/App/Driver/RegisterVehicle";
 import Profile from "../components/App/Profile";
+import RestorePassword from "../components/App/Profile/RestorePassword";
 import Landing from "../components/Landing";
 import AboutUs from "../components/Landing/AboutUs/AboutUs";
 import ContactUs from "../components/Landing/ContactUs/ContactUs";
+import ForgotPassword from "../components/Landing/ForgotPassword/ForgotPassword";
 import PrivacyAds from "../components/Landing/PDF/PrivacyAds";
 import PrivacyPolicy from "../components/Landing/PDF/PrivacyPolicy";
 import SecureBuys from "../components/Landing/PDF/SecureBuys";
@@ -31,16 +35,19 @@ export const DRIVER_ROUTES = [
   { path: "/", key: "Inicio", exact: true, component: Driver, show: false, landing: false, auth: false },
   { path: "/dashboard-driver", key: "Inicio", exact: true, component: Driver, show: false, landing: false, auth: true },
   { path: "/profile", key: "Perfil", exact: true, component: Profile, show: true, landing: false, auth: true },
+  { path: "/notifications", key: "Notificaciones", exact: true, component: Notifications, show: true, landing: false, auth: true },
   { path: "/second-form-driver", key: "Completa información", exact: true, component: DriverForm, show: false, landing: false, auth: false },
   { path: "/register-vehicle", key: "Registrar Vehiculo", exact: true, component: RegisterVehicle, show: false, landing: false, auth: true },
   { path: "/log-out", key: "Cerrar sesión", exact: true, component: LogOut, show: true, landing: false, auth: true },
   { path: "/terms-and-conditions-driver", key: "Términos y condiciones transportador", exact: true, component: TCDriver, show: false, landing: false, auth: false },
   { path: "/landing-page", key: "Dashboard - admin", exact: true, component: Landing, show: false, landing: false, auth: false },
+  { path: "/restore-password", key: "Cambiar constraseña", exact: true, component: RestorePassword, show: false, landing: false, auth: false },
 ];
 
 export const CUSTOMER_ROUTES = [
   { path: "/", key: "Inicio", exact: true, component: Customer, show: false, landing: false, auth: false },
   { path: "/dashboard-driver", key: "Inicio", exact: true, component: Customer, show: false, landing: false, auth: true },
+  { path: "/driver-profile", key: "Inicio", exact: true, component: DriverProfile, show: false, landing: false, auth: false },
   { path: "/log-out", key: "Cerrar sesión", exact: true, component: LogOut, show: true, landing: false, auth: true },
 ];
 
@@ -58,6 +65,7 @@ const ROUTES = [
   { path: "/privacy", key: "Políticas de privacidad", exact: true, component: PrivacyPolicy, show: false, landing: false, auth: false },
   { path: "/privacy-ads", key: "Aviso de privacidad", exact: true, component: PrivacyAds, show: false, landing: false, auth: false },
   { path: "/secure-buys", key: "Seguridad de compra", exact: true, component: SecureBuys, show: false, landing: false, auth: false },
+  { path: "/forgot-password", key: "Olvidó constraseña", exact: true, component: ForgotPassword, show: false, landing: false, auth: false },
 ];
 
 export default ROUTES;

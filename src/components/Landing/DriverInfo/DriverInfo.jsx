@@ -1,5 +1,7 @@
 import { Col } from 'antd';
+import { push } from 'connected-react-router';
 import React from 'react';
+import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import DownloadAppImage from '../../assets/images/new-version/transportadores.png';
 
@@ -23,9 +25,9 @@ const PhonesImages = styled.img`
   @media (max-width: 768px) {
     position: static;
     object-fit: contain;
-    width: 100%;
+    width: 98%;
     height: 100%;
-    margin: 10px 6px;
+    margin: 10px 0 10px 3px;
   }
 `;
 
@@ -110,59 +112,85 @@ const ItemDescription = styled.div`
   margin-bottom: 50px;
 `;
 
-const DriverInfo = () => (
-  <RowAnt id="driver-info" className="ant-row">
-    <Col xs={24} md={12}>
-      <DownloadContainerInfo>
-        <DownloadTitle>Transportadores</DownloadTitle>
-        <RowAntTwo className="ant-row">
-          <ColAntTwo className="ant-col ant-col-xs-4">
-            <NumberContent>
-              <Number>1</Number>
-            </NumberContent>
-          </ColAntTwo>
-          <Col xs={20}>
-            <ItemDescription>
-              Activa tu vehículo registrado.
-            </ItemDescription>
-          </Col>
-          <ColAntTwo className="ant-col ant-col-xs-4">
-            <NumberContent>
-              <Number>2</Number>
-            </NumberContent>
-          </ColAntTwo>
-          <Col xs={20}>
-            <ItemDescription>
-              Recibe solicitudes de servicios y oferta en el servicio que más te sirva.
-            </ItemDescription>
-          </Col>
-          <ColAntTwo className="ant-col ant-col-xs-4">
-            <NumberContent>
-              <Number>3</Number>
-            </NumberContent>
-          </ColAntTwo>
-          <Col xs={20}>
-            <ItemDescription>
-              CÁRGAME selecciona la oferta más económica del mercado y la envía al usuario.
-            </ItemDescription>
-          </Col>
-          <ColAntTwo className="ant-col ant-col-xs-4">
-            <NumberContent>
-              <Number>4</Number>
-            </NumberContent>
-          </ColAntTwo>
-          <Col xs={20}>
-            <ItemDescription>
-              Una vez aceptada la oferta, contacta al usuario y coordina la carga.
-            </ItemDescription>
-          </Col>
-        </RowAntTwo>
-      </DownloadContainerInfo>
-    </Col>
-    <ColAnt className="ant-col ant-col-xs-24 ant-col-md-12">
-      <PhonesImages src={DownloadAppImage} alt='phone images' />
-    </ColAnt>
-  </RowAnt>
-);
+const ExternalLink = styled.span`
+  color: ${PRIMARY_COLOR};
+  cursor: pointer;
+
+`;
+
+const DriverInfo = () => {
+  const history = useHistory();
+
+  const redirectLanding = (path) => {
+    const newPath = `/${path}`;
+    history.push({ pathname: newPath, state: { component: newPath } });
+    push(newPath);
+  };
+
+  return (
+    <RowAnt id="driver-info" className="ant-row">
+      <Col xs={24} md={12}>
+        <DownloadContainerInfo>
+          <DownloadTitle>Transportadores</DownloadTitle>
+          <RowAntTwo className="ant-row">
+            <ColAntTwo className="ant-col ant-col-xs-4">
+              <NumberContent>
+                <Number>1</Number>
+              </NumberContent>
+            </ColAntTwo>
+            <Col xs={20}>
+              <ItemDescription>
+                Registrate cómo transportador <ExternalLink onClick={() => redirectLanding('sign-up')}> aquí.</ExternalLink>
+              </ItemDescription>
+            </Col>
+            <ColAntTwo className="ant-col ant-col-xs-4">
+              <NumberContent>
+                <Number>2</Number>
+              </NumberContent>
+            </ColAntTwo>
+            <Col xs={20}>
+              <ItemDescription>
+                Activa tu vehículo registrado.
+              </ItemDescription>
+            </Col>
+            <ColAntTwo className="ant-col ant-col-xs-4">
+              <NumberContent>
+                <Number>3</Number>
+              </NumberContent>
+            </ColAntTwo>
+            <Col xs={20}>
+              <ItemDescription>
+                Recibe solicitudes de servicios y oferta en el servicio que más te sirva.
+              </ItemDescription>
+            </Col>
+            <ColAntTwo className="ant-col ant-col-xs-4">
+              <NumberContent>
+                <Number>4</Number>
+              </NumberContent>
+            </ColAntTwo>
+            <Col xs={20}>
+              <ItemDescription>
+                CÁRGAME selecciona la oferta más económica del mercado y la envía al usuario.
+              </ItemDescription>
+            </Col>
+            <ColAntTwo className="ant-col ant-col-xs-4">
+              <NumberContent>
+                <Number>5</Number>
+              </NumberContent>
+            </ColAntTwo>
+            <Col xs={20}>
+              <ItemDescription>
+                Una vez aceptada la oferta, contacta al usuario y coordina la carga.
+              </ItemDescription>
+            </Col>
+          </RowAntTwo>
+        </DownloadContainerInfo>
+      </Col>
+      <ColAnt className="ant-col ant-col-xs-24 ant-col-md-12">
+        <PhonesImages src={DownloadAppImage} alt='phone images' />
+      </ColAnt>
+    </RowAnt>
+  );
+};
 
 export default DriverInfo;

@@ -153,12 +153,11 @@ const SignUp = ({ signUp, auth }) => {
               {
                 required: true,
                 message: 'Inserta tu número de identificación!',
-                whitespace: true,
+                whitespace: false,
               },
               () => ({
                 validator(rule, value) {
-                  const reg = /[0-9]{6,10}$/;
-                  if (reg.exec(value)) return Promise.resolve();;
+                  if (value.length >= 6 && value.length <= 10) return Promise.resolve();
                   return Promise.reject('Mínimo 6 números, máximo 10.');
                 },
               }),
@@ -201,8 +200,8 @@ const SignUp = ({ signUp, auth }) => {
           >
             <Select>
               <Option value="empty">Selecciona una ciudad</Option>
-              <Option value="Bogotá D.C.">Bogotá D.C.</Option>
               <Option value="Villavicencio">Villavicencio</Option>
+              <Option value="Yopal">Yopal</Option>
             </Select>
           </Form.Item>
           <Form.Item

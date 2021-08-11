@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import PrivacyPolicyPDF from '../../assets/PDF/Política_de_Privacidad.pdf';
+import PrivacyPolicyPDF from '../../assets/PDF/Politica_de_Privacidad.pdf';
 import AllPages from './AllPages';
 
 const PDFContainer = styled.div`

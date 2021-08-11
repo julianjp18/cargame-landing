@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col } from 'antd';
 import styled from 'styled-components';
 
-import { PRIMARY_COLOR, WHITE_COLOR } from '../../utils/colors';
+import { BLACK_COLOR, WHITE_COLOR } from '../../utils/colors';
 import mainBackground from '../../assets/images/new-version/second-background.webp';
 import ItemOne from '../../assets/images/new-version/ubicacion.svg';
 import ItemTwo from '../../assets/images/new-version/pagos.svg';
@@ -13,9 +13,10 @@ import ItemSix from '../../assets/images/new-version/serviciocl.svg';
 
 const HeaderContainer = styled.div`
   min-height: 94vh;
-  border-top: 1px solid ${PRIMARY_COLOR};
   background-image: url(${mainBackground});
   background-attachment: fixed;
+  background-color: ${BLACK_COLOR};
+  background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
 

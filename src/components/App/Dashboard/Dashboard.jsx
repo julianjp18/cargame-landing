@@ -1,4 +1,4 @@
-import { Col, Row, Tabs } from 'antd';
+import { Col, DatePicker, Row, Tabs } from 'antd';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { firestoreDB } from '../../utils/firebase';
@@ -10,6 +10,8 @@ import { PRIMARY_COLOR } from '../../utils/colors';
 import CitiesList from './CitiesList/CitiesList';
 import AmbassadorsList from './AmbassadorsList/AmbassadorsList';
 import ReferralsList from './ReferralsList/ReferralsList';
+import { currencyFormat, MONTHS, numberWithMiles } from '../../utils/extras';
+import moment from 'moment';
 
 const DashboardContainer = styled.div`
   margin: 20px 40px;
@@ -19,8 +21,10 @@ const TitleContent = styled.h1`
   text-align: start;
 `;
 
-const SubTitleContent = styled.h2`
+const SubTitleContent = styled.span`
+  font-size: 22px;
   text-align: start;
+  margin-right: 10px;
 `;
 
 const ShowInfoContent = styled.div`
@@ -53,6 +57,11 @@ const PRegistersValue = styled.p`
   margin-bottom: 0;
 `;
 
+const FilterContainer = styled.div`
+  margin-bottom: 20px;
+  text-align: left;
+`;
+
 const { TabPane } = Tabs;
 
 const percentageValue = (totalOffersValue) => {
@@ -61,13 +70,24 @@ const percentageValue = (totalOffersValue) => {
 
 const Dashboard = () => {
   const [driversList, setdrivers] = useState([]);
+  const [driversForFilterDate, setDriversForFilterDate] = useState([]);
   const [usersList, setusers] = useState([]);
+  const [usersForFilterDate, setUsersForFilterDate] = useState([]);
+  
   const [offersList, setoffers] = useState([]);
-  const [citiesList, setcities] = useState([]);
+  const [citiesList, setcities] = useState({});
+  const [filterDate, setFilterDate] = useState(moment().format('MM-YYYY'));
+  const [citySelected, setcitySelected] = useState('Yopal');
   const [ambassadorsList, setambassadorsList] = useState([]);
   const [referralsList, setreferralsList] = useState([]);
   const [offersDone, setoffersDone] = useState(0);
   const [totalOffersValue, settotalOffersValue] = useState(0);
+
+  const cityOnChange = (value) => setcitySelected(value);
+
+  const filterOnChange = (date, dateString) => {
+    setFilterDate(dateString);
+  };
 
   const showDrivers = () => {
     const data = firestoreDB.collection("Drivers");
@@ -91,6 +111,30 @@ const Dashboard = () => {
     });
   };
 
+  const showDriversForFilterDate = () => {
+    const data = firestoreDB.collection("Drivers");
+
+    data.onSnapshot((drivers) => {
+      setDriversForFilterDate([]);
+      const newDriversForMonth = [];
+
+      drivers.forEach((driver) => {
+
+        const createdAt = driver.data().created_at;
+        
+        if (moment(createdAt).format('MM-YYYY') === filterDate) {
+          newDriversForMonth.push({
+            ...driver.data(),
+            key: driver.id,
+          });
+        }
+
+      });
+
+      if (newDriversForMonth.length > 0) setDriversForFilterDate(newDriversForMonth);
+    });
+  };
+
   const showUsers = () => {
     const data = firestoreDB.collection("Users");
 
@@ -99,7 +143,6 @@ const Dashboard = () => {
       const newUsersList = [];
 
       users.forEach((user) => {
-
         if (user.data().name && user.data().numberId) {
           newUsersList.push({
             ...user.data(),
@@ -113,6 +156,30 @@ const Dashboard = () => {
     });
   };
 
+  const showUsersForFilterDate = () => {
+    const data = firestoreDB.collection("Users");
+
+    data.onSnapshot((users) => {
+      setUsersForFilterDate([]);
+      const newUsersForMonth = [];
+
+      users.forEach((user) => {
+
+        const createdAt = user.data().created_at;
+        
+        if (moment(createdAt).format('MM-YYYY') === filterDate) {
+          newUsersForMonth.push({
+            ...user.data(),
+            key: user.id,
+          });
+        }
+
+      });
+
+      if (newUsersForMonth.length > 0) setUsersForFilterDate(newUsersForMonth);
+    });
+  };
+
   const showOffers = () => {
     const data = firestoreDB.collection("OffersNotificationCenter");
 
@@ -123,15 +190,18 @@ const Dashboard = () => {
       const newOffersList = [];
 
       offers.forEach((offer) => {
+        const pickupDate = offer.data().pickUpDate.split('/');
+        
+        if (`${pickupDate[1]}-${pickupDate[2]}` === filterDate) {
+          newOffersList.push({
+            ...offer.data(),
+            key: offer.id,
+          });
 
-        newOffersList.push({
-          ...offer.data(),
-          key: offer.id,
-        });
-
-        if (offer.data().status === 'DONE') {
-          settotalOffersValue(Number.parseInt(totalOffersValue) + Number.parseInt(offer.data().offerValue));
-          setoffersDone(offersDone + 1);
+          if (offer.data().status === 'DONE') {
+            settotalOffersValue(Number.parseInt(totalOffersValue) + Number.parseInt(offer.data().offerValue));
+            setoffersDone(offersDone + 1);
+          }
         }
       });
 
@@ -140,34 +210,17 @@ const Dashboard = () => {
   };
 
   const showCities = async () => {
-    const cities = ['Bogotá D.C.', 'Villavicencio'];
-    const listDriverCities = [];
-    const listUserCities = [];
-
-    cities.forEach((city) => {
-      listDriverCities.push({
-        key: `${city}-driver`,
-        typeUser: 'driver',
-        city,
-        cant: 0,
-      });
-      listUserCities.push({
-        key: `${city}-user`,
-        typeUser: 'user',
-        city,
-        cant: 0,
-      });
-    });
+    let totalDrivers = 0;
+    let totalUsers = 0;
 
     const drivers = await firestoreDB.collection("Drivers").get().then((allDrivers) => allDrivers);
 
     if (drivers) {
       drivers.forEach((driver) => {
         const { city } = driver.data();
-        const pos = listDriverCities.findIndex(x => x.city === city && x.typeUser === 'driver');
-
-        if (pos > -1) {
-          listDriverCities[pos].cant = listDriverCities[pos].cant + 1;
+        
+        if (city === citySelected) {
+          totalDrivers++;
         }
       });
     }
@@ -177,15 +230,18 @@ const Dashboard = () => {
     if (users) {
       users.forEach((user) => {
         const { city } = user.data();
-        const pos = listUserCities.findIndex(x => x.city === city && x.typeUser === 'user');
-
-        if (pos > -1) {
-          listUserCities[pos].cant = listUserCities[pos].cant + 1;
+        
+        if (city === citySelected) {
+          totalUsers++;
         }
       });
     }
-    const newCities = [...listUserCities, ...listDriverCities];
-
+    //const newCities = [...listUserCities, ...listDriverCities];
+    const newCities = {
+      drivers: totalDrivers,
+      users: totalUsers,
+    };
+    
     setcities(newCities);
   };
 
@@ -197,7 +253,7 @@ const Dashboard = () => {
     firestoreDB.collection("Users").get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
-        const { name, numberId } = doc.data();
+        const { name, numberId, payment } = doc.data();
         setambassadorsList([]);
 
         referralsData.where("referralId", "==", numberId)
@@ -220,12 +276,13 @@ const Dashboard = () => {
               } else {
 
                 newReferralList.push({
+                  identification: numberId,
                   key: numberId,
                   name,
-                  typeUser: 'Usuario',
-                  quantity,
-                  identification: numberId,
                   onePercent: 0,
+                  payment,
+                  quantity,
+                  typeUser: 'Usuario',
                 });
               }
             }
@@ -250,7 +307,7 @@ const Dashboard = () => {
 
                     newAmbassorsList[index] = {
                       ...newAmbassorsList[index],
-                      onePercent: (1 * total) / 100,
+                      onePercent: total ? (1 * total) / 100 : 0,
                     }
 
                     setambassadorsList(newAmbassorsList);
@@ -316,23 +373,34 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    showDrivers();
-    showUsers();
-    showOffers();
-    showCities();
     showAmbassadors();
+    showDrivers();
     showReferrals();
+    showUsers();
   }, []);
+
+  useEffect(() => {
+    showCities();
+  }, [citySelected]);
+
+  useEffect(() => {
+    showOffers();
+    showDriversForFilterDate();
+    showUsersForFilterDate();
+  }, [filterDate]);
 
   return (
     <DashboardContainer>
       <TitleContent>Hola Admin,</TitleContent>
-      <SubTitleContent>Dashboard</SubTitleContent>
+      <FilterContainer>
+        <SubTitleContent>Dashboard</SubTitleContent>
+        <DatePicker defaultValue={moment(filterDate, 'MM-YYYY')} format="MM-YYYY" onChange={filterOnChange} picker="month" placeholder="Filtrar por mes" size="large" />
+      </FilterContainer>
       <Row>
         <Col xs={6}>
           <ShowInfoContent>
             <PShowInfo>Transacciones realizadas</PShowInfo>
-            <PValue>{offersDone}</PValue>
+            <PValue>{numberWithMiles(offersDone)}</PValue>
           </ShowInfoContent>
         </Col>
         <Col xs={12}>
@@ -341,15 +409,15 @@ const Dashboard = () => {
             <Row>
               <Col xs={24}>
                 <PRegistersTitle>Total</PRegistersTitle>
-                <PRegistersValue>{totalOffersValue}</PRegistersValue>
+                <PRegistersValue>{currencyFormat(totalOffersValue)}</PRegistersValue>
               </Col>
               <Col xs={24} md={12}>
                 <PRegistersTitle>13% transportadores</PRegistersTitle>
-                <PRegistersValue>{percentageValue(totalOffersValue)}</PRegistersValue>
+                  <PRegistersValue>{currencyFormat(percentageValue(totalOffersValue))}</PRegistersValue>
               </Col>
               <Col xs={24} md={12}>
                 <PRegistersTitle>13% usuarios</PRegistersTitle>
-                <PRegistersValue>{percentageValue(totalOffersValue)}</PRegistersValue>
+                <PRegistersValue>{currencyFormat(percentageValue(totalOffersValue))}</PRegistersValue>
               </Col>
             </Row>
           </ShowInfoContent>
@@ -360,11 +428,11 @@ const Dashboard = () => {
             <Row>
               <Col xs={24} md={12}>
                 <PRegistersTitle>Transportadores</PRegistersTitle>
-                <PRegistersValue>{driversList.length}</PRegistersValue>
+                <PRegistersValue>{numberWithMiles(driversForFilterDate.length)}</PRegistersValue>
               </Col>
               <Col xs={24} md={12}>
                 <PRegistersTitle>Usuarios</PRegistersTitle>
-                <PRegistersValue>{usersList.length}</PRegistersValue>
+                <PRegistersValue>{numberWithMiles(usersForFilterDate.length)}</PRegistersValue>
               </Col>
             </Row>
           </ShowInfoContent>
@@ -381,7 +449,7 @@ const Dashboard = () => {
               <OffersList offers={offersList} />
             </TabPane>
             <TabPane tab="Ciudades" key="4">
-              <CitiesList cities={citiesList} />
+              <CitiesList cities={citiesList} citySelected={citySelected} cityOnChange={cityOnChange} />
             </TabPane>
             <TabPane tab="Embajadores" key="5">
               <AmbassadorsList ambassadors={ambassadorsList} />

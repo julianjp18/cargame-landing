@@ -32,3 +32,4 @@ export default (state = INITIAL_STATE, { type, payload }) => {
       return state;
   }
 };
+  

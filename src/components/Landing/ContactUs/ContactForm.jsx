@@ -1,8 +1,8 @@
-import { Form, Input, notification } from 'antd';
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import axios from 'axios';
+import { Form, Input, notification } from 'antd';
 import { PRIMARY_COLOR, SECOND_COLOR, WHITE_COLOR } from '../../utils/colors';
+import styled from 'styled-components';
 
 const layout = {
   labelCol: {
@@ -45,7 +45,7 @@ const ContactForm = () => {
 
   const onFinish = (values) => {
     if (values) {
-      axios.post(` https://cargame-server.herokuapp.com/send-email/`, {
+      axios.post(`https://cargame-server.herokuapp.com/send-email/`, {
         ...values,
       })
         .then(res => {

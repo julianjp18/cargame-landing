@@ -1,9 +1,9 @@
 import { Col } from 'antd';
 import React from 'react';
-import styled from 'styled-components';
+import AppStore from '../../assets/images/new-version/apple.svg';
 import DownloadAppImage from '../../assets/images/new-version/download-app-image.png';
 import PlayStore from '../../assets/images/new-version/google-play.png';
-import AppStore from '../../assets/images/new-version/app-store.png';
+import styled from 'styled-components';
 import { WHITE_COLOR } from '../../utils/colors';
 
 const PhonesImages = styled.img`
@@ -87,6 +87,12 @@ const PlayStoreImage = styled.img`
 
 const AppStoreImage = styled.img`
   max-width: 100%;
+  width: 34%;
+
+  @media (max-width: 768px) {
+    margin-top: 2px;
+    width: 210px;
+  }
 `;
 
 const DownloadsApps = () => (

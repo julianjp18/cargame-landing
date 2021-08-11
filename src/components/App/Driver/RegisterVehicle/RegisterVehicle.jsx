@@ -3,7 +3,7 @@ import { Col, DatePicker, Form, Row, Upload } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 import { PRIMARY_COLOR } from '../../../utils/colors';
-import { validationFormatOnChange } from '../../../utils/validations';
+import { disabledDate, disabledYearDate, validationFormatOnChange } from '../../../utils/validations';
 
 const Title = styled.p`
   margin-bottom: 0;
@@ -21,7 +21,12 @@ const ColRow = styled.div`
   margin: auto;
 `;
 
-const RegisterVehicle = ({ onChangeExpirePropertyCard }) => {
+const RegisterVehicle = ({
+  hideMecanictecnic,
+  onChangeExpireMecanictecnic,
+  onChangeExpireSOAT,
+  onChangeYearModelVehicle,
+}) => {
   const normFile = (e) => {
     if (Array.isArray(e)) {
       return e;
@@ -57,6 +62,7 @@ const RegisterVehicle = ({ onChangeExpirePropertyCard }) => {
                 <Upload.Dragger
                   name="files"
                   beforeUpload={validationFormatOnChange}
+                  maxCount={1}
                 >
                   <p className="ant-upload-drag-icon">
                     <InboxOutlined />
@@ -78,69 +84,23 @@ const RegisterVehicle = ({ onChangeExpirePropertyCard }) => {
               ]}
             >
               <Form.Item
+                accept="image/png, image/jpeg, document/pdf"
                 label="Tarjeta de propiedad"
-                name="propertyCardBack"
-                valuePropName="fileList"
                 getValueFromEvent={normFile}
+                name="propertyCardBack"
                 noStyle
                 required
-                accept="image/png, image/jpeg, document/pdf"
+                valuePropName="fileList"
               >
                 <Upload.Dragger
                   name="files"
                   beforeUpload={validationFormatOnChange}
+                  maxCount={1}
                 >
                   <p className="ant-upload-drag-icon">
                     <InboxOutlined />
                   </p>
                   <p className="ant-upload-text">Parte trasera de tarjeta</p>
-                  <p className="ant-upload-hint"></p>
-                </Upload.Dragger>
-              </Form.Item>
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={20}>
-            <Form.Item
-              name="expirePropertyCard"
-              label="Fecha de expiración tarjeta de propiedad"
-              rules={[
-                {
-                  required: true,
-                  message: 'Fecha de expiración de tarjeta requerida!',
-                },
-              ]}
-            >
-              <DatePicker onChange={onChangeExpirePropertyCard} format="DD-MM-YYYY" required />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={24} md={12}>
-            <Form.Item
-              label="Técnico mecánica"
-              rules={[
-                {
-                  required: true,
-                  message: 'Técnico mecánica requerida!',
-                },
-              ]}
-            >
-              <Form.Item
-                accept="image/png, image/jpeg, document/pdf"
-                label="Técnico mecánica"
-                name="mecanictecnic"
-                valuePropName="fileList"
-                getValueFromEvent={normFile}
-                noStyle
-                required
-              >
-                <Upload.Dragger name="files" beforeUpload={validationFormatOnChange}>
-                  <p className="ant-upload-drag-icon">
-                    <InboxOutlined />
-                  </p>
-                  <p className="ant-upload-text">Técnico mecánica</p>
                   <p className="ant-upload-hint"></p>
                 </Upload.Dragger>
               </Form.Item>
@@ -167,7 +127,7 @@ const RegisterVehicle = ({ onChangeExpirePropertyCard }) => {
                 noStyle
                 required
               >
-                <Upload.Dragger name="files" beforeUpload={validationFormatOnChange}>
+                <Upload.Dragger name="files" beforeUpload={validationFormatOnChange} maxCount={1}>
                   <p className="ant-upload-drag-icon">
                     <InboxOutlined />
                   </p>
@@ -198,7 +158,7 @@ const RegisterVehicle = ({ onChangeExpirePropertyCard }) => {
                 noStyle
                 required
               >
-                <Upload.Dragger name="files" beforeUpload={validationFormatOnChange}>
+                <Upload.Dragger name="files" beforeUpload={validationFormatOnChange} maxCount={1}>
                   <p className="ant-upload-drag-icon">
                     <InboxOutlined />
                   </p>
@@ -206,6 +166,88 @@ const RegisterVehicle = ({ onChangeExpirePropertyCard }) => {
                   <p className="ant-upload-hint"></p>
                 </Upload.Dragger>
               </Form.Item>
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={24} md={12}>
+            <Form.Item
+              label="Técnico mecánica"
+              rules={[
+                {
+                  required: true,
+                  message: 'Técnico mecánica requerida!',
+                },
+              ]}
+            >
+              <Form.Item
+                accept="image/png, image/jpeg, document/pdf"
+                label="Técnico mecánica"
+                name="mecanictecnic"
+                valuePropName="fileList"
+                getValueFromEvent={normFile}
+                noStyle
+                required
+              >
+                <Upload.Dragger name="files" beforeUpload={validationFormatOnChange} maxCount={1}>
+                  <p className="ant-upload-drag-icon">
+                    <InboxOutlined />
+                  </p>
+                  <p className="ant-upload-text">Técnico mecánica</p>
+                  <p className="ant-upload-hint"></p>
+                </Upload.Dragger>
+              </Form.Item>
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={20}>
+            <Form.Item
+              name="yearModelVehicle"
+              label="Año modelo de vehiculo"
+              rules={[
+                {
+                  required: true,
+                  message: 'Fecha de modelo de vehiculo requerida!',
+                },
+              ]}
+            >
+              <DatePicker onChange={onChangeYearModelVehicle} disabledDate={disabledYearDate} format="YYYY" picker="year" placeholder="YYYY" required size="large" />
+            </Form.Item>
+          </Col>
+        </Row>
+        {!hideMecanictecnic && (
+          <Row>
+            <Col xs={20}>
+              <Form.Item
+                name="expireMecanictecnic"
+                label="Fecha de expiración técnico mecánica"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Fecha de expiración revisión técnico mecánica requerida!',
+                  },
+                ]}
+              >
+                <DatePicker onChange={onChangeExpireMecanictecnic} disabledDate={disabledDate} format="DD-MM-YYYY"  placeholder="DD-MM-YYYY" required size="large" />
+              </Form.Item>
+            </Col>
+          </Row>
+        )}
+        
+        <Row>
+          <Col xs={20}>
+            <Form.Item
+              name="expireSoat"
+              label="Fecha de expiración SOAT"
+              rules={[
+                {
+                  required: true,
+                  message: 'Fecha de expiración SOAT requerida!',
+                },
+              ]}
+            >
+              <DatePicker onChange={onChangeExpireSOAT} disabledDate={disabledDate} format="DD-MM-YYYY" placeholder="DD-MM-YYYY" required size="large" />
             </Form.Item>
           </Col>
         </Row>
